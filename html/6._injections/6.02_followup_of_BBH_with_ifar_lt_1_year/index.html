@@ -1,0 +1,3032 @@
+<html lang="en">
+
+<head>
+
+    <!-- set initial view -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- add jquery -->
+    <script src="../../static/js/jquery/1.10.2/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+    <!-- add mousewheel scrolling -->
+    <script type="text/javascript" src="../../static/js/jquery/1.10.2/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <!-- add bootstrap -->
+    <link media="all" href="../../static/css/bootstrap/3.3.2/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="../../static/js/bootstrap/3.3.2/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- add fancybox -->
+    <script type="text/javascript" src="../../static/js/fancybox/2.1.5/jquery.fancybox.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/fancybox/2.1.5/jquery.fancybox.css" media="screen" />
+
+    <!-- add mathjax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- add orange stylization -->
+    <script type="text/javascript" src="../../static/js/fancybox/2.1.5/fancybox-orange.js"></script> 
+    <link media="all" href="../../static/css/pycbc/orange.css" type="text/css" rel="stylesheet">
+
+    <!-- add popover js -->
+    <script> $(function () {$('[data-toggle="popover"]').popover()})</script>
+    <style type="text/css">
+        .popover{
+            max-width:600px;
+        }
+    </style>
+
+    <!-- add expand all js -->
+    <script>
+        $(function () {
+
+            var active = true;
+
+            $('#collapse-init').click(function () {
+                if (active) {
+                    active = false;
+                    $('.panel-collapse').collapse('show');
+                    $('.panel-title').attr('data-toggle', '');
+                    $(this).text('Collapse All');
+                } else {
+                    active = true;
+                    $('.panel-collapse').collapse('hide');
+                    $('.panel-title').attr('data-toggle', 'collapse');
+                    $(this).text('Expand All');
+                }
+            });
+    
+            $('#accordion').on('show.bs.collapse', function () {
+                if (active) $('#accordion .in').collapse('hide');
+            });
+
+        });
+    </script>
+
+    <!-- title -->
+    <title>PyCBC search</title>
+
+    <!-- add fonts -->
+    <style>
+    @font-face {
+        font-family : 'Lato';
+        src : url('../../static/fonts/Lato-Light.eot');
+        src : url('../../static/fonts/Lato-Light.eot') format('embedded-opentype'),url('../../static/fonts/Lato-Light.woff') format('woff'),url('../../static/fonts/Lato-Light.ttf') format('truetype');
+        text-rendering : optimizeLegibility;
+    }
+    @font-face{
+        font-family : 'Lato';
+        src : url('../../static/fonts/Lato-Semibold.eot');
+        src : url('../../static/fonts/Lato-Semibold.eot') format('embedded-opentype'),url('../../static/fonts/Lato-Semibold.woff') format('woff'),url('../../static/fonts/Lato-Semibold.ttf') format('truetype');
+        font-weight : bold;
+       text-rendering : optimizeLegibility;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<div id="wrap">
+
+<!-- set dir0 counter integer -->
+
+
+<!-- navbar -->
+<div class="navbar navbar-custom navbar-static-top">
+  <div class="container-fluid">
+
+        <!-- title and subtitle -->
+        <div class="row" style="padding-top:10px">
+            <div class="col-md-4">
+                <p class="text-left">
+                    <img src=https://raw.githubusercontent.com/gwastro/pycbc-logo/master/pycbc_logo_name.png alt="PyCBC logo" style="height:3em;">
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-center" style="font-size:150%;"><b>PyCBC search</b></p>
+                <p class="text-center">Small Test Search</p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+    <!-- button for collapsed navbar -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- buttons on navbar -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+
+        <!-- always have a button to the top-level directory -->
+        <li class="active"><a href="../../">Summary</a></li>
+
+        <!-- display top-level directories -->
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">1. Analysis Time<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../1._analysis_time" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././1._analysis_time/1.01_segment_data" role="menuitem">1.01 Segment Data</a></li>
+                
+                    <li role="presentation"><a href="../.././1._analysis_time/1.02_segments" role="menuitem">1.02 Segments</a></li>
+                
+                    <li role="presentation"><a href="../.././1._analysis_time/1.03_gating" role="menuitem">1.03 Gating</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">2. Detector Sensitivity<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../2._detector_sensitivity" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">4. Single Triggers<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../4._single_triggers" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.01_H1_binned_triggers" role="menuitem">4.01 H1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.02_H1_trigger_histograms" role="menuitem">4.02 H1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.03_H1_binned_histograms" role="menuitem">4.03 H1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.04_L1_binned_triggers" role="menuitem">4.04 L1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.05_L1_trigger_histograms" role="menuitem">4.05 L1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.06_L1_binned_histograms" role="menuitem">4.06 L1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.07_V1_binned_triggers" role="menuitem">4.07 V1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.08_V1_trigger_histograms" role="menuitem">4.08 V1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.09_V1_binned_histograms" role="menuitem">4.09 V1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.10_H1_loudest_noncoinc_time" role="menuitem">4.10 H1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.11_H1_all" role="menuitem">4.11 H1 All</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.12_H1_loudest_within_vetoes" role="menuitem">4.12 H1 Loudest Within Vetoes</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.13_L1_loudest_noncoinc_time" role="menuitem">4.13 L1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.14_L1_all" role="menuitem">4.14 L1 All</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.15_L1_loudest_within_vetoes" role="menuitem">4.15 L1 Loudest Within Vetoes</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.16_V1_loudest_noncoinc_time" role="menuitem">4.16 V1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.17_V1_all" role="menuitem">4.17 V1 All</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.18_V1_loudest_within_vetoes" role="menuitem">4.18 V1 Loudest Within Vetoes</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">5. Background Triggers<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../5._background_triggers" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.01_loudest_background_followup" role="menuitem">5.01 Loudest Background Followup</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.02_L1V1_background" role="menuitem">5.02 L1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.03_H1V1_background" role="menuitem">5.03 H1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.04_H1L1_background" role="menuitem">5.04 H1L1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.05_H1L1V1_background" role="menuitem">5.05 H1L1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.06_V1_background" role="menuitem">5.06 V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.07_L1_background" role="menuitem">5.07 L1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.08_H1_background" role="menuitem">5.08 H1 Background</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">6. Injections<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../6._injections" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././6._injections/6.01_BBH" role="menuitem">6.01 Bbh</a></li>
+                
+                    <li role="presentation"><a href="../.././6._injections/6.02_followup_of_BBH_with_ifar_lt_1_year" role="menuitem">6.02 Followup Of Bbh With Ifar Lt 1 Year</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">7. Search Sensitivity<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../7._search_sensitivity" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././7._search_sensitivity/7.01_BBH" role="menuitem">7.01 Bbh</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">8. Open Box Result<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../8._open_box_result" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.02_loudest_events_followup" role="menuitem">8.02 Loudest Events Followup</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.03_L1V1_candidates" role="menuitem">8.03 L1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.04_H1V1_candidates" role="menuitem">8.04 H1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.05_H1L1_candidates" role="menuitem">8.05 H1L1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.06_H1L1V1_candidates" role="menuitem">8.06 H1L1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.07_V1_candidates" role="menuitem">8.07 V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.08_L1_candidates" role="menuitem">8.08 L1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.09_H1_candidates" role="menuitem">8.09 H1 Candidates</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">9. Workflow<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../9._workflow" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.01_throughput" role="menuitem">9.01 Throughput</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.02_configuration" role="menuitem">9.02 Configuration</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.03_version" role="menuitem">9.03 Version</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.04_dax" role="menuitem">9.04 Dax</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.05_input_map" role="menuitem">9.05 Input Map</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.06_output_map" role="menuitem">9.06 Output Map</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.07_planning" role="menuitem">9.07 Planning</a></li>
+                
+
+            </ul>
+        </li>
+        
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div id="main">
+        <div class="container">
+            <div id="content">
+
+                <!-- page name -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>6.02 Followup Of Bbh With Ifar Lt 1 Year</h1>
+                     </div>
+                </div>
+
+                <!-- set list of files which are handled in wells -->
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                
+                <!-- include well if it exists and check meta-data if well renders any files inside it -->
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                        
+                        
+                        
+                            <div class=pycbc-meta key="render-function" value="render_tmplt"></div><div class=pycbc-meta key="filenames" value="H1L1V1-PAGE_INJINFO_BBH_0-1186740100-3400.html,H1L1V1-PAGE_COINCINFO_BBH_0-1186740100-3400.html,H1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html,L1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html,V1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html,H1L1V1-PLOT_TRIGGER_TIMESERIES_SNR1_BBH_0-1186740100-3400.png,H1L1V1-PLOT_TRIGGER_TIMESERIES_NEWSNR1_BBH_0-1186740100-3400.png,H1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png,H1-PLOT_QSCAN_BBH_0-1186740100-3400.png,L1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png,L1-PLOT_QSCAN_BBH_0-1186740100-3400.png,V1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png,V1-PLOT_QSCAN_BBH_0-1186740100-3400.png,H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png,L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png,V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png,H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png,L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png,V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png,H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png,L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png,V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png,H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png,L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png,V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png,H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png,L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png,V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png,H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png,L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png,V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png"></div><!-- add a subtitle -->
+
+
+<!-- hold images inside a well -->
+<div class="scaffold well">
+
+    <!-- set file counter integer -->
+    
+
+    <!-- display formatted files -->
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A1"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A1">
+                                    <b>A1. Parameters of missed injection:1</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_injinfo --injection-file H1L1V1-HDFINJFIND_BBH_INJECTIONS-1186740100-3400.hdf --injection-index 25 --n-nearest 0 --output-file H1L1V1-PAGE_INJINFO_BBH_0-1186740100-3400.html"></div><div class=pycbc-meta key="title" value="Parameters of missed injection:1"></div><div class=pycbc-meta key="caption" value="Parameters of this injection"></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div>
+    <table class="table">
+            <tr>
+                <th>
+                    End&nbsp;time
+                </th>
+                <th>
+                    Opt.&nbsp;SNR H1
+                </th>
+                <th>
+                    Opt.&nbsp;SNR L1
+                </th>
+                <th>
+                    Opt.&nbsp;SNR V1
+                </th>
+                <th>
+                    m<sub>1</sub>
+                </th>
+                <th>
+                    m<sub>2</sub>
+                </th>
+                <th>
+                    M<sub>c</sub>
+                </th>
+                <th>
+                    &eta;
+                </th>
+                <th>
+                    RA
+                </th>
+                <th>
+                    Dec
+                </th>
+                <th>
+                    &iota;
+                </th>
+                <th>
+                    s<sub>1x</sub>
+                </th>
+                <th>
+                    s<sub>1y</sub>
+                </th>
+                <th>
+                    s<sub>1z</sub>
+                </th>
+                <th>
+                    s<sub>2x</sub>
+                </th>
+                <th>
+                    s<sub>2y</sub>
+                </th>
+                <th>
+                    s<sub>2z</sub>
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    1186741355.89
+                </td>
+                <td>
+                    70.49
+                </td>
+                <td>
+                    122.59
+                </td>
+                <td>
+                    14.23
+                </td>
+                <td>
+                    18.39
+                </td>
+                <td>
+                    23.51
+                </td>
+                <td>
+                    18.07
+                </td>
+                <td>
+                    0.25
+                </td>
+                <td>
+                    0.98
+                </td>
+                <td>
+                    -0.55
+                </td>
+                <td>
+                    2.68
+                </td>
+                <td>
+                    0.00
+                </td>
+                <td>
+                    0.00
+                </td>
+                <td>
+                    0.00
+                </td>
+                <td>
+                    0.00
+                </td>
+                <td>
+                    0.00
+                </td>
+                <td>
+                    0.00
+                </td>
+            </tr>
+    </table>
+
+
+<!--segment XML file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PAGE_INJINFO_BBH_0-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Parameters of this injection">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_injinfo --injection-file H1L1V1-HDFINJFIND_BBH_INJECTIONS-1186740100-3400.hdf --injection-index 25 --n-nearest 0 --output-file H1L1V1-PAGE_INJINFO_BBH_0-1186740100-3400.html">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A2"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A2">
+                                    <b>A2. Details of closest event</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_coincinfo --single-trigger-files H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf V1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --statmap-file H1L1V1-HDFINJFIND_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --trigger-id 20 --title Details of closest event --statmap-file-subspace-name found_after_vetoes --output-file H1L1V1-PAGE_COINCINFO_BBH_0-1186740100-3400.html"></div><div class=pycbc-meta key="title" value="Details of closest event"></div><div class=pycbc-meta key="caption" value="Parameters of event. The figures below show the mini-followup data for this event."></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div><script type="text/javascript">
+function redirect(form,way)
+{
+        // Set location to form and submit.
+        if(form != '')
+        {
+                document.forms[form].action=way;
+                document.forms[form].submit();
+        }
+        else
+        {
+                window.top.location = way;
+        }
+}
+</script>
+    <table class="table">
+            <tr>
+                <th>
+                    Ranking statistic
+                </th>
+                <th>
+                    Exclusive IFAR (yr)
+                </th>
+                <th>
+                    Exclusive FAP
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    77.54
+                </td>
+                <td>
+                     0.00
+                </td>
+                <td>
+                    9.50e-01
+                </td>
+            </tr>
+    </table>
+
+    <table class="table">
+            <tr>
+                <th>
+                    Ifo
+                </th>
+                <th>
+                    UTC&nbsp;End&nbsp;Time
+                </th>
+                <th>
+                    GPS&nbsp;End&nbsp;time
+                </th>
+                <th>
+                    &rho;
+                </th>
+                <th>
+                    Phase
+                </th>
+                <th>
+                    &chi;<sup>2</sup><sub>r</sub>
+                </th>
+                <th>
+                    &chi;<sup>2</sup>&nbsp;bins
+                </th>
+                <th>
+                    sg&nbsp;&chi;<sup>2</sup>
+                </th>
+                <th>
+                    PSD var
+                </th>
+                <th>
+                    m<sub>1</sub>
+                </th>
+                <th>
+                    m<sub>2</sub>
+                </th>
+                <th>
+                    M<sub>c</sub>
+                </th>
+                <th>
+                    s<sub>1z</sub>
+                </th>
+                <th>
+                    s<sub>2z</sub>
+                </th>
+                <th>
+                    Duration
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    H1
+                </td>
+                <td>
+                    2017-08-14 10:22:17
+                </td>
+                <td>
+                    1186741355.887
+                </td>
+                <td>
+                    67.58
+                </td>
+                <td>
+                     2.65
+                </td>
+                <td>
+                     1.39
+                </td>
+                <td>
+                    16
+                </td>
+                <td>
+                    29.39
+                </td>
+                <td>
+                     1.09
+                </td>
+                <td>
+                    22.24
+                </td>
+                <td>
+                    20.28
+                </td>
+                <td>
+                    18.49
+                </td>
+                <td>
+                     0.07
+                </td>
+                <td>
+                     0.02
+                </td>
+                <td>
+                     1.79
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    L1
+                </td>
+                <td>
+                    2017-08-14 10:22:17
+                </td>
+                <td>
+                    1186741355.878
+                </td>
+                <td>
+                    116.03
+                </td>
+                <td>
+                     0.10
+                </td>
+                <td>
+                    14.06
+                </td>
+                <td>
+                    16
+                </td>
+                <td>
+                    97.13
+                </td>
+                <td>
+                     5.04
+                </td>
+                <td>
+                    22.24
+                </td>
+                <td>
+                    20.28
+                </td>
+                <td>
+                    18.49
+                </td>
+                <td>
+                     0.07
+                </td>
+                <td>
+                     0.02
+                </td>
+                <td>
+                     1.79
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    V1
+                </td>
+                <td>
+                    2017-08-14 10:22:17
+                </td>
+                <td>
+                    1186741355.890
+                </td>
+                <td>
+                    14.51
+                </td>
+                <td>
+                     0.30
+                </td>
+                <td>
+                     0.89
+                </td>
+                <td>
+                    16
+                </td>
+                <td>
+                     1.87
+                </td>
+                <td>
+                     1.04
+                </td>
+                <td>
+                    22.24
+                </td>
+                <td>
+                    20.28
+                </td>
+                <td>
+                    18.49
+                </td>
+                <td>
+                     0.07
+                </td>
+                <td>
+                     0.02
+                </td>
+                <td>
+                     1.79
+                </td>
+            </tr>
+    </table>
+
+
+<!--segment XML file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PAGE_COINCINFO_BBH_0-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Parameters of event. The figures below show the mini-followup data for this event.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_coincinfo --single-trigger-files H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf V1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --statmap-file H1L1V1-HDFINJFIND_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --trigger-id 20 --title Details of closest event --statmap-file-subspace-name found_after_vetoes --output-file H1L1V1-PAGE_COINCINFO_BBH_0-1186740100-3400.html">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A3"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A3">
+                                    <b>A3. Parameters of loudest SNR nearby trigger in H1</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snglinfo --sngl-ranking newsnr_sgveto_psdvar --single-trigger-file H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --trigger-id 54352 --instrument H1 --title Parameters of loudest SNR nearby trigger in H1 --output-file H1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html"></div><div class=pycbc-meta key="title" value="Parameters of loudest SNR nearby trigger in H1"></div><div class=pycbc-meta key="caption" value="Parameters of the single-detector event. The figures below show the mini-followup data for this event."></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div><script type="text/javascript">
+function redirect(form,way)
+{
+        // Set location to form and submit.
+        if(form != '')
+        {
+                document.forms[form].action=way;
+                document.forms[form].submit();
+        }
+        else
+        {
+                window.top.location = way;
+        }
+}
+</script>
+    <table class="table">
+            <tr>
+                <th>
+                    UTC
+                </th>
+                <th>
+                    End&nbsp;time
+                </th>
+                <th>
+                    &rho;
+                </th>
+                <th>
+                    Phase
+                </th>
+                <th>
+                    Reweighted SNR (+sgveto+psdvar)
+                </th>
+                <th>
+                    &chi;<sup>2</sup><sub>r</sub>
+                </th>
+                <th>
+                    &chi;<sup>2</sup>&nbsp;bins
+                </th>
+                <th>
+                    sg&chi;<sup>2</sup>
+                </th>
+                <th>
+                    PSD var
+                </th>
+                <th>
+                    m<sub>1</sub>
+                </th>
+                <th>
+                    m<sub>2</sub>
+                </th>
+                <th>
+                    M<sub>c</sub>
+                </th>
+                <th>
+                    s<sub>1z</sub>
+                </th>
+                <th>
+                    s<sub>2z</sub>
+                </th>
+                <th>
+                    Duration
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    2017-08-14 10:22:17
+                </td>
+                <td>
+                    1186741355.887
+                </td>
+                <td>
+                    67.58
+                </td>
+                <td>
+                     2.65
+                </td>
+                <td>
+                    22.21
+                </td>
+                <td>
+                     1.39
+                </td>
+                <td>
+                    16
+                </td>
+                <td>
+                    29.39
+                </td>
+                <td>
+                     1.09
+                </td>
+                <td>
+                    22.24
+                </td>
+                <td>
+                    20.28
+                </td>
+                <td>
+                    18.49
+                </td>
+                <td>
+                     0.07
+                </td>
+                <td>
+                     0.02
+                </td>
+                <td>
+                     1.79
+                </td>
+            </tr>
+    </table>
+
+
+<!--segment XML file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Parameters of the single-detector event. The figures below show the mini-followup data for this event.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snglinfo --sngl-ranking newsnr_sgveto_psdvar --single-trigger-file H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --trigger-id 54352 --instrument H1 --title Parameters of loudest SNR nearby trigger in H1 --output-file H1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A4"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A4">
+                                    <b>A4. Parameters of loudest SNR nearby trigger in L1</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snglinfo --sngl-ranking newsnr_sgveto_psdvar --single-trigger-file L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --trigger-id 341 --instrument L1 --title Parameters of loudest SNR nearby trigger in L1 --output-file L1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html"></div><div class=pycbc-meta key="title" value="Parameters of loudest SNR nearby trigger in L1"></div><div class=pycbc-meta key="caption" value="Parameters of the single-detector event. The figures below show the mini-followup data for this event."></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div><script type="text/javascript">
+function redirect(form,way)
+{
+        // Set location to form and submit.
+        if(form != '')
+        {
+                document.forms[form].action=way;
+                document.forms[form].submit();
+        }
+        else
+        {
+                window.top.location = way;
+        }
+}
+</script>
+    <table class="table">
+            <tr>
+                <th>
+                    UTC
+                </th>
+                <th>
+                    End&nbsp;time
+                </th>
+                <th>
+                    &rho;
+                </th>
+                <th>
+                    Phase
+                </th>
+                <th>
+                    Reweighted SNR (+sgveto+psdvar)
+                </th>
+                <th>
+                    &chi;<sup>2</sup><sub>r</sub>
+                </th>
+                <th>
+                    &chi;<sup>2</sup>&nbsp;bins
+                </th>
+                <th>
+                    sg&chi;<sup>2</sup>
+                </th>
+                <th>
+                    PSD var
+                </th>
+                <th>
+                    m<sub>1</sub>
+                </th>
+                <th>
+                    m<sub>2</sub>
+                </th>
+                <th>
+                    M<sub>c</sub>
+                </th>
+                <th>
+                    s<sub>1z</sub>
+                </th>
+                <th>
+                    s<sub>2z</sub>
+                </th>
+                <th>
+                    Duration
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    2017-08-14 10:22:17
+                </td>
+                <td>
+                    1186741355.876
+                </td>
+                <td>
+                    116.56
+                </td>
+                <td>
+                    -2.63
+                </td>
+                <td>
+                     7.40
+                </td>
+                <td>
+                     6.89
+                </td>
+                <td>
+                    16
+                </td>
+                <td>
+                    162.56
+                </td>
+                <td>
+                     5.03
+                </td>
+                <td>
+                    13.10
+                </td>
+                <td>
+                    33.64
+                </td>
+                <td>
+                    17.88
+                </td>
+                <td>
+                     0.19
+                </td>
+                <td>
+                     0.10
+                </td>
+                <td>
+                     1.86
+                </td>
+            </tr>
+    </table>
+
+
+<!--segment XML file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Parameters of the single-detector event. The figures below show the mini-followup data for this event.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snglinfo --sngl-ranking newsnr_sgveto_psdvar --single-trigger-file L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --trigger-id 341 --instrument L1 --title Parameters of loudest SNR nearby trigger in L1 --output-file L1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A5"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A5">
+                                    <b>A5. Parameters of loudest SNR nearby trigger in V1</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snglinfo --sngl-ranking newsnr_sgveto_psdvar --single-trigger-file V1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --trigger-id 32985 --instrument V1 --title Parameters of loudest SNR nearby trigger in V1 --output-file V1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html"></div><div class=pycbc-meta key="title" value="Parameters of loudest SNR nearby trigger in V1"></div><div class=pycbc-meta key="caption" value="Parameters of the single-detector event. The figures below show the mini-followup data for this event."></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div><script type="text/javascript">
+function redirect(form,way)
+{
+        // Set location to form and submit.
+        if(form != '')
+        {
+                document.forms[form].action=way;
+                document.forms[form].submit();
+        }
+        else
+        {
+                window.top.location = way;
+        }
+}
+</script>
+    <table class="table">
+            <tr>
+                <th>
+                    UTC
+                </th>
+                <th>
+                    End&nbsp;time
+                </th>
+                <th>
+                    &rho;
+                </th>
+                <th>
+                    Phase
+                </th>
+                <th>
+                    Reweighted SNR (+sgveto+psdvar)
+                </th>
+                <th>
+                    &chi;<sup>2</sup><sub>r</sub>
+                </th>
+                <th>
+                    &chi;<sup>2</sup>&nbsp;bins
+                </th>
+                <th>
+                    sg&chi;<sup>2</sup>
+                </th>
+                <th>
+                    PSD var
+                </th>
+                <th>
+                    m<sub>1</sub>
+                </th>
+                <th>
+                    m<sub>2</sub>
+                </th>
+                <th>
+                    M<sub>c</sub>
+                </th>
+                <th>
+                    s<sub>1z</sub>
+                </th>
+                <th>
+                    s<sub>2z</sub>
+                </th>
+                <th>
+                    Duration
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    2017-08-14 10:22:17
+                </td>
+                <td>
+                    1186741355.890
+                </td>
+                <td>
+                    14.56
+                </td>
+                <td>
+                     1.79
+                </td>
+                <td>
+                    14.30
+                </td>
+                <td>
+                     0.90
+                </td>
+                <td>
+                    16
+                </td>
+                <td>
+                     1.93
+                </td>
+                <td>
+                     1.04
+                </td>
+                <td>
+                    20.43
+                </td>
+                <td>
+                    22.80
+                </td>
+                <td>
+                    18.78
+                </td>
+                <td>
+                     0.18
+                </td>
+                <td>
+                     0.00
+                </td>
+                <td>
+                     1.75
+                </td>
+            </tr>
+    </table>
+
+
+<!--segment XML file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Parameters of the single-detector event. The figures below show the mini-followup data for this event.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snglinfo --sngl-ranking newsnr_sgveto_psdvar --single-trigger-file V1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --trigger-id 32985 --instrument V1 --title Parameters of loudest SNR nearby trigger in V1 --output-file V1-PAGE_SNGLINFO_BBH_0-1186740100-3400.html">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A6"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A6">
+                                    <b>A6. Single Detector Trigger Timeseries (snr)</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PLOT_TRIGGER_TIMESERIES_SNR1_BBH_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PLOT_TRIGGER_TIMESERIES_SNR1_BBH_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PLOT_TRIGGER_TIMESERIES_SNR1_BBH_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Time series showing the single-detector triggers centered around the time of the trigger of interest. Triggers with ranking 1 have been downweighted beyond consideration, but may still form insignificant events.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_trigger_timeseries --single-trigger-files H1:H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf L1:L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf V1:V1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --window 1 --plot-type snr --log-y-axis --times H1:1186741355.887071 L1:1186741355.8777237 V1:1186741355.8895404 --output-file H1L1V1-PLOT_TRIGGER_TIMESERIES_SNR1_BBH_0-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A7"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A7">
+                                    <b>A7. Single Detector Trigger Timeseries (newsnr)</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PLOT_TRIGGER_TIMESERIES_NEWSNR1_BBH_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PLOT_TRIGGER_TIMESERIES_NEWSNR1_BBH_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PLOT_TRIGGER_TIMESERIES_NEWSNR1_BBH_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Time series showing the single-detector triggers centered around the time of the trigger of interest. Triggers with ranking 1 have been downweighted beyond consideration, but may still form insignificant events.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_trigger_timeseries --single-trigger-files H1:H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf L1:L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf V1:V1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --window 1 --plot-type newsnr --times H1:1186741355.887071 L1:1186741355.8777237 V1:1186741355.8895404 --output-file H1L1V1-PLOT_TRIGGER_TIMESERIES_NEWSNR1_BBH_0-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A8"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A8">
+                                    <b>A8. Strain spectrogram and inspiral tracks for H1</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This plot shows the power spectrogram of the strain data, normalized to its median over time, as a heatmap. The time-frequency evolution of each single trigger is shown as a blue curve. The light-blue curve is the loudest trigger by newsnr. Only the loudest 1 triggers by newsnr are shown. Green hatched areas denote gated strain data (\\ = externally-provided gates, // = autogates). Red hatched areas denote vetoed time.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_singles_timefreq --frame-files H-H1_LOSC_CLN_4_V1-1186740069-3584.gwf --f-low 20 --rank newsnr --num-loudest 1 --approximant TaylorF2 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name H1:LOSC-STRAIN --trig-file H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --gps-start-time 1186741345 --gps-end-time 1186741365 --center-time 1186741355.8857832 --detector H1 --output-file H1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A9"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A9">
+                                    <b>A9. Q-transform plot around 1186741355.886</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-PLOT_QSCAN_BBH_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-PLOT_QSCAN_BBH_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-PLOT_QSCAN_BBH_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This shows the Q-transform as a function of time and frequency. The strain channel is H1:LOSC-STRAIN.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_qscan --frame-files H-H1_LOSC_CLN_4_V1-1186740069-3584.gwf --time-windows 10,1 1,1 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name H1:LOSC-STRAIN --gps-start-time 1186741255 --gps-end-time 1186741455 --center-time 1186741355.8857832 --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --output-file H1-PLOT_QSCAN_BBH_0-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A10"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A10">
+                                    <b>A10. Strain spectrogram and inspiral tracks for L1</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This plot shows the power spectrogram of the strain data, normalized to its median over time, as a heatmap. The time-frequency evolution of each single trigger is shown as a blue curve. The light-blue curve is the loudest trigger by newsnr. Only the loudest 1 triggers by newsnr are shown. Green hatched areas denote gated strain data (\\ = externally-provided gates, // = autogates). Red hatched areas denote vetoed time.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_singles_timefreq --frame-files L-L1_LOSC_CLN_4_V1-1186740069-3584.gwf --f-low 20 --rank newsnr --num-loudest 1 --approximant TaylorF2 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name L1:LOSC-STRAIN --trig-file L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --gps-start-time 1186741345 --gps-end-time 1186741365 --center-time 1186741355.8857832 --detector L1 --output-file L1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A11"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A11">
+                                    <b>A11. Q-transform plot around 1186741355.886</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-PLOT_QSCAN_BBH_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-PLOT_QSCAN_BBH_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PLOT_QSCAN_BBH_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This shows the Q-transform as a function of time and frequency. The strain channel is L1:LOSC-STRAIN.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_qscan --frame-files L-L1_LOSC_CLN_4_V1-1186740069-3584.gwf --time-windows 10,1 1,1 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name L1:LOSC-STRAIN --gps-start-time 1186741255 --gps-end-time 1186741455 --center-time 1186741355.8857832 --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --output-file L1-PLOT_QSCAN_BBH_0-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A12"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A12">
+                                    <b>A12. Strain spectrogram and inspiral tracks for V1</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This plot shows the power spectrogram of the strain data, normalized to its median over time, as a heatmap. The time-frequency evolution of each single trigger is shown as a blue curve. The light-blue curve is the loudest trigger by newsnr. Only the loudest 1 triggers by newsnr are shown. Green hatched areas denote gated strain data (\\ = externally-provided gates, // = autogates). Red hatched areas denote vetoed time.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_singles_timefreq --frame-files V-V1_LOSC_CLN_4_V1-1186739813-4096.gwf --f-low 20 --rank newsnr --num-loudest 1 --approximant TaylorF2 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name V1:LOSC-STRAIN --trig-file V1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --gps-start-time 1186741345 --gps-end-time 1186741365 --center-time 1186741355.8857832 --detector V1 --output-file V1-PLOT_SINGLES_TIMEFREQ_BBH_0-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A13"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A13">
+                                    <b>A13. Q-transform plot around 1186741355.886</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-PLOT_QSCAN_BBH_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-PLOT_QSCAN_BBH_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-PLOT_QSCAN_BBH_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This shows the Q-transform as a function of time and frequency. The strain channel is V1:LOSC-STRAIN.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_qscan --frame-files V-V1_LOSC_CLN_4_V1-1186739813-4096.gwf --time-windows 10,1 1,1 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name V1:LOSC-STRAIN --gps-start-time 1186741255 --gps-end-time 1186741455 --center-time 1186741355.8857832 --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --output-file V1-PLOT_QSCAN_BBH_0-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A14"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A14">
+                                    <b>A14. H1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made as normal</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made as normal. The injection itself was used as the template.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files H-H1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name H1:LOSC-STRAIN --use-params-of-closest-injection --trigger-time 1186741355.887071 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file H1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file H1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_0_P1-1186740100-3400.hdf --output-file H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png --plot-title H1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made as normal --plot-caption The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made as normal. The injection itself was used as the template.">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A15"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A15">
+                                    <b>A15. L1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made as normal</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made as normal. The injection itself was used as the template.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files L-L1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name L1:LOSC-STRAIN --use-params-of-closest-injection --trigger-time 1186741355.877724 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file L1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file L1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_0_P1-1186740100-3400.hdf --output-file L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png --plot-title L1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made as normal --plot-caption The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made as normal. The injection itself was used as the template.">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A16"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A16">
+                                    <b>A16. V1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made as normal</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made as normal. The injection itself was used as the template.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files V-V1_LOSC_CLN_4_V1-1186739813-4096.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name V1:LOSC-STRAIN --use-params-of-closest-injection --trigger-time 1186741355.889540 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file V1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file V1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_0_P1-1186740100-3400.hdf --output-file V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_0-1186740100-3400.png --plot-title V1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made as normal --plot-caption The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made as normal. The injection itself was used as the template.">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A17"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A17">
+                                    <b>A17. H1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made inverted</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made inverted. The injection itself was used as the template.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files H-H1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --injection-scale-factor -1 --channel-name H1:LOSC-STRAIN --use-params-of-closest-injection --trigger-time 1186741355.887071 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file H1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_INVERTED_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file H1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_INVERTED_0_P1-1186740100-3400.hdf --output-file H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png --plot-title H1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made inverted --plot-caption The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made inverted. The injection itself was used as the template.">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A18"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A18">
+                                    <b>A18. L1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made inverted</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made inverted. The injection itself was used as the template.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files L-L1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --injection-scale-factor -1 --channel-name L1:LOSC-STRAIN --use-params-of-closest-injection --trigger-time 1186741355.877724 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file L1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_INVERTED_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file L1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_INVERTED_0_P1-1186740100-3400.hdf --output-file L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png --plot-title L1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made inverted --plot-caption The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made inverted. The injection itself was used as the template.">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A19"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A19">
+                                    <b>A19. V1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made inverted</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made inverted. The injection itself was used as the template.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files V-V1_LOSC_CLN_4_V1-1186739813-4096.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --injection-scale-factor -1 --channel-name V1:LOSC-STRAIN --use-params-of-closest-injection --trigger-time 1186741355.889540 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file V1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_INVERTED_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file V1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_INVERTED_0_P1-1186740100-3400.hdf --output-file V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_INVERTED_0-1186740100-3400.png --plot-title V1 SNR and chi^2 timeseries using injection parameters as template, here the injection is made inverted --plot-caption The SNR and chi^2 timeseries around the injection using injection parameters as template, here the injection is made inverted. The injection itself was used as the template.">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A20"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A20">
+                                    <b>A20. H1 SNR and chi^2 timeseries using injection parameters, here no injection was actually performed</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using injection parameters, here no injection was actually performed. The injection itself was used as the template.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files H-H1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --injection-scale-factor 1000000 --channel-name H1:LOSC-STRAIN --use-params-of-closest-injection --trigger-time 1186741355.887071 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file H1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_NOINJ_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file H1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_NOINJ_0_P1-1186740100-3400.hdf --output-file H1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png --plot-title H1 SNR and chi^2 timeseries using injection parameters, here no injection was actually performed --plot-caption The SNR and chi^2 timeseries around the injection using injection parameters, here no injection was actually performed. The injection itself was used as the template.">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A21"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A21">
+                                    <b>A21. L1 SNR and chi^2 timeseries using injection parameters, here no injection was actually performed</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using injection parameters, here no injection was actually performed. The injection itself was used as the template.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files L-L1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --injection-scale-factor 1000000 --channel-name L1:LOSC-STRAIN --use-params-of-closest-injection --trigger-time 1186741355.877724 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file L1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_NOINJ_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file L1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_NOINJ_0_P1-1186740100-3400.hdf --output-file L1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png --plot-title L1 SNR and chi^2 timeseries using injection parameters, here no injection was actually performed --plot-caption The SNR and chi^2 timeseries around the injection using injection parameters, here no injection was actually performed. The injection itself was used as the template.">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A22"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A22">
+                                    <b>A22. V1 SNR and chi^2 timeseries using injection parameters, here no injection was actually performed</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using injection parameters, here no injection was actually performed. The injection itself was used as the template.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files V-V1_LOSC_CLN_4_V1-1186739813-4096.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --injection-scale-factor 1000000 --channel-name V1:LOSC-STRAIN --use-params-of-closest-injection --trigger-time 1186741355.889540 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file V1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_NOINJ_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file V1-SINGLE_TEMPLATE_BBH_INJ_PARAMS_NOINJ_0_P1-1186740100-3400.hdf --output-file V1-SINGLE_TEMPLATE_PLOT_P1_BBH_INJ_PARAMS_NOINJ_0-1186740100-3400.png --plot-title V1 SNR and chi^2 timeseries using injection parameters, here no injection was actually performed --plot-caption The SNR and chi^2 timeseries around the injection using injection parameters, here no injection was actually performed. The injection itself was used as the template.">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A23"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A23">
+                                    <b>A23. H1 SNR and chi^2 timeseries using loudest template in H1</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using loudest template in H1. The template used has the following parameters: mass1=22.244104082838433, mass2=20.280667238598454, spin1z=0.0742587522558109, spin2z=0.024153436861845946">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files H-H1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name H1:LOSC-STRAIN --mass1 22.244104 --mass2 20.280667 --spin1z 0.074259 --spin2z 0.024153 --template-start-frequency 20.000000 --trigger-time 1186741355.887071 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file H1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_H1_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file H1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_H1_0_P1-1186740100-3400.hdf --output-file H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png --plot-title H1 SNR and chi^2 timeseries using loudest template in H1 --plot-caption The SNR and chi^2 timeseries around the injection using loudest template in H1. The template used has the following parameters: mass1=22.244104082838433, mass2=20.280667238598454, spin1z=0.0742587522558109, spin2z=0.024153436861845946">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A24"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A24">
+                                    <b>A24. L1 SNR and chi^2 timeseries using loudest template in H1</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using loudest template in H1. The template used has the following parameters: mass1=22.244104082838433, mass2=20.280667238598454, spin1z=0.0742587522558109, spin2z=0.024153436861845946">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files L-L1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name L1:LOSC-STRAIN --mass1 22.244104 --mass2 20.280667 --spin1z 0.074259 --spin2z 0.024153 --template-start-frequency 20.000000 --trigger-time 1186741355.877724 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file L1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_H1_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file L1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_H1_0_P1-1186740100-3400.hdf --output-file L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png --plot-title L1 SNR and chi^2 timeseries using loudest template in H1 --plot-caption The SNR and chi^2 timeseries around the injection using loudest template in H1. The template used has the following parameters: mass1=22.244104082838433, mass2=20.280667238598454, spin1z=0.0742587522558109, spin2z=0.024153436861845946">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A25"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A25">
+                                    <b>A25. V1 SNR and chi^2 timeseries using loudest template in H1</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using loudest template in H1. The template used has the following parameters: mass1=22.244104082838433, mass2=20.280667238598454, spin1z=0.0742587522558109, spin2z=0.024153436861845946">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files V-V1_LOSC_CLN_4_V1-1186739813-4096.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name V1:LOSC-STRAIN --mass1 22.244104 --mass2 20.280667 --spin1z 0.074259 --spin2z 0.024153 --template-start-frequency 20.000000 --trigger-time 1186741355.889540 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file V1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_H1_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file V1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_H1_0_P1-1186740100-3400.hdf --output-file V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_H1_0-1186740100-3400.png --plot-title V1 SNR and chi^2 timeseries using loudest template in H1 --plot-caption The SNR and chi^2 timeseries around the injection using loudest template in H1. The template used has the following parameters: mass1=22.244104082838433, mass2=20.280667238598454, spin1z=0.0742587522558109, spin2z=0.024153436861845946">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A26"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A26">
+                                    <b>A26. H1 SNR and chi^2 timeseries using loudest template in L1</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using loudest template in L1. The template used has the following parameters: mass1=13.096780197329261, mass2=33.637877014765124, spin1z=0.19023875709804092, spin2z=0.09882325317926502">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files H-H1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name H1:LOSC-STRAIN --mass1 13.096780 --mass2 33.637877 --spin1z 0.190239 --spin2z 0.098823 --template-start-frequency 20.000000 --trigger-time 1186741355.887071 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file H1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_L1_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file H1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_L1_0_P1-1186740100-3400.hdf --output-file H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png --plot-title H1 SNR and chi^2 timeseries using loudest template in L1 --plot-caption The SNR and chi^2 timeseries around the injection using loudest template in L1. The template used has the following parameters: mass1=13.096780197329261, mass2=33.637877014765124, spin1z=0.19023875709804092, spin2z=0.09882325317926502">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A27"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A27">
+                                    <b>A27. L1 SNR and chi^2 timeseries using loudest template in L1</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using loudest template in L1. The template used has the following parameters: mass1=13.096780197329261, mass2=33.637877014765124, spin1z=0.19023875709804092, spin2z=0.09882325317926502">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files L-L1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name L1:LOSC-STRAIN --mass1 13.096780 --mass2 33.637877 --spin1z 0.190239 --spin2z 0.098823 --template-start-frequency 20.000000 --trigger-time 1186741355.877724 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file L1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_L1_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file L1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_L1_0_P1-1186740100-3400.hdf --output-file L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png --plot-title L1 SNR and chi^2 timeseries using loudest template in L1 --plot-caption The SNR and chi^2 timeseries around the injection using loudest template in L1. The template used has the following parameters: mass1=13.096780197329261, mass2=33.637877014765124, spin1z=0.19023875709804092, spin2z=0.09882325317926502">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A28"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A28">
+                                    <b>A28. V1 SNR and chi^2 timeseries using loudest template in L1</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using loudest template in L1. The template used has the following parameters: mass1=13.096780197329261, mass2=33.637877014765124, spin1z=0.19023875709804092, spin2z=0.09882325317926502">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files V-V1_LOSC_CLN_4_V1-1186739813-4096.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name V1:LOSC-STRAIN --mass1 13.096780 --mass2 33.637877 --spin1z 0.190239 --spin2z 0.098823 --template-start-frequency 20.000000 --trigger-time 1186741355.889540 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file V1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_L1_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file V1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_L1_0_P1-1186740100-3400.hdf --output-file V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_L1_0-1186740100-3400.png --plot-title V1 SNR and chi^2 timeseries using loudest template in L1 --plot-caption The SNR and chi^2 timeseries around the injection using loudest template in L1. The template used has the following parameters: mass1=13.096780197329261, mass2=33.637877014765124, spin1z=0.19023875709804092, spin2z=0.09882325317926502">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A29"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A29">
+                                    <b>A29. H1 SNR and chi^2 timeseries using loudest template in V1</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using loudest template in V1. The template used has the following parameters: mass1=20.4329757923652, mass2=22.801030280440983, spin1z=0.1782037908584678, spin2z=0.0007587344818685172">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files H-H1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name H1:LOSC-STRAIN --mass1 20.432976 --mass2 22.801030 --spin1z 0.178204 --spin2z 0.000759 --template-start-frequency 20.000000 --trigger-time 1186741355.887071 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file H1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_V1_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file H1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_V1_0_P1-1186740100-3400.hdf --output-file H1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png --plot-title H1 SNR and chi^2 timeseries using loudest template in V1 --plot-caption The SNR and chi^2 timeseries around the injection using loudest template in V1. The template used has the following parameters: mass1=20.4329757923652, mass2=22.801030280440983, spin1z=0.1782037908584678, spin2z=0.0007587344818685172">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A30"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A30">
+                                    <b>A30. L1 SNR and chi^2 timeseries using loudest template in V1</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using loudest template in V1. The template used has the following parameters: mass1=20.4329757923652, mass2=22.801030280440983, spin1z=0.1782037908584678, spin2z=0.0007587344818685172">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files L-L1_LOSC_CLN_4_V1-1186740069-3584.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name L1:LOSC-STRAIN --mass1 20.432976 --mass2 22.801030 --spin1z 0.178204 --spin2z 0.000759 --template-start-frequency 20.000000 --trigger-time 1186741355.877724 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file L1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_V1_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file L1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_V1_0_P1-1186740100-3400.hdf --output-file L1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png --plot-title L1 SNR and chi^2 timeseries using loudest template in V1 --plot-caption The SNR and chi^2 timeseries around the injection using loudest template in V1. The template used has the following parameters: mass1=20.4329757923652, mass2=22.801030280440983, spin1z=0.1782037908584678, spin2z=0.0007587344818685172">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A31"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A31">
+                                    <b>A31. V1 SNR and chi^2 timeseries using loudest template in V1</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The SNR and chi^2 timeseries around the injection using loudest template in V1. The template used has the following parameters: mass1=20.4329757923652, mass2=22.801030280440983, spin1z=0.1782037908584678, spin2z=0.0007587344818685172">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template --frame-files V-V1_LOSC_CLN_4_V1-1186739813-4096.gwf --segment-length 512 --segment-start-pad 32 --segment-end-pad 16 --psd-estimation median --psd-segment-length 16 --psd-segment-stride 8 --psd-inverse-length 16 --chisq-bins 16 --low-frequency-cutoff 20 --approximant IMRPhenomD --processing-scheme mkl --window 10 --psd-num-segments 63 --taper-data 1 --allow-zero-padding --autogating-threshold 50 --autogating-cluster 0.5 --autogating-width 0.25 --autogating-taper 0.25 --autogating-pad 16 --minimum-chisq-bins 3 --strain-high-pass 15 --sample-rate 2048 --pad-data 8 --channel-name V1:LOSC-STRAIN --mass1 20.432976 --mass2 22.801030 --spin1z 0.178204 --spin2z 0.000759 --template-start-frequency 20.000000 --trigger-time 1186741355.889540 --inspiral-segments H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --injection-file H1L1V1-INJ2HDF_BBH-1186740100-3400.hdf --data-read-name DATA_ANALYSED --data-analyzed-name TRIGGERS_GENERATED --output-file V1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_V1_0_P1-1186740100-3400.hdf\n\n/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_single_template_plot --window 0.1 --single-template-file V1-SINGLE_TEMPLATE_BBH_TMPLT_PARAMS_V1_0_P1-1186740100-3400.hdf --output-file V1-SINGLE_TEMPLATE_PLOT_P1_BBH_TMPLT_PARAMS_V1_0-1186740100-3400.png --plot-title V1 SNR and chi^2 timeseries using loudest template in V1 --plot-caption The SNR and chi^2 timeseries around the injection using loudest template in V1. The template used has the following parameters: mass1=20.4329757923652, mass2=22.801030280440983, spin1z=0.1782037908584678, spin2z=0.0007587344818685172">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+
+</div>     
+                                                       
+                    
+                
+
+                <hr class="row-divider">
+
+                <!-- display other files in directory -->
+                
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- loop over files in directory -->
+                        <h1>Additional Files</h1>
+                            The following files were also found in this directory:
+                            <div class="row" style="padding:15px">
+                                <button id="collapse-init" class="btn btn-xs btn-primary">Expand All</button>
+                            </div>
+                            
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                    </div>
+                </div>
+                
+
+            </div>
+         </div>
+     </div>
+</div>
+
+<footer>
+    <div class="container-fluid">
+        <div class="footer-custom">
+            <a href="../../sitemap/index.html">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

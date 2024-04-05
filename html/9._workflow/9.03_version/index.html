@@ -1,0 +1,1237 @@
+<html lang="en">
+
+<head>
+
+    <!-- set initial view -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- add jquery -->
+    <script src="../../static/js/jquery/1.10.2/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+    <!-- add mousewheel scrolling -->
+    <script type="text/javascript" src="../../static/js/jquery/1.10.2/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <!-- add bootstrap -->
+    <link media="all" href="../../static/css/bootstrap/3.3.2/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="../../static/js/bootstrap/3.3.2/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- add fancybox -->
+    <script type="text/javascript" src="../../static/js/fancybox/2.1.5/jquery.fancybox.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/fancybox/2.1.5/jquery.fancybox.css" media="screen" />
+
+    <!-- add mathjax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- add orange stylization -->
+    <script type="text/javascript" src="../../static/js/fancybox/2.1.5/fancybox-orange.js"></script> 
+    <link media="all" href="../../static/css/pycbc/orange.css" type="text/css" rel="stylesheet">
+
+    <!-- add popover js -->
+    <script> $(function () {$('[data-toggle="popover"]').popover()})</script>
+    <style type="text/css">
+        .popover{
+            max-width:600px;
+        }
+    </style>
+
+    <!-- add expand all js -->
+    <script>
+        $(function () {
+
+            var active = true;
+
+            $('#collapse-init').click(function () {
+                if (active) {
+                    active = false;
+                    $('.panel-collapse').collapse('show');
+                    $('.panel-title').attr('data-toggle', '');
+                    $(this).text('Collapse All');
+                } else {
+                    active = true;
+                    $('.panel-collapse').collapse('hide');
+                    $('.panel-title').attr('data-toggle', 'collapse');
+                    $(this).text('Expand All');
+                }
+            });
+    
+            $('#accordion').on('show.bs.collapse', function () {
+                if (active) $('#accordion .in').collapse('hide');
+            });
+
+        });
+    </script>
+
+    <!-- title -->
+    <title>PyCBC search</title>
+
+    <!-- add fonts -->
+    <style>
+    @font-face {
+        font-family : 'Lato';
+        src : url('../../static/fonts/Lato-Light.eot');
+        src : url('../../static/fonts/Lato-Light.eot') format('embedded-opentype'),url('../../static/fonts/Lato-Light.woff') format('woff'),url('../../static/fonts/Lato-Light.ttf') format('truetype');
+        text-rendering : optimizeLegibility;
+    }
+    @font-face{
+        font-family : 'Lato';
+        src : url('../../static/fonts/Lato-Semibold.eot');
+        src : url('../../static/fonts/Lato-Semibold.eot') format('embedded-opentype'),url('../../static/fonts/Lato-Semibold.woff') format('woff'),url('../../static/fonts/Lato-Semibold.ttf') format('truetype');
+        font-weight : bold;
+       text-rendering : optimizeLegibility;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<div id="wrap">
+
+<!-- set dir0 counter integer -->
+
+
+<!-- navbar -->
+<div class="navbar navbar-custom navbar-static-top">
+  <div class="container-fluid">
+
+        <!-- title and subtitle -->
+        <div class="row" style="padding-top:10px">
+            <div class="col-md-4">
+                <p class="text-left">
+                    <img src=https://raw.githubusercontent.com/gwastro/pycbc-logo/master/pycbc_logo_name.png alt="PyCBC logo" style="height:3em;">
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-center" style="font-size:150%;"><b>PyCBC search</b></p>
+                <p class="text-center">Small Test Search</p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+    <!-- button for collapsed navbar -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- buttons on navbar -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+
+        <!-- always have a button to the top-level directory -->
+        <li class="active"><a href="../../">Summary</a></li>
+
+        <!-- display top-level directories -->
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">1. Analysis Time<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../1._analysis_time" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././1._analysis_time/1.01_segment_data" role="menuitem">1.01 Segment Data</a></li>
+                
+                    <li role="presentation"><a href="../.././1._analysis_time/1.02_segments" role="menuitem">1.02 Segments</a></li>
+                
+                    <li role="presentation"><a href="../.././1._analysis_time/1.03_gating" role="menuitem">1.03 Gating</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">2. Detector Sensitivity<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../2._detector_sensitivity" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">4. Single Triggers<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../4._single_triggers" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.01_H1_binned_triggers" role="menuitem">4.01 H1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.02_H1_trigger_histograms" role="menuitem">4.02 H1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.03_H1_binned_histograms" role="menuitem">4.03 H1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.04_L1_binned_triggers" role="menuitem">4.04 L1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.05_L1_trigger_histograms" role="menuitem">4.05 L1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.06_L1_binned_histograms" role="menuitem">4.06 L1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.07_V1_binned_triggers" role="menuitem">4.07 V1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.08_V1_trigger_histograms" role="menuitem">4.08 V1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.09_V1_binned_histograms" role="menuitem">4.09 V1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.10_H1_loudest_noncoinc_time" role="menuitem">4.10 H1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.11_H1_all" role="menuitem">4.11 H1 All</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.12_H1_loudest_within_vetoes" role="menuitem">4.12 H1 Loudest Within Vetoes</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.13_L1_loudest_noncoinc_time" role="menuitem">4.13 L1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.14_L1_all" role="menuitem">4.14 L1 All</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.15_L1_loudest_within_vetoes" role="menuitem">4.15 L1 Loudest Within Vetoes</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.16_V1_loudest_noncoinc_time" role="menuitem">4.16 V1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.17_V1_all" role="menuitem">4.17 V1 All</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.18_V1_loudest_within_vetoes" role="menuitem">4.18 V1 Loudest Within Vetoes</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">5. Background Triggers<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../5._background_triggers" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.01_loudest_background_followup" role="menuitem">5.01 Loudest Background Followup</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.02_L1V1_background" role="menuitem">5.02 L1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.03_H1V1_background" role="menuitem">5.03 H1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.04_H1L1_background" role="menuitem">5.04 H1L1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.05_H1L1V1_background" role="menuitem">5.05 H1L1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.06_V1_background" role="menuitem">5.06 V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.07_L1_background" role="menuitem">5.07 L1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.08_H1_background" role="menuitem">5.08 H1 Background</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">6. Injections<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../6._injections" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././6._injections/6.01_BBH" role="menuitem">6.01 Bbh</a></li>
+                
+                    <li role="presentation"><a href="../.././6._injections/6.02_followup_of_BBH_with_ifar_lt_1_year" role="menuitem">6.02 Followup Of Bbh With Ifar Lt 1 Year</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">7. Search Sensitivity<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../7._search_sensitivity" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././7._search_sensitivity/7.01_BBH" role="menuitem">7.01 Bbh</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">8. Open Box Result<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../8._open_box_result" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.02_loudest_events_followup" role="menuitem">8.02 Loudest Events Followup</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.03_L1V1_candidates" role="menuitem">8.03 L1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.04_H1V1_candidates" role="menuitem">8.04 H1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.05_H1L1_candidates" role="menuitem">8.05 H1L1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.06_H1L1V1_candidates" role="menuitem">8.06 H1L1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.07_V1_candidates" role="menuitem">8.07 V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.08_L1_candidates" role="menuitem">8.08 L1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.09_H1_candidates" role="menuitem">8.09 H1 Candidates</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">9. Workflow<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../9._workflow" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.01_throughput" role="menuitem">9.01 Throughput</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.02_configuration" role="menuitem">9.02 Configuration</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.03_version" role="menuitem">9.03 Version</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.04_dax" role="menuitem">9.04 Dax</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.05_input_map" role="menuitem">9.05 Input Map</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.06_output_map" role="menuitem">9.06 Output Map</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.07_planning" role="menuitem">9.07 Planning</a></li>
+                
+
+            </ul>
+        </li>
+        
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div id="main">
+        <div class="container">
+            <div id="content">
+
+                <!-- page name -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>9.03 Version</h1>
+                     </div>
+                </div>
+
+                <!-- set list of files which are handled in wells -->
+                
+                
+                
+                
+                    
+                
+                
+                <!-- include well if it exists and check meta-data if well renders any files inside it -->
+                
+
+                <hr class="row-divider">
+
+                <!-- display other files in directory -->
+                
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- loop over files in directory -->
+                        <h1>Additional Files</h1>
+                            The following files were also found in this directory:
+                            <div class="row" style="padding:15px">
+                                <button id="collapse-init" class="btn btn-xs btn-primary">Expand All</button>
+                            </div>
+                            
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                        <div class="panel-group" id="accordion">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title" data-toggle="collapse" data-target="#collapseorange1">
+                                                        
+                                                            B1. Version Information
+                                                        
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseorange1" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <!--use <pre> tag for displaying content-->
+<pre><div class=pycbc-meta key="render-function" value="render_text"></div><div class=pycbc-meta key="title" value="Version Information"></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User <>
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div><h2>LAL Version Information</h2>:<br>
+<li> Name : LAL </li>
+<li> ID : 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f </li>
+<li> Status : CLEAN: All modifications committed </li>
+<li> Version : 7.2.4 </li>
+<li> Tag : lalsuite-v7.11 </li>
+<li> Author : Adam Mercer <adam.mercer@ligo.org> </li>
+<li> Branch : None </li>
+<li> Committer : Adam Mercer <adam.mercer@ligo.org> </li>
+<li> Date : 2022-11-3 21:17:17 +0000 </li>
+<h2>LALFrame Version Information</h2>:<br>
+<li> Name : LALFrame </li>
+<li> ID : 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f </li>
+<li> Status : CLEAN: All modifications committed </li>
+<li> Version : 2.0.3 </li>
+<li> Tag : lalsuite-v7.11 </li>
+<li> Author : Adam Mercer <adam.mercer@ligo.org> </li>
+<li> Branch : None </li>
+<li> Committer : Adam Mercer <adam.mercer@ligo.org> </li>
+<li> Date : 2022-11-3 21:17:17 +0000 </li>
+<h2>LALSimulation Version Information</h2>:<br>
+<li> Name : LALSimulation </li>
+<li> ID : 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f </li>
+<li> Status : CLEAN: All modifications committed </li>
+<li> Version : 4.0.2 </li>
+<li> Tag : lalsuite-v7.11 </li>
+<li> Author : Adam Mercer <adam.mercer@ligo.org> </li>
+<li> Branch : None </li>
+<li> Committer : Adam Mercer <adam.mercer@ligo.org> </li>
+<li> Date : 2022-11-3 21:17:17 +0000 </li>
+<h2>LSCSoft-Glue Version Information</h2>:<br>
+<li> Name : LSCSoft-Glue </li>
+<li> ID : 357507f1016cdde1fd83f6afe58fc17c501b574f </li>
+<li> Status : CLEAN: All modifications committed </li>
+<li> Version : 3.0.2 </li>
+<li> Tag : glue-release-3.0.2 </li>
+<li> Author : Robert Bruntz <robert.bruntz@ligo.org> </li>
+<li> Builder : Robert Bruntz <robert.bruntz@ligo.org> </li>
+<li> Branch : master </li>
+<li> Committer : Robert Bruntz <robert.bruntz@ligo.org> </li>
+<li> Date : 2024-01-10 10:39:25 +0000 </li>
+<h2>PyCBC Version Information</h2>:<br>
+<li> Name : PyCBC </li>
+<li> ID : 0.0a8809 </li>
+<li> Status : CLEAN: All modifications committed </li>
+<li> Version : False </li>
+<li> Tag : None </li>
+<li> Author : Shichao Wu <wushichao@mail.bnu.edu.cn> </li>
+<li> Builder : Unknown User <> </li>
+<li> Branch : master </li>
+<li> Committer : GitHub <noreply@github.com> </li>
+<li> Date : 2024-03-01 13:48:22 +0000 </li>
+<h2>Version Information from Executables</h2>:<br>
+<li><b>average_psd</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>bank2hdf</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>calculate_psd</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>coinc</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>combine_statmap</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>exclude_zerolag</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>fit_by_template</b>:<br><pre>--- PyCBC Version --------------------------
+Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User <>
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/pycbc/__init__.py
+
+--- LAL Version ----------------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007ffd89f43000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002b5e3b37c000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002b5e3b532000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002b5e3b6bd000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002b5e3b6e9000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002b5e3baf2000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002b5e3bd09000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002b5e3bf0d000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002b5e3c299000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002b5e3c61a000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002b5e3c923000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002b5e3c967000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002b5e3cc69000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002b5e3ce85000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000556bb3e8a000)
+
+
+--- LALSimulation Version-------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007ffe46199000)
+	liblalsimulation-f964c143.so.31.0.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsimulation-f964c143.so.31.0.2 (0x00002aff9e246000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002aff9ec2a000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002aff9ede1000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002aff9ee0d000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002aff9f216000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002aff9f42d000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002aff9f631000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002aff9f7bc000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002aff9fb48000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002aff9fec8000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002affa01d2000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002affa0215000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002affa0517000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002affa0734000)
+	/lib64/ld-linux-x86-64.so.2 (0x000055627a459000)
+
+</pre></li><hr><br><br>
+<li><b>fit_over_param</b>:<br><pre>--- PyCBC Version --------------------------
+Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User <>
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/pycbc/__init__.py
+
+--- LAL Version ----------------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007ffd6b4af000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002abfc6d5b000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002abfc6f11000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002abfc709c000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002abfc70c8000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002abfc74d1000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002abfc76e8000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002abfc78ec000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002abfc7c78000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002abfc7ff9000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002abfc8302000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002abfc8346000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002abfc8648000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002abfc8864000)
+	/lib64/ld-linux-x86-64.so.2 (0x000056553c956000)
+
+
+--- LALSimulation Version-------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007fff87d0e000)
+	liblalsimulation-f964c143.so.31.0.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsimulation-f964c143.so.31.0.2 (0x00002aaf8a47f000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002aaf8ae63000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002aaf8b01a000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002aaf8b046000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002aaf8b44f000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002aaf8b666000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002aaf8b86a000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002aaf8b9f5000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002aaf8bd81000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002aaf8c101000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002aaf8c40b000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002aaf8c44e000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002aaf8c750000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002aaf8c96d000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000562c1d60f000)
+
+</pre></li><hr><br><br>
+<li><b>foreground_censor</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>hdfinjfind</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>hdf_trigger_merge</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>inj2hdf</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>inj_cut</b>:<br><pre>--- PyCBC Version --------------------------
+Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User <>
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/pycbc/__init__.py
+
+--- LAL Version ----------------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007ffdc4131000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002ace7033b000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002ace704f1000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002ace7067c000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002ace706a8000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002ace70ab1000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002ace70cc8000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002ace70ecc000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002ace71258000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002ace715d9000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002ace718e2000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002ace71926000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002ace71c28000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002ace71e44000)
+	/lib64/ld-linux-x86-64.so.2 (0x00005583412bf000)
+
+
+--- LALSimulation Version-------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007ffecdb9f000)
+	liblalsimulation-f964c143.so.31.0.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsimulation-f964c143.so.31.0.2 (0x00002b8d95f03000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002b8d968e7000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002b8d96a9e000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002b8d96aca000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002b8d96ed3000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002b8d970ea000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002b8d972ee000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002b8d97479000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002b8d97805000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002b8d97b85000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002b8d97e8f000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002b8d97ed2000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002b8d981d4000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002b8d983f1000)
+	/lib64/ld-linux-x86-64.so.2 (0x000055cb0fa44000)
+
+</pre></li><hr><br><br>
+<li><b>injections</b>:<br><pre>%% LAL: 7.2.4 (CLEAN 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f)
+%% LALFrame: 2.0.3 (CLEAN 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f)
+%% LALMetaIO: 3.0.2 (CLEAN 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f)
+%% LALSimulation: 4.0.2 (CLEAN 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f)
+%% LALBurst: 1.7.0 (CLEAN 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f)
+%% LALInspiral: 3.0.2 (CLEAN 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f)
+%% LALInference: 4.1.1 (CLEAN 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f)
+%% LALPulsar: 5.2.0 (CLEAN 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f)
+%% LALApps: 9.1.0 (CLEAN 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f)
+LIGO/LSC inspiral injection engine
+</pre></li><hr><br><br>
+<li><b>inspiral</b>:<br><pre>--- PyCBC Version --------------------------
+Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User <>
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/pycbc/__init__.py
+
+--- LAL Version ----------------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007fff48df4000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002ba6c9e0a000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002ba6c9fc0000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002ba6ca14b000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002ba6ca177000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002ba6ca580000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002ba6ca797000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002ba6ca99b000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002ba6cad27000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002ba6cb0a8000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002ba6cb3b1000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002ba6cb3f5000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002ba6cb6f7000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002ba6cb913000)
+	/lib64/ld-linux-x86-64.so.2 (0x000055f5ff19a000)
+
+
+--- LALSimulation Version-------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007fff7cdfa000)
+	liblalsimulation-f964c143.so.31.0.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsimulation-f964c143.so.31.0.2 (0x00002b53e8689000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002b53e906d000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002b53e9224000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002b53e9250000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002b53e9659000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002b53e9870000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002b53e9a74000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002b53e9bff000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002b53e9f8b000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002b53ea30b000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002b53ea615000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002b53ea658000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002b53ea95a000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002b53eab77000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000564d8fa13000)
+
+</pre></li><hr><br><br>
+<li><b>merge_psds</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>optimal_snr</b>:<br><pre>--- PyCBC Version --------------------------
+Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User <>
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/pycbc/__init__.py
+
+--- LAL Version ----------------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007fffa6cb0000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002b9999f5c000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002b999a112000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002b999a29d000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002b999a2c9000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002b999a6d2000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002b999a8e9000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002b999aaed000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002b999ae79000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002b999b1fa000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002b999b503000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002b999b547000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002b999b849000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002b999ba65000)
+	/lib64/ld-linux-x86-64.so.2 (0x00005614fe2f6000)
+
+
+--- LALSimulation Version-------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007ffd707af000)
+	liblalsimulation-f964c143.so.31.0.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsimulation-f964c143.so.31.0.2 (0x00002ac901b1a000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002ac9024fe000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002ac9026b5000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002ac9026e1000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002ac902aea000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002ac902d01000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002ac902f05000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002ac903090000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002ac90341c000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002ac90379c000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002ac903aa6000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002ac903ae9000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002ac903deb000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002ac904008000)
+	/lib64/ld-linux-x86-64.so.2 (0x000055594305f000)
+
+</pre></li><hr><br><br>
+<li><b>optimal_snr_merge</b>:<br><pre>--- PyCBC Version --------------------------
+Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User <>
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/pycbc/__init__.py
+
+--- LAL Version ----------------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007ffc10eb0000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002b4bb90c9000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002b4bb927f000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002b4bb940a000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002b4bb9436000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002b4bb983f000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002b4bb9a56000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002b4bb9c5a000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002b4bb9fe6000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002b4bba367000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002b4bba670000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002b4bba6b4000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002b4bba9b6000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002b4bbabd2000)
+	/lib64/ld-linux-x86-64.so.2 (0x000055e574e13000)
+
+
+--- LALSimulation Version-------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007ffda91c0000)
+	liblalsimulation-f964c143.so.31.0.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsimulation-f964c143.so.31.0.2 (0x00002acefe56e000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002acefef52000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002aceff109000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002aceff135000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002aceff53e000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002aceff755000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002aceff959000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002aceffae4000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002aceffe70000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002acf001f0000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002acf004fa000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002acf0053d000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002acf0083f000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002acf00a5c000)
+	/lib64/ld-linux-x86-64.so.2 (0x00005590ba56c000)
+
+</pre></li><hr><br><br>
+<li><b>page_foreground</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>page_ifar</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>page_ifar_catalog</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>page_injections</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>page_segplot</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>page_segtable</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>page_versioning</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>page_vetotable</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_bank</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_binnedhist</b>:<br><pre>Executable fails on pycbc_fit_sngls_split_binned --version</pre></li><hr><br><br>
+<li><b>plot_coinc_snrchi</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_foundmissed</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_gating</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_hist</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_qscan</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_range</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_segments</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_sensitivity</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_singles</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_snrchi</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_snrifar</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_spectrum</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_throughput</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>results_page</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>sngls</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>sngls_statmap</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>sngls_statmap_inj</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>splitbank</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>statmap</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>statmap_inj</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>strip_injections</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>tmpltbank</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>html_snippet</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>foreground_minifollowup</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>injection_minifollowup</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>singles_minifollowup</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>page_injinfo</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>page_coincinfo</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>page_snglinfo</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_trigger_timeseries</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>single_template_plot</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>single_template</b>:<br><pre>--- PyCBC Version --------------------------
+Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User <>
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/pycbc/__init__.py
+
+--- LAL Version ----------------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007ffd52bfc000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002ba5bd39a000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002ba5bd550000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002ba5bd6db000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002ba5bd707000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002ba5bdb10000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002ba5bdd27000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002ba5bdf2b000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002ba5be2b7000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002ba5be638000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lal/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002ba5be941000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002ba5be985000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002ba5bec87000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002ba5beea3000)
+	/lib64/ld-linux-x86-64.so.2 (0x000056222f9eb000)
+
+
+--- LALSimulation Version-------------------
+Branch: None
+Tag: lalsuite-v7.11
+Id: 7a2f2aa176ad39eeaede38f6df4a41d6bf226e8f
+
+Builder: Unknown User <>
+Repository status: CLEAN: All modifications committed
+
+Imported from: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/__init__.py
+
+Runtime libraries:
+	linux-vdso.so.1 =>  (0x00007ffc77157000)
+	liblalsimulation-f964c143.so.31.0.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsimulation-f964c143.so.31.0.2 (0x00002b947ba4f000)
+	liblalsupport-27e926b1.so.14.0.4 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblalsupport-27e926b1.so.14.0.4 (0x00002b947c433000)
+	libhdf5_hl-3806c7ee.so.100.1.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5_hl-3806c7ee.so.100.1.2 (0x00002b947c5ea000)
+	libhdf5-f331dc7e.so.103.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libhdf5-f331dc7e.so.103.1.0 (0x00002b947c616000)
+	libz.so.1 => /lib64/libz.so.1 (0x00002b947ca1f000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00002b947cc36000)
+	liblal-6f30d0c9.so.20.2.3 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/liblal-6f30d0c9.so.20.2.3 (0x00002b947ce3a000)
+	libfftw3-17cc48a2.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3-17cc48a2.so.3.3.2 (0x00002b947cfc5000)
+	libfftw3f-4367ce36.so.3.3.2 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libfftw3f-4367ce36.so.3.3.2 (0x00002b947d351000)
+	libgsl-52a92e0b.so.25.1.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgsl-52a92e0b.so.25.1.0 (0x00002b947d6d1000)
+	libgslcblas-afe2feba.so.0.0.0 => /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/lib/python3.10/site-packages/lalsimulation/../lalsuite.libs/libgslcblas-afe2feba.so.0.0.0 (0x00002b947d9db000)
+	libm.so.6 => /lib64/libm.so.6 (0x00002b947da1e000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00002b947dd20000)
+	libc.so.6 => /lib64/libc.so.6 (0x00002b947df3d000)
+	/lib64/ld-linux-x86-64.so.2 (0x000055ab865af000)
+
+</pre></li><hr><br><br>
+<li><b>plot_singles_timefreq</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_snrratehist</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+<li><b>plot_waveform</b>:<br><pre>Version: 0.0a8809 Branch: master Tag: None Id:
+56b544fdb462899a569a96ac4018761652987a1d Builder: Unknown User <> Build date:
+2024-03-01 13:48:22 +0000 Repository status is CLEAN: All modifications
+committed
+</pre></li><hr><br><br>
+</pre>
+
+<!--make a caption to the content -->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PAGE_VERSIONING-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--show cmd line if there is one -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    
+                                
+                            
+                    </div>
+                </div>
+                
+
+            </div>
+         </div>
+     </div>
+</div>
+
+<footer>
+    <div class="container-fluid">
+        <div class="footer-custom">
+            <a href="../../sitemap/index.html">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

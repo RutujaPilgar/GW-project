@@ -1,0 +1,1 @@
+/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_submit_dax 

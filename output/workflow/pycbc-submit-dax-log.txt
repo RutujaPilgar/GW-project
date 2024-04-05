@@ -1,0 +1,160 @@
+Generating concrete workflow
+2024.04.05 16:07:36.107 IST: [WARNING]  --dax option is deprecated. The abstract workflow is passed via the last positional argument on the commandline. 
+2024.04.05 16:07:36.116 IST: [INFO]  Planner launched in the following directory /home/rutuja.pilgar/gw152/output 
+2024.04.05 16:07:36.116 IST: [INFO]  Planner invoked with following arguments --conf ./pegasus-properties.conf --dir /tmp/pycbc-tmp.ItoK4jy53Q --submit --output-sites local --sites condorpool_symlink,condorpool_copy,local,condorpool_shared --staging-site condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared --cluster label,horizontal --cleanup inplace --relative-dir work -q --dax gw15.dax  
+2024.04.05 16:07:36.117 IST: [CONFIG]  Pegasus Properties set by the user 
+2024.04.05 16:07:36.117 IST: [CONFIG]  pegasus.catalog.replica.cache.asrc=true 
+2024.04.05 16:07:36.118 IST: [CONFIG]  pegasus.catalog.replica.dax.asrc=true 
+2024.04.05 16:07:36.118 IST: [CONFIG]  pegasus.catalog.workflow.amqp.url=amqp://friend:donatedata@msgs.pegasus.isi.edu:5672/prod/workflows 
+2024.04.05 16:07:36.118 IST: [CONFIG]  pegasus.dir.staging.mapper=Flat 
+2024.04.05 16:07:36.118 IST: [CONFIG]  pegasus.dir.storage.mapper=Replica 
+2024.04.05 16:07:36.118 IST: [CONFIG]  pegasus.dir.storage.mapper.replica=File 
+2024.04.05 16:07:36.118 IST: [CONFIG]  pegasus.dir.storage.mapper.replica.file=output.map 
+2024.04.05 16:07:36.118 IST: [CONFIG]  pegasus.dir.submit.mapper=Named 
+2024.04.05 16:07:36.118 IST: [CONFIG]  pegasus.file.cleanup.scope=deferred 
+2024.04.05 16:07:36.118 IST: [CONFIG]  pegasus.home.bindir=/soft/pegasus/pegasus-5.0.5/bin 
+2024.04.05 16:07:36.119 IST: [CONFIG]  pegasus.home.schemadir=/soft/pegasus/pegasus-5.0.5/share/pegasus/schema 
+2024.04.05 16:07:36.119 IST: [CONFIG]  pegasus.home.sharedstatedir=/soft/pegasus/pegasus-5.0.5/share/pegasus 
+2024.04.05 16:07:36.119 IST: [CONFIG]  pegasus.home.sysconfdir=/soft/pegasus/pegasus-5.0.5/etc 
+2024.04.05 16:07:36.119 IST: [CONFIG]  pegasus.integrity.checking=nosymlink 
+2024.04.05 16:07:36.119 IST: [CONFIG]  pegasus.metrics.app=ligo-pycbc 
+2024.04.05 16:07:36.119 IST: [CONFIG]  pegasus.mode=development 
+2024.04.05 16:07:36.119 IST: [CONFIG]  pegasus.monitord.encoding=json 
+2024.04.05 16:07:36.119 IST: [CONFIG]  pegasus.register=False 
+2024.04.05 16:07:36.119 IST: [CONFIG]  pegasus.selector.replica=Regex 
+2024.04.05 16:07:36.120 IST: [CONFIG]  pegasus.selector.replica.regex.rank.1=osdf:///* 
+2024.04.05 16:07:36.120 IST: [CONFIG]  pegasus.selector.replica.regex.rank.2=file://(?!.*(cvmfs)).* 
+2024.04.05 16:07:36.120 IST: [CONFIG]  pegasus.selector.replica.regex.rank.3=file:///cvmfs/.* 
+2024.04.05 16:07:36.120 IST: [CONFIG]  pegasus.selector.replica.regex.rank.4=root://.* 
+2024.04.05 16:07:36.120 IST: [CONFIG]  pegasus.selector.replica.regex.rank.5=.* 
+2024.04.05 16:07:36.120 IST: [CONFIG]  pegasus.transfer.bypass.input.staging=true 
+2024.04.05 16:07:36.120 IST: [CONFIG]  pegasus.transfer.links=true 
+2024.04.05 16:07:36.120 IST: [CONFIG]  pegasus.transfer.worker.package=true 
+2024.04.05 16:07:36.742 IST: [INFO] event.pegasus.add.data-dependencies dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:36.743 IST: [INFO] event.pegasus.add.data-dependencies dax.id gw15.dax-0  (0.001 seconds) - FINISHED 
+2024.04.05 16:07:36.780 IST: [CONFIG]  Loading site catalog file /home/rutuja.pilgar/gw152/output/sites.yml 
+2024.04.05 16:07:36.866 IST: [CONFIG]  Set environment profile for local site PATH=/soft/pegasus/pegasus-5.0.5/bin:/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin:/usr/lib64/qt-3.3/bin:/home/rutuja.pilgar/perl5/bin:/soft/matlab_2017b/bin:/soft/intel/oneapi/vtune/2023.1.0/bin64:/soft/intel/oneapi/mkl/2023.1.0/bin/intel64:/soft/intel/oneapi/itac/2021.9.0/bin:/soft/intel/oneapi/inspector/2023.1.0/bin64:/soft/intel/oneapi/dpcpp-ct/2023.1.0/bin:/soft/intel/oneapi/dev-utilities/2021.9.0/bin:/soft/intel/oneapi/debugger/2023.1.0/gdb/intel64/bin:/soft/intel/oneapi/compiler/2023.1.0/linux/lib/oclfpga/bin:/soft/intel/oneapi/compiler/2023.1.0/linux/bin/intel64:/soft/intel/oneapi/compiler/2023.1.0/linux/bin:/soft/intel/oneapi/clck/2021.7.3/bin/intel64:/soft/intel/oneapi/advisor/2023.1.0/bin64:/soft/git/git-2.36.0/bin:/soft/anaconda3/bin:/usr/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/rutuja.pilgar/.local/bin:/home/rutuja.pilgar/bin 
+2024.04.05 16:07:36.867 IST: [CONFIG]  Set environment profile for local site PYTHONPATH=/soft/intel/oneapi/advisor/2023.1.0/pythonapi 
+2024.04.05 16:07:36.867 IST: [CONFIG]  Constructed default site catalog entry for condorpool site <site  handle="condorpool" arch="x86_64" os="linux" osrelease="" osversion="" glibc="">
+	<profile namespace="pegasus" key="style" >condor</profile>
+</site>
+ 
+2024.04.05 16:07:36.978 IST: [CONFIG]  Transformation Catalog Type used YAML TC 
+2024.04.05 16:07:36.980 IST: [CONFIG]  Transformation Catalog Type used Multiline Textual TC 
+2024.04.05 16:07:36.980 IST: [CONFIG]  Transformation Catalog File used /tmp/tc.5195291297481291930.txt 
+2024.04.05 16:07:36.982 IST: [CONFIG]  Data Configuration used for the workflow condorio 
+2024.04.05 16:07:36.984 IST: [CONFIG]  Metrics file will be written out to /tmp/pycbc-tmp.ItoK4jy53Q/work/gw15.dax-0.metrics 
+2024.04.05 16:07:36.984 IST: [CONFIG]  The base submit directory for the workflow        /tmp/pycbc-tmp.ItoK4jy53Q 
+2024.04.05 16:07:36.984 IST: [CONFIG]  The relative submit directory for the workflow    work 
+2024.04.05 16:07:36.984 IST: [CONFIG]  The relative execution directory for the workflow work 
+2024.04.05 16:07:36.986 IST: [INFO] event.pegasus.stampede.events dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:36.990 IST: [INFO] event.pegasus.stampede.events dax.id gw15.dax-0  (0.004 seconds) - FINISHED 
+2024.04.05 16:07:36.991 IST: [INFO] event.pegasus.refinement dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:36.996 IST: [CONFIG]  Proxy used for Replica Catalog is /tmp/x509up_u15932 
+2024.04.05 16:07:37.004 IST: [INFO] event.pegasus.check.cyclic-dependencies dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:37.004 IST: [INFO] event.pegasus.check.cyclic-dependencies dax.id gw15.dax-0  (0.0 seconds) - FINISHED 
+2024.04.05 16:07:37.005 IST: [CONFIG]  Data Reuse Scope for the workflow: full 
+2024.04.05 16:07:37.005 IST: [INFO] event.pegasus.reduce dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:37.006 IST: [INFO]  Nodes/Jobs Deleted from the Workflow during reduction  
+2024.04.05 16:07:37.006 IST: [INFO]  Nodes/Jobs Deleted from the Workflow during reduction  - DONE 
+2024.04.05 16:07:37.006 IST: [INFO] event.pegasus.reduce dax.id gw15.dax-0  (0.001 seconds) - FINISHED 
+2024.04.05 16:07:37.007 IST: [INFO] event.pegasus.siteselection dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:37.014 IST: [INFO] event.pegasus.stampede.events dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:37.015 IST: [INFO] event.pegasus.stampede.events dax.id gw15.dax-0  (0.001 seconds) - FINISHED 
+2024.04.05 16:07:37.015 IST: [INFO] event.pegasus.siteselection dax.id gw15.dax-0  (0.008 seconds) - FINISHED 
+2024.04.05 16:07:37.038 IST: [CONFIG]  No Replica Registration Jobs will be created . 
+2024.04.05 16:07:37.042 IST: [CONFIG]  Transfer Implementation loaded for Stage-In   [Python based Transfer Script] 
+2024.04.05 16:07:37.042 IST: [CONFIG]  Transfer Implementation loaded for symbolic linking Stage-In  [Python based Transfer Script] 
+2024.04.05 16:07:37.042 IST: [CONFIG]  Transfer Implementation loaded for Inter Site [Python based Transfer Script] 
+2024.04.05 16:07:37.042 IST: [CONFIG]  Transfer Implementation loaded for Stage-Out  [Python based Transfer Script] 
+2024.04.05 16:07:37.045 IST: [INFO] event.pegasus.cluster dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:37.049 IST: [CONFIG]  Partitioner loaded is Label Based Partitioning 
+2024.04.05 16:07:37.058 IST: [CONFIG]  Kickstart Stating Disabled Completely - false 
+2024.04.05 16:07:37.059 IST: [CONFIG]  Kickstart Stating Disabled Completely - false 
+2024.04.05 16:07:37.060 IST: [CONFIG]  Clusterer loaded is Topological based Vertical Clustering 
+2024.04.05 16:07:37.060 IST: [INFO]  Starting Graph Traversal 
+2024.04.05 16:07:37.061 IST: [INFO]  Starting Graph Traversal - DONE 
+2024.04.05 16:07:37.062 IST: [INFO]  Determining relations between partitions 
+2024.04.05 16:07:37.062 IST: [INFO]  Determining relations between partitions - DONE 
+2024.04.05 16:07:37.063 IST: [CONFIG]  Partitioner loaded is Level Based Partitioning 
+2024.04.05 16:07:37.064 IST: [CONFIG]  Kickstart Stating Disabled Completely - false 
+2024.04.05 16:07:37.065 IST: [CONFIG]  Kickstart Stating Disabled Completely - false 
+2024.04.05 16:07:37.065 IST: [CONFIG]  Clusterer loaded is Horizontal Clustering 
+2024.04.05 16:07:37.066 IST: [INFO] event.pegasus.cluster dax.id gw15.dax-0  (0.021 seconds) - FINISHED 
+2024.04.05 16:07:37.068 IST: [INFO]  Grafting transfer nodes in the workflow 
+2024.04.05 16:07:37.068 IST: [INFO] event.pegasus.generate.transfer-nodes dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:37.074 IST: [CONFIG]  No Replica Registration Jobs will be created . 
+2024.04.05 16:07:37.075 IST: [CONFIG]  Transfer Implementation loaded for Stage-In   [Python based Transfer Script] 
+2024.04.05 16:07:37.075 IST: [CONFIG]  Transfer Implementation loaded for symbolic linking Stage-In  [Python based Transfer Script] 
+2024.04.05 16:07:37.075 IST: [CONFIG]  Transfer Implementation loaded for Inter Site [Python based Transfer Script] 
+2024.04.05 16:07:37.076 IST: [CONFIG]  Transfer Implementation loaded for Stage-Out  [Python based Transfer Script] 
+2024.04.05 16:07:37.078 IST: [CONFIG]  [RegexReplicaSelector] User Provided Ranked regexes are [( rank => 1 priority => 400 expr => osdf:///*), ( rank => 2 priority => 300 expr => file://(?!.*(cvmfs)).*), ( rank => 3 priority => 200 expr => file:///cvmfs/.*), ( rank => 4 priority => 100 expr => root://.*), ( rank => 5 priority => 0 expr => .*)] 
+2024.04.05 16:07:37.083 IST: [CONFIG]  Output Mapper loaded is              [Replica Catalog Mapper] 
+2024.04.05 16:07:37.084 IST: [CONFIG]  Transfer Refiner loaded is           [Balanced Cluster Transfer Refiner( round robin distribution at file level)] 
+2024.04.05 16:07:37.084 IST: [CONFIG]  ReplicaSelector loaded is            [Regex] 
+2024.04.05 16:07:37.084 IST: [CONFIG]  Submit Directory Mapper loaded is    [Relative Submit Directory Mapper] 
+2024.04.05 16:07:37.084 IST: [CONFIG]  Staging Mapper loaded is             [Flat Directory Staging Mapper] 
+2024.04.05 16:07:37.088 IST: [INFO] event.pegasus.generate.transfer-nodes dax.id gw15.dax-0  (0.02 seconds) - FINISHED 
+2024.04.05 16:07:37.089 IST: [INFO] event.pegasus.generate.workdir-nodes dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:37.092 IST: [INFO] event.pegasus.generate.workdir-nodes dax.id gw15.dax-0  (0.003 seconds) - FINISHED 
+2024.04.05 16:07:37.092 IST: [INFO] event.pegasus.generate.cleanup-nodes dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:37.095 IST: [CONFIG]  Setting property dagman.cleanup.maxjobs to  4 to set max jobs for cleanup jobs category 
+2024.04.05 16:07:37.096 IST: [INFO]  For site: local number of files cleaned up - 0 
+2024.04.05 16:07:37.096 IST: [INFO] event.pegasus.generate.cleanup-nodes dax.id gw15.dax-0  (0.004 seconds) - FINISHED 
+2024.04.05 16:07:37.096 IST: [INFO] Adding Leaf Cleanup Jobs dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:37.098 IST: [INFO] Adding Leaf Cleanup Jobs dax.id gw15.dax-0  (0.002 seconds) - FINISHED 
+2024.04.05 16:07:37.099 IST: [INFO] event.pegasus.refinement dax.id gw15.dax-0  (0.108 seconds) - FINISHED 
+2024.04.05 16:07:37.123 IST: [INFO]  Generating codes for the executable workflow 
+2024.04.05 16:07:37.123 IST: [INFO] event.pegasus.code.generation dax.id gw15.dax-0  - STARTED 
+2024.04.05 16:07:37.124 IST: [CONFIG]  Kickstart Stating Disabled Completely - false 
+2024.04.05 16:07:37.143 IST: [CONFIG]  Kickstart Stating Disabled Completely - false 
+2024.04.05 16:07:37.215 IST: [CONFIG]  Enforce strict checks for worker package in PegasusLite: true 
+2024.04.05 16:07:37.215 IST: [CONFIG]  Allow download of worker package in PegasusLite from Pegasus Website: true 
+2024.04.05 16:07:37.218 IST: [CONFIG]  Kickstart Stating Disabled Completely - false 
+2024.04.05 16:07:37.283 IST: [CONFIG]  Enforce strict checks for worker package in PegasusLite: false 
+2024.04.05 16:07:37.283 IST: [CONFIG]  Allow download of worker package in PegasusLite from Pegasus Website: false 
+2024.04.05 16:07:37.284 IST: [CONFIG]  Kickstart Stating Disabled Completely - false 
+2024.04.05 16:07:37.445 IST:    
+2024.04.05 16:07:37.450 IST:   ----------------------------------------------------------------------- 
+2024.04.05 16:07:37.455 IST:   File for submitting this DAG to HTCondor           : gw15.dax-0.dag.condor.sub 
+2024.04.05 16:07:37.460 IST:   Log of DAGMan debugging messages                 : gw15.dax-0.dag.dagman.out 
+2024.04.05 16:07:37.465 IST:   Log of HTCondor library output                     : gw15.dax-0.dag.lib.out 
+2024.04.05 16:07:37.471 IST:   Log of HTCondor library error messages             : gw15.dax-0.dag.lib.err 
+2024.04.05 16:07:37.476 IST:   Log of the life of condor_dagman itself          : gw15.dax-0.dag.dagman.log 
+2024.04.05 16:07:37.481 IST:    
+2024.04.05 16:07:37.486 IST:   -no_submit given, not submitting DAG to HTCondor.  You can do this with: 
+2024.04.05 16:07:37.496 IST:   ----------------------------------------------------------------------- 
+2024.04.05 16:07:37.504 IST: [INFO] event.pegasus.code.generation dax.id gw15.dax-0  (0.381 seconds) - FINISHED 
+2024.04.05 16:07:39.787 IST:   Database version: '5.0.5' (sqlite:////home/rutuja.pilgar/.pegasus/workflow.db) 
+2024.04.05 16:07:42.052 IST:   Pegasus database was successfully created. 
+2024.04.05 16:07:42.057 IST:   Database version: '5.0.5' (sqlite:////tmp/pycbc-tmp.ItoK4jy53Q/work/gw15.dax-0.replicas.db) 
+2024.04.05 16:07:42.112 IST:   Output replica catalog set to jdbc:sqlite:/tmp/pycbc-tmp.ItoK4jy53Q/work/gw15.dax-0.replicas.db 
+2024.04.05 16:07:42.661 IST:   Submitting to condor gw15.dax-0.dag.condor.sub 
+2024.04.05 16:07:42.744 IST:   Submitting job(s). 
+2024.04.05 16:07:42.744 IST:    
+2024.04.05 16:07:42.749 IST: 2024.04.05 16:07:42.749 IST:   Your workflow has been started and is running in the base directory: 
+  1 job(s) submitted to cluster 24380085. 
+2024.04.05 16:07:42.755 IST:    
+2024.04.05 16:07:42.760 IST:   /tmp/pycbc-tmp.ItoK4jy53Q/work 
+2024.04.05 16:07:42.765 IST:    
+2024.04.05 16:07:42.770 IST:   *** To monitor the workflow you can run *** 
+2024.04.05 16:07:42.775 IST:    
+2024.04.05 16:07:42.780 IST:   pegasus-status -l /tmp/pycbc-tmp.ItoK4jy53Q/work 
+2024.04.05 16:07:42.785 IST:    
+2024.04.05 16:07:42.791 IST:   *** To remove your workflow run *** 
+2024.04.05 16:07:42.796 IST:    
+2024.04.05 16:07:42.801 IST:   pegasus-remove /tmp/pycbc-tmp.ItoK4jy53Q/work 
+2024.04.05 16:07:44.225 IST:   Time taken to execute is 6.77 seconds 
+2024.04.05 16:07:44.226 IST: [INFO] event.pegasus.planner planner.version 5.0.5  (8.125 seconds) - FINISHED 
+
+Querying Pegasus database for workflow stored in /tmp/pycbc-tmp.ItoK4jy53Q/work
+This may take up to 120 seconds. Please wait......... Done.
+Workflow submission completed successfully.
+
+The Pegasus dashboard URL for this workflow is:
+  https://ldas-pcdev1.gw.iucaa.in/pegasus/u/rutuja.pilgar/r/16/w?wf_uuid=3ddad980-a35e-415e-9bc7-238084ff3792
+
+Note that it make take a while for the dashboard entry to appear while the workflow
+is parsed by the dashboard. The delay can be on the order of one hour for very large
+workflows.
+

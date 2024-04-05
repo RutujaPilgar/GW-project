@@ -1,0 +1,4875 @@
+x-pegasus:
+  apiLang: python
+  createdBy: rutuja.pilgar
+  createdOn: 04-05-24T16:07:13Z
+pegasus: 5.0.4
+name: gw15-main.dax
+replicaCatalog:
+  replicas:
+  - lfn: bank.hdf
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/bank.hdf
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/results/1._analysis_time/1.01_segment_data/H1L1-VETOES-1126257636-2048.xml
+  - lfn: statHL.hdf
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/statHL.hdf
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/results/1._analysis_time/1.01_segment_data/-INSP_SEGMENTS-1126257636-2048.xml
+  - lfn: H1L1-SCIENCE-1126257636-2048.xml
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/results/1._analysis_time/1.01_segment_data/H1L1-SCIENCE-1126257636-2048.xml
+  - lfn: H1L1-SCIENCE_AVAILABLE-1126257636-2048.xml
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/datafind/H1L1-SCIENCE_AVAILABLE-1126257636-2048.xml
+  - lfn: H1FULL_DATA_noncoincsingles_minifollowup.ini
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/H1FULL_DATA_noncoincsingles_minifollowup.ini
+  - lfn: H1FULL_DATA_allsingles_minifollowup.ini
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/H1FULL_DATA_allsingles_minifollowup.ini
+  - lfn: H1FULL_DATA_vetoedsingles_minifollowup.ini
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/H1FULL_DATA_vetoedsingles_minifollowup.ini
+  - lfn: L1FULL_DATA_noncoincsingles_minifollowup.ini
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/L1FULL_DATA_noncoincsingles_minifollowup.ini
+  - lfn: L1FULL_DATA_allsingles_minifollowup.ini
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/L1FULL_DATA_allsingles_minifollowup.ini
+  - lfn: L1FULL_DATA_vetoedsingles_minifollowup.ini
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/L1FULL_DATA_vetoedsingles_minifollowup.ini
+  - lfn: FULL_DATA_foregroundforeground_minifollowup.ini
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/FULL_DATA_foregroundforeground_minifollowup.ini
+  - lfn: FULL_DATA_backgroundforeground_minifollowup.ini
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/FULL_DATA_backgroundforeground_minifollowup.ini
+  - lfn: BBHinjection_minifollowup.ini
+    pfns:
+    - site: local
+      pfn: file:///home/rutuja.pilgar/gw152/output/BBHinjection_minifollowup.ini
+transformationCatalog:
+  transformations:
+  - name: bank2hdf_ID0
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_coinc_bank2hdf
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: bank2hdf
+  - name: splitbank_ID1
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_hdf5_splitbank
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: splitbank
+  - name: plot_bank_ID2
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_bank_bins
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_bank
+  - name: hdf_trigger_merge_ID5
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_coinc_mergetrigs
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: hdf_trigger_merge
+  - name: fit_by_template_ID7
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_fit_sngls_by_template
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: fit_by_template
+  - name: fit_over_param_ID8
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_fit_sngls_over_multiparam
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: fit_over_param
+  - name: coinc_ID11
+    sites:
+    - name: condorpool_copy
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_coinc_findtrigs
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: coinc
+  - name: statmap_ID12
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_coinc_statmap
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: statmap
+  - name: sngls_ID13
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_sngls_findtrigs
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: sngls
+  - name: sngls_statmap_ID14
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_sngls_statmap
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: sngls_statmap
+  - name: exclude_zerolag_ID17
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_exclude_zerolag
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: exclude_zerolag
+  - name: combine_statmap_ID20
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_add_statmap
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: combine_statmap
+  - name: foreground_censor_ID21
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_foreground_censor
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: foreground_censor
+  - name: plot_spectrum_ID22
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_psd_file
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_spectrum
+  - name: plot_range_ID23
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_range
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_range
+  - name: plot_segments_ID24
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_segments
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_segments
+  - name: plot_gating_ID25
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_gating
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_gating
+  - name: page_segtable_ID26
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_segtable
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: page_segtable
+  - name: page_segplot_ID27
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_segplot
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: page_segplot
+  - name: plot_snrchi_ID29
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrchi
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_snrchi
+  - name: plot_singles_ID31
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_singles_vs_params
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_singles
+  - name: plot_hist_ID32
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_hist
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_hist
+  - name: plot_binnedhist_ID34
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_fit_sngls_split_binned
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_binnedhist
+  - name: plot_throughput_ID39
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_throughput
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_throughput
+  - name: singles_minifollowup_ID40
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_sngl_minifollowup
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: singles_minifollowup
+  - name: page_ifar_catalog_ID46
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_ifar_catalog
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: page_ifar_catalog
+  - name: page_foreground_ID47
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_foreground
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: page_foreground
+  - name: foreground_minifollowup_ID50
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_foreground_minifollowup
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: foreground_minifollowup
+  - name: plot_snrifar_ID52
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrifar
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_snrifar
+  - name: plot_snrratehist_ID54
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrratehist
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_snrratehist
+  - name: page_ifar_ID56
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_ifar
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: page_ifar
+  - name: injections_ID72
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/lalapps_inspinj
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: injections
+  - name: inj2hdf_ID73
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_convertinjfiletohdf
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: inj2hdf
+  - name: optimal_snr_ID74
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_optimal_snr
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: optimal_snr
+  - name: optimal_snr_merge_ID76
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_merge_inj_hdf
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: optimal_snr_merge
+  - name: statmap_inj_ID82
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_coinc_statmap_inj
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: statmap_inj
+  - name: sngls_statmap_inj_ID84
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_sngls_statmap_inj
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: sngls_statmap_inj
+  - name: hdfinjfind_ID88
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_coinc_hdfinjfind
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: hdfinjfind
+  - name: plot_foundmissed_ID90
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_foundmissed
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_foundmissed
+  - name: page_injections_ID92
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_injtable
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: page_injections
+  - name: plot_coinc_snrchi_ID94
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_coinc_snrchi
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_coinc_snrchi
+  - name: injection_minifollowup_ID96
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_injection_minifollowup
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: injection_minifollowup
+  - name: plot_sensitivity_ID98
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_sensitivity
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: plot_sensitivity
+  - name: page_versioning_ID106
+    sites:
+    - name: condorpool_symlink
+      pfn: /home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_versioning
+      type: installed
+      arch: x86_64
+      os.type: linux
+    profiles:
+      pegasus:
+        relative.submit.dir: page_versioning
+jobs:
+- type: job
+  name: bank2hdf_ID0
+  id: ID0000001
+  arguments:
+  - --bank-file
+  - bank.hdf
+  - --output-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: bank.hdf
+    type: input
+  profiles:
+    dagman:
+      category: bank2hdf
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: splitbank_ID1
+  id: ID0000002
+  arguments:
+  - --random-sort
+  - ''
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --output-filenames
+  - H1L1-BANK2HDF_SPLITBANK_BANK0_FULL_DATA-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF_SPLITBANK_BANK0_FULL_DATA-1126257636-2048.hdf
+    type: output
+    stageOut: false
+    registerReplica: true
+  profiles:
+    dagman:
+      category: splitbank
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_bank_ID2
+  id: ID0000003
+  arguments:
+  - --log-x
+  - ''
+  - --log-y
+  - ''
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_BANK-1126257636-2048.png
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PLOT_BANK-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_bank
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: hdf_trigger_merge_ID5
+  id: ID0000004
+  arguments:
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-files
+  - --output-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: hdf_trigger_merge
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: hdf_trigger_merge_ID5
+  id: ID0000005
+  arguments:
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-files
+  - --output-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: hdf_trigger_merge
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: fit_by_template_ID7
+  id: ID0000006
+  arguments:
+  - --fit-function
+  - exponential
+  - --stat-threshold
+  - '4.0'
+  - --prune-param
+  - mtotal
+  - --log-prune-param
+  - ''
+  - --prune-bins
+  - '1'
+  - --prune-number
+  - '1'
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar_scaled_threshold
+  - --ifo
+  - H1
+  - --trigger-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --veto-file
+  - H1L1-VETOES-1126257636-2048.xml
+  - --veto-segment-name
+  - vetoes
+  - --output
+  - H1-FIT_BY_TEMPLATE_FULL_DATA-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    type: input
+  - lfn: H1-FIT_BY_TEMPLATE_FULL_DATA-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: fit_by_template
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: fit_over_param_ID8
+  id: ID0000007
+  arguments:
+  - --fit-param
+  - mtotal
+  - --f-lower
+  - '20'
+  - --log-param
+  - 'True'
+  - --smoothing-width
+  - '0.4'
+  - --template-fit-file
+  - H1-FIT_BY_TEMPLATE_FULL_DATA-1126257636-2048.hdf
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --output
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  uses:
+  - lfn: H1-FIT_BY_TEMPLATE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: fit_over_param
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: fit_by_template_ID7
+  id: ID0000008
+  arguments:
+  - --fit-function
+  - exponential
+  - --stat-threshold
+  - '4.0'
+  - --prune-param
+  - mtotal
+  - --log-prune-param
+  - ''
+  - --prune-bins
+  - '1'
+  - --prune-number
+  - '1'
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar_scaled_threshold
+  - --ifo
+  - L1
+  - --trigger-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --veto-file
+  - H1L1-VETOES-1126257636-2048.xml
+  - --veto-segment-name
+  - vetoes
+  - --output
+  - L1-FIT_BY_TEMPLATE_FULL_DATA-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_BY_TEMPLATE_FULL_DATA-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: fit_by_template
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: fit_over_param_ID8
+  id: ID0000009
+  arguments:
+  - --fit-param
+  - mtotal
+  - --f-lower
+  - '20'
+  - --log-param
+  - 'True'
+  - --smoothing-width
+  - '0.4'
+  - --template-fit-file
+  - L1-FIT_BY_TEMPLATE_FULL_DATA-1126257636-2048.hdf
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --output
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_BY_TEMPLATE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: fit_over_param
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: coinc_ID11
+  id: ID0000010
+  arguments:
+  - '--statistic-files statHL.hdf '
+  - --ranking-statistic
+  - phasetd_exp_fit_fgbg_norm
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --randomize-template-order
+  - ''
+  - --timeslide-interval
+  - '0.1'
+  - --coinc-threshold
+  - '0.002'
+  - --loudest-keep-values
+  - '[-1:5,1:5]'
+  - --template-bank
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-files
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --veto-files
+  - H1L1-VETOES-1126257636-2048.xml
+  - --segment-name
+  - vetoes
+  - --pivot-ifo
+  - H1
+  - --fixed-ifo
+  - L1
+  - --template-fraction-range
+  - 0/1
+  - --output-file
+  - H1L1-COINC_FULL_DATA_2DET_JOB0-1126257636-2048.hdf
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: statHL.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COINC_FULL_DATA_2DET_JOB0-1126257636-2048.hdf
+    type: output
+    stageOut: false
+    registerReplica: true
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    type: input
+  profiles:
+    dagman:
+      category: coinc
+    selector:
+      execution.site: condorpool_copy
+- type: job
+  name: statmap_ID12
+  id: ID0000011
+  arguments:
+  - --max-hierarchical-removal
+  - '1'
+  - --hierarchical-removal-against
+  - exclusive
+  - --veto-window
+  - '0.100'
+  - --cluster-window
+  - '10.0'
+  - --coinc-files
+  - H1L1-COINC_FULL_DATA_2DET_JOB0-1126257636-2048.hdf
+  - --ifos
+  - L1 H1
+  - --output-file
+  - H1L1-STATMAP_FULL_DATA_2DET-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-COINC_FULL_DATA_2DET_JOB0-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-STATMAP_FULL_DATA_2DET-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: statmap
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: sngls_ID13
+  id: ID0000012
+  arguments:
+  - '--statistic-files statHL.hdf '
+  - --trigger-cuts
+  - newsnr:5.5:lower traditional_chisq:12:upper sigma_multiple:10:upper
+  - --ranking-statistic
+  - phasetd_exp_fit_fgbg_norm
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --randomize-template-order
+  - ''
+  - --template-bank
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-files
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --veto-files
+  - H1L1-VETOES-1126257636-2048.xml
+  - --segment-name
+  - vetoes
+  - --template-fraction-range
+  - 0/1
+  - --output-file
+  - L1-SNGLS_FULL_DATA_1DET_JOB0-1126257636-2048.hdf
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: statHL.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-SNGLS_FULL_DATA_1DET_JOB0-1126257636-2048.hdf
+    type: output
+    stageOut: false
+    registerReplica: true
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    type: input
+  profiles:
+    dagman:
+      category: sngls
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: sngls_statmap_ID14
+  id: ID0000013
+  arguments:
+  - --max-hierarchical-removal
+  - '1'
+  - --hierarchical-removal-against
+  - exclusive
+  - --veto-window
+  - '0.100'
+  - --cluster-window
+  - '10.0'
+  - --far-calculation-method
+  - H1:trigger_fit L1:trigger_fit
+  - --fit-function
+  - H1:exponential L1:exponential
+  - --fit-threshold
+  - H1:-10 L1:-8
+  - --sngls-files
+  - L1-SNGLS_FULL_DATA_1DET_JOB0-1126257636-2048.hdf
+  - --ifos
+  - L1
+  - --output-file
+  - L1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+  uses:
+  - lfn: L1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: L1-SNGLS_FULL_DATA_1DET_JOB0-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: sngls_statmap
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: sngls_ID13
+  id: ID0000014
+  arguments:
+  - '--statistic-files statHL.hdf '
+  - --trigger-cuts
+  - newsnr:5.5:lower traditional_chisq:12:upper sigma_multiple:10:upper
+  - --ranking-statistic
+  - phasetd_exp_fit_fgbg_norm
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --randomize-template-order
+  - ''
+  - --template-bank
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-files
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --veto-files
+  - H1L1-VETOES-1126257636-2048.xml
+  - --segment-name
+  - vetoes
+  - --template-fraction-range
+  - 0/1
+  - --output-file
+  - H1-SNGLS_FULL_DATA_1DET_JOB0-1126257636-2048.hdf
+  uses:
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: statHL.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SNGLS_FULL_DATA_1DET_JOB0-1126257636-2048.hdf
+    type: output
+    stageOut: false
+    registerReplica: true
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    type: input
+  profiles:
+    dagman:
+      category: sngls
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: sngls_statmap_ID14
+  id: ID0000015
+  arguments:
+  - --max-hierarchical-removal
+  - '1'
+  - --hierarchical-removal-against
+  - exclusive
+  - --veto-window
+  - '0.100'
+  - --cluster-window
+  - '10.0'
+  - --far-calculation-method
+  - H1:trigger_fit L1:trigger_fit
+  - --fit-function
+  - H1:exponential L1:exponential
+  - --fit-threshold
+  - H1:-10 L1:-8
+  - --sngls-files
+  - H1-SNGLS_FULL_DATA_1DET_JOB0-1126257636-2048.hdf
+  - --ifos
+  - H1
+  - --output-file
+  - H1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+  uses:
+  - lfn: H1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-SNGLS_FULL_DATA_1DET_JOB0-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: sngls_statmap
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: exclude_zerolag_ID17
+  id: ID0000016
+  arguments:
+  - --statmap-file
+  - H1L1-STATMAP_FULL_DATA_2DET-1126257636-2048.hdf
+  - --other-statmap-files
+  - L1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+  - H1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+  - --output-file
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  uses:
+  - lfn: L1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-STATMAP_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: exclude_zerolag
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: exclude_zerolag_ID17
+  id: ID0000017
+  arguments:
+  - --far-calculation-method
+  - H1:trigger_fit L1:trigger_fit
+  - --fit-function
+  - H1:exponential L1:exponential
+  - --fit-threshold
+  - H1:-10 L1:-8
+  - --statmap-file
+  - L1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+  - --other-statmap-files
+  - H1L1-STATMAP_FULL_DATA_2DET-1126257636-2048.hdf
+  - H1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+  - --output-file
+  - L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  uses:
+  - lfn: L1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-STATMAP_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: exclude_zerolag
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: exclude_zerolag_ID17
+  id: ID0000018
+  arguments:
+  - --far-calculation-method
+  - H1:trigger_fit L1:trigger_fit
+  - --fit-function
+  - H1:exponential L1:exponential
+  - --fit-threshold
+  - H1:-10 L1:-8
+  - --statmap-file
+  - H1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+  - --other-statmap-files
+  - H1L1-STATMAP_FULL_DATA_2DET-1126257636-2048.hdf
+  - L1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+  - --output-file
+  - H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  uses:
+  - lfn: L1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SNGLS_STATMAP_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-STATMAP_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: exclude_zerolag
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: combine_statmap_ID20
+  id: ID0000019
+  arguments:
+  - --cluster-window
+  - '10.0'
+  - --max-hierarchical-removal
+  - '1'
+  - --hierarchical-removal-against
+  - inclusive
+  - --statmap-files
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --output-file
+  - H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: combine_statmap
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: foreground_censor_ID21
+  id: ID0000020
+  arguments:
+  - --foreground-triggers
+  - H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+  - --veto-file
+  - H1L1-VETOES-1126257636-2048.xml
+  - --segment-name
+  - vetoes
+  - --output-segment-name
+  - closed_box
+  - --output-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  uses:
+  - lfn: H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: foreground_censor
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_spectrum_ID22
+  id: ID0000021
+  arguments:
+  - --psd-model
+  - aLIGOZeroDetHighPower
+  - --psd-files
+  - --output-file
+  - H1L1-PLOT_SPECTRUM-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_SPECTRUM-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_spectrum
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_range_ID23
+  id: ID0000022
+  arguments:
+  - --mass1
+  - '1.4'
+  - --mass2
+  - '1.4'
+  - --approximant
+  - SPAtmplt
+  - --psd-files
+  - --output-file
+  - H1L1-PLOT_RANGE_SUMM-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_RANGE_SUMM-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_range
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_segments_ID24
+  id: ID0000023
+  arguments:
+  - --segment-files
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --output-file
+  - H1L1-PLOT_SEGMENTS_TRIGGERS_GENERATED-1126257636-2048.html
+  uses:
+  - lfn: H1L1-PLOT_SEGMENTS_TRIGGERS_GENERATED-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  profiles:
+    dagman:
+      category: plot_segments
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_gating_ID25
+  id: ID0000024
+  arguments:
+  - --input-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_GATING_FULL_DATA-1126257636-2048.html
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PLOT_GATING_FULL_DATA-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_gating
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_segtable_ID26
+  id: ID0000025
+  arguments:
+  - --segment-files
+  - H1L1-SCIENCE-1126257636-2048.xml
+  - H1L1-SCIENCE_AVAILABLE-1126257636-2048.xml
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --segment-names
+  - '''science'' ''SCIENCE_AVAILABLE'' ''TRIGGERS_GENERATED'''
+  - --ifos
+  - H1 L1
+  - --description
+  - '''This shows the total amount of input data, analyzable data, and the time for
+    which triggers are produced.'''
+  - --title-text
+  - '''Input and output'''
+  - --output-file
+  - H1L1-PAGE_SEGTABLE_SUMMARY-1126257636-2048.html
+  uses:
+  - lfn: H1L1-SCIENCE_AVAILABLE-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-PAGE_SEGTABLE_SUMMARY-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-SCIENCE-1126257636-2048.xml
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  profiles:
+    dagman:
+      category: page_segtable
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_segplot_ID27
+  id: ID0000026
+  arguments:
+  - --segment-files
+  - H1L1-SCIENCE-1126257636-2048.xml
+  - H1L1-SCIENCE_AVAILABLE-1126257636-2048.xml
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --segment-names
+  - '''science'' ''SCIENCE_AVAILABLE'' ''TRIGGERS_GENERATED'''
+  - --ifos
+  - H1 L1
+  - --output-file
+  - H1L1-PAGE_SEGPLOT_SUMMARY-1126257636-2048.html
+  uses:
+  - lfn: H1L1-SCIENCE_AVAILABLE-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-SCIENCE-1126257636-2048.xml
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-PAGE_SEGPLOT_SUMMARY-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_segplot
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_segtable_ID26
+  id: ID0000027
+  arguments:
+  - --segment-files
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - H1L1-VETOES-1126257636-2048.xml
+  - H1L1-SCIENCE-1126257636-2048.xml
+  - --segment-names
+  - '''TRIGGERS_GENERATED&vetoes'' ''science&VETO_CAT1'''
+  - --ifos
+  - H1 L1
+  - --description
+  - '''This shows the time removed from the output time by the vetoes applied to the
+    triggers.'''
+  - --title-text
+  - '''Time removed by vetoes'''
+  - --output-file
+  - H1L1-PAGE_SEGTABLE_VETO_SUMMARY-1126257636-2048.html
+  uses:
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-SCIENCE-1126257636-2048.xml
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-PAGE_SEGTABLE_VETO_SUMMARY-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_segtable
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrchi_ID29
+  id: ID0000028
+  arguments:
+  - --min-snr
+  - '6.0'
+  - --newsnr-contours
+  - 5 7 9 11 13
+  - --trigger-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --segment-name
+  - closed_box
+  - --output-file
+  - H1-PLOT_SNRCHI_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: H1-PLOT_SNRCHI_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  profiles:
+    condor:
+      request_memory: 15000M
+    dagman:
+      category: plot_snrchi
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrchi_ID29
+  id: ID0000029
+  arguments:
+  - --min-snr
+  - '6.0'
+  - --newsnr-contours
+  - 5 7 9 11 13
+  - --trigger-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --segment-name
+  - closed_box
+  - --output-file
+  - L1-PLOT_SNRCHI_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: L1-PLOT_SNRCHI_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  profiles:
+    condor:
+      request_memory: 15000M
+    dagman:
+      category: plot_snrchi
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_singles_ID31
+  id: ID0000030
+  arguments:
+  - --x-var
+  - mtotal
+  - --log-x
+  - ''
+  - --y-var
+  - eta
+  - --z-var
+  - '"newsnr_sgveto"'
+  - --min-z
+  - '5.5'
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --segment-name
+  - closed_box
+  - --detector
+  - H1
+  - --single-trig-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1-PLOT_SINGLES_MTOTAL_ETA_NEWSNR_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-PLOT_SINGLES_MTOTAL_ETA_NEWSNR_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  profiles:
+    condor:
+      request_memory: 15000M
+    dagman:
+      category: plot_singles
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_hist_ID32
+  id: ID0000031
+  arguments:
+  - --x-var
+  - snr
+  - --x-min
+  - '6'
+  - --x-max
+  - '100'
+  - --segment-name
+  - closed_box
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --trigger-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1-PLOT_HIST_SUMM_SNR_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: H1-PLOT_HIST_SUMM_SNR_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_hist
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_hist_ID32
+  id: ID0000032
+  arguments:
+  - --x-var
+  - newsnr
+  - --x-min
+  - '6'
+  - --x-max
+  - '15'
+  - --segment-name
+  - closed_box
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --trigger-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1-PLOT_HIST_SUMM_NEWSNR_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: H1-PLOT_HIST_SUMM_NEWSNR_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_hist
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_binnedhist_ID34
+  id: ID0000033
+  arguments:
+  - --fit-function
+  - exponential
+  - --stat-fit-threshold
+  - '5.0'
+  - --plot-lower-stat-limit
+  - '4.5'
+  - --prune-number
+  - '1'
+  - --split-param-one
+  - eta
+  - --split-one-nbins
+  - '2'
+  - --split-one-spacing
+  - linear
+  - --split-param-two
+  - chi_eff
+  - --split-two-nbins
+  - '2'
+  - --split-two-spacing
+  - linear
+  - --bin-param
+  - mtotal
+  - --num-bins
+  - '2'
+  - --bin-spacing
+  - log
+  - --sngl-ranking
+  - newsnr_sgveto
+  - --ifo
+  - H1
+  - --veto-segment-name
+  - closed_box
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --trigger-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --output-file
+  - H1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_binnedhist
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_singles_ID31
+  id: ID0000034
+  arguments:
+  - --x-var
+  - mtotal
+  - --log-x
+  - ''
+  - --y-var
+  - eta
+  - --z-var
+  - '"newsnr_sgveto"'
+  - --min-z
+  - '5.5'
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --segment-name
+  - closed_box
+  - --detector
+  - L1
+  - --single-trig-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - L1-PLOT_SINGLES_MTOTAL_ETA_NEWSNR_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-PLOT_SINGLES_MTOTAL_ETA_NEWSNR_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  profiles:
+    condor:
+      request_memory: 15000M
+    dagman:
+      category: plot_singles
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_hist_ID32
+  id: ID0000035
+  arguments:
+  - --x-var
+  - snr
+  - --x-min
+  - '6'
+  - --x-max
+  - '100'
+  - --segment-name
+  - closed_box
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --trigger-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - L1-PLOT_HIST_SUMM_SNR_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: L1-PLOT_HIST_SUMM_SNR_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_hist
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_hist_ID32
+  id: ID0000036
+  arguments:
+  - --x-var
+  - newsnr
+  - --x-min
+  - '6'
+  - --x-max
+  - '15'
+  - --segment-name
+  - closed_box
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --trigger-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - L1-PLOT_HIST_SUMM_NEWSNR_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: L1-PLOT_HIST_SUMM_NEWSNR_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  profiles:
+    dagman:
+      category: plot_hist
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_binnedhist_ID34
+  id: ID0000037
+  arguments:
+  - --fit-function
+  - exponential
+  - --stat-fit-threshold
+  - '5.0'
+  - --plot-lower-stat-limit
+  - '4.5'
+  - --prune-number
+  - '1'
+  - --split-param-one
+  - eta
+  - --split-one-nbins
+  - '2'
+  - --split-one-spacing
+  - linear
+  - --split-param-two
+  - chi_eff
+  - --split-two-nbins
+  - '2'
+  - --split-two-spacing
+  - linear
+  - --bin-param
+  - mtotal
+  - --num-bins
+  - '2'
+  - --bin-spacing
+  - log
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar_scaled_threshold
+  - --ifo
+  - L1
+  - --veto-segment-name
+  - closed_box
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --trigger-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --output-file
+  - L1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: L1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_binnedhist
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_throughput_ID39
+  id: ID0000038
+  arguments:
+  - --input-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_THROUGHPUT_FULL_DATA-1126257636-2048.png
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PLOT_THROUGHPUT_FULL_DATA-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_throughput
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: singles_minifollowup_ID40
+  id: ID0000039
+  arguments:
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --non-coinc-time-only
+  - ''
+  - --config-files
+  - H1FULL_DATA_noncoincsingles_minifollowup.ini
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --single-detector-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --inspiral-segments
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --inspiral-data-read-name
+  - DATA_ANALYSED
+  - --inspiral-data-analyzed-name
+  - TRIGGERS_GENERATED
+  - --instrument
+  - H1
+  - --foreground-censor-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --foreground-segment-name
+  - closed_box
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --tags
+  - FULL_DATA
+  - noncoinc
+  - --dax-file
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax
+  - --output-map
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax.map
+  - --workflow-name
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax
+  - --output-dir
+  - /home/rutuja.pilgar/gw152/output/results/4._single_triggers/4.07_H1_loudest_noncoinc_time
+  - --dax-file-directory
+  - .
+  uses:
+  - lfn: H1FULL_DATA_noncoincsingles_minifollowup.ini
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax.map
+    forPlanning: true
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: singles_minifollowup
+    selector:
+      execution.site: condorpool_symlink
+- type: pegasusWorkflow
+  file: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax
+  id: ID0000040
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=H1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax.map
+  - --basename
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax.map
+    forPlanning: true
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax
+    forPlanning: true
+    type: input
+- type: job
+  name: singles_minifollowup_ID40
+  id: ID0000041
+  arguments:
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --config-files
+  - H1FULL_DATA_allsingles_minifollowup.ini
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --single-detector-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --inspiral-segments
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --inspiral-data-read-name
+  - DATA_ANALYSED
+  - --inspiral-data-analyzed-name
+  - TRIGGERS_GENERATED
+  - --instrument
+  - H1
+  - --foreground-censor-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --foreground-segment-name
+  - closed_box
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --tags
+  - FULL_DATA
+  - all
+  - --dax-file
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax
+  - --output-map
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax.map
+  - --workflow-name
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax
+  - --output-dir
+  - /home/rutuja.pilgar/gw152/output/results/4._single_triggers/4.08_H1_all
+  - --dax-file-directory
+  - .
+  uses:
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1FULL_DATA_allsingles_minifollowup.ini
+    type: input
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax.map
+    forPlanning: true
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: singles_minifollowup
+    selector:
+      execution.site: condorpool_symlink
+- type: pegasusWorkflow
+  file: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax
+  id: ID0000042
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=H1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax.map
+  - --basename
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax
+    forPlanning: true
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax.map
+    forPlanning: true
+    type: input
+- type: job
+  name: singles_minifollowup_ID40
+  id: ID0000043
+  arguments:
+  - '--statistic-files statHL.hdf '
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --vetoed-time-only
+  - ''
+  - --ranking-statistic
+  - phasetd_exp_fit_fgbg_norm
+  - --config-files
+  - H1FULL_DATA_vetoedsingles_minifollowup.ini
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --single-detector-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --inspiral-segments
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --inspiral-data-read-name
+  - DATA_ANALYSED
+  - --inspiral-data-analyzed-name
+  - TRIGGERS_GENERATED
+  - --instrument
+  - H1
+  - --foreground-censor-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --foreground-segment-name
+  - closed_box
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --tags
+  - FULL_DATA
+  - vetoed
+  - --dax-file
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax
+  - --output-map
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax.map
+  - --workflow-name
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax
+  - --output-dir
+  - /home/rutuja.pilgar/gw152/output/results/4._single_triggers/4.09_H1_loudest_within_vetoes
+  - --dax-file-directory
+  - .
+  uses:
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax.map
+    forPlanning: true
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1FULL_DATA_vetoedsingles_minifollowup.ini
+    type: input
+  - lfn: statHL.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: singles_minifollowup
+    selector:
+      execution.site: condorpool_symlink
+- type: pegasusWorkflow
+  file: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax
+  id: ID0000044
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=H1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax.map
+  - --basename
+  - H1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax.map
+    forPlanning: true
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax
+    forPlanning: true
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+- type: job
+  name: singles_minifollowup_ID40
+  id: ID0000045
+  arguments:
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --non-coinc-time-only
+  - ''
+  - --config-files
+  - L1FULL_DATA_noncoincsingles_minifollowup.ini
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --single-detector-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --inspiral-segments
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --inspiral-data-read-name
+  - DATA_ANALYSED
+  - --inspiral-data-analyzed-name
+  - TRIGGERS_GENERATED
+  - --instrument
+  - L1
+  - --foreground-censor-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --foreground-segment-name
+  - closed_box
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --tags
+  - FULL_DATA
+  - noncoinc
+  - --dax-file
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax
+  - --output-map
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax.map
+  - --workflow-name
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax
+  - --output-dir
+  - /home/rutuja.pilgar/gw152/output/results/4._single_triggers/4.10_L1_loudest_noncoinc_time
+  - --dax-file-directory
+  - .
+  uses:
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: L1FULL_DATA_noncoincsingles_minifollowup.ini
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax.map
+    forPlanning: true
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: singles_minifollowup
+    selector:
+      execution.site: condorpool_symlink
+- type: pegasusWorkflow
+  file: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax
+  id: ID0000046
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=L1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax.map
+  - --basename
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax
+    forPlanning: true
+    type: input
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_NONCOINC-1126257636-2048.dax.map
+    forPlanning: true
+    type: input
+- type: job
+  name: singles_minifollowup_ID40
+  id: ID0000047
+  arguments:
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --config-files
+  - L1FULL_DATA_allsingles_minifollowup.ini
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --single-detector-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --inspiral-segments
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --inspiral-data-read-name
+  - DATA_ANALYSED
+  - --inspiral-data-analyzed-name
+  - TRIGGERS_GENERATED
+  - --instrument
+  - L1
+  - --foreground-censor-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --foreground-segment-name
+  - closed_box
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --tags
+  - FULL_DATA
+  - all
+  - --dax-file
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax
+  - --output-map
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax.map
+  - --workflow-name
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax
+  - --output-dir
+  - /home/rutuja.pilgar/gw152/output/results/4._single_triggers/4.11_L1_all
+  - --dax-file-directory
+  - .
+  uses:
+  - lfn: L1FULL_DATA_allsingles_minifollowup.ini
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax.map
+    forPlanning: true
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: singles_minifollowup
+    selector:
+      execution.site: condorpool_symlink
+- type: pegasusWorkflow
+  file: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax
+  id: ID0000048
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=L1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax.map
+  - --basename
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax.map
+    forPlanning: true
+    type: input
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_ALL-1126257636-2048.dax
+    forPlanning: true
+    type: input
+- type: job
+  name: singles_minifollowup_ID40
+  id: ID0000049
+  arguments:
+  - '--statistic-files statHL.hdf '
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --vetoed-time-only
+  - ''
+  - --ranking-statistic
+  - phasetd_exp_fit_fgbg_norm
+  - --config-files
+  - L1FULL_DATA_vetoedsingles_minifollowup.ini
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --single-detector-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --inspiral-segments
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --inspiral-data-read-name
+  - DATA_ANALYSED
+  - --inspiral-data-analyzed-name
+  - TRIGGERS_GENERATED
+  - --instrument
+  - L1
+  - --foreground-censor-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --foreground-segment-name
+  - closed_box
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --tags
+  - FULL_DATA
+  - vetoed
+  - --dax-file
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax
+  - --output-map
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax.map
+  - --workflow-name
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax
+  - --output-dir
+  - /home/rutuja.pilgar/gw152/output/results/4._single_triggers/4.12_L1_loudest_within_vetoes
+  - --dax-file-directory
+  - .
+  uses:
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1FULL_DATA_vetoedsingles_minifollowup.ini
+    type: input
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: statHL.hdf
+    type: input
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax.map
+    forPlanning: true
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: singles_minifollowup
+    selector:
+      execution.site: condorpool_symlink
+- type: pegasusWorkflow
+  file: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax
+  id: ID0000050
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=L1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax.map
+  - --basename
+  - L1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax.map
+    forPlanning: true
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-SINGLES_MINIFOLLOWUP_FULL_DATA_VETOED-1126257636-2048.dax
+    forPlanning: true
+    type: input
+- type: job
+  name: page_ifar_catalog_ID46
+  id: ID0000051
+  arguments:
+  - --trigger-file
+  - H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PAGE_IFAR_CATALOG_FULL_DATA_OPEN_BOX-1126257636-2048.png
+  uses:
+  - lfn: H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PAGE_IFAR_CATALOG_FULL_DATA_OPEN_BOX-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_ifar_catalog
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_foreground_ID47
+  id: ID0000052
+  arguments:
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-file
+  - H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+  - --single-detector-triggers
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PAGE_FOREGROUND_FULL_DATA-1126257636-2048.html
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PAGE_FOREGROUND_FULL_DATA-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_foreground
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_foreground_ID47
+  id: ID0000053
+  arguments:
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-file
+  - H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+  - --single-detector-triggers
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PAGE_FOREGROUND_XMLALL-1126257636-2048.xml
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PAGE_FOREGROUND_XMLALL-1126257636-2048.xml
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_foreground
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_foreground_ID47
+  id: ID0000054
+  arguments:
+  - --num-to-write
+  - '2'
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-file
+  - H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+  - --single-detector-triggers
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PAGE_FOREGROUND_XMLLOUDEST-1126257636-2048.xml
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PAGE_FOREGROUND_XMLLOUDEST-1126257636-2048.xml
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_foreground
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: foreground_minifollowup_ID50
+  id: ID0000055
+  arguments:
+  - '--single-detector-triggers H1:H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    L1:L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf '
+  - --analysis-category
+  - foreground
+  - --config-files
+  - FULL_DATA_foregroundforeground_minifollowup.ini
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --statmap-file
+  - H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+  - --inspiral-segments
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --inspiral-data-read-name
+  - DATA_ANALYSED
+  - --inspiral-data-analyzed-name
+  - TRIGGERS_GENERATED
+  - --tags
+  - FULL_DATA
+  - foreground
+  - --dax-file
+  - H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_FOREGROUND-1126257636-2048.dax
+  - --output-map
+  - H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_FOREGROUND-1126257636-2048.dax.map
+  - --workflow-name
+  - H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_FOREGROUND-1126257636-2048.dax
+  - --output-dir
+  - /home/rutuja.pilgar/gw152/output/results/8._open_box_result/8.02_loudest_events_followup
+  - --dax-file-directory
+  - .
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: FULL_DATA_foregroundforeground_minifollowup.ini
+    type: input
+  - lfn: H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_FOREGROUND-1126257636-2048.dax.map
+    forPlanning: true
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_FOREGROUND-1126257636-2048.dax
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: foreground_minifollowup
+    selector:
+      execution.site: condorpool_symlink
+- type: pegasusWorkflow
+  file: H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_FOREGROUND-1126257636-2048.dax
+  id: ID0000056
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_FOREGROUND-1126257636-2048.dax.map
+  - --basename
+  - H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_FOREGROUND-1126257636-2048
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_FOREGROUND-1126257636-2048.dax.map
+    forPlanning: true
+    type: input
+  - lfn: H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_FOREGROUND-1126257636-2048.dax
+    forPlanning: true
+    type: input
+- type: job
+  name: foreground_minifollowup_ID50
+  id: ID0000057
+  arguments:
+  - '--single-detector-triggers H1:H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    L1:L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf '
+  - --analysis-category
+  - background_exc
+  - --sort-variable
+  - stat
+  - --config-files
+  - FULL_DATA_backgroundforeground_minifollowup.ini
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --statmap-file
+  - H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+  - --inspiral-segments
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --inspiral-data-read-name
+  - DATA_ANALYSED
+  - --inspiral-data-analyzed-name
+  - TRIGGERS_GENERATED
+  - --tags
+  - FULL_DATA
+  - background
+  - --dax-file
+  - H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_BACKGROUND-1126257636-2048.dax
+  - --output-map
+  - H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_BACKGROUND-1126257636-2048.dax.map
+  - --workflow-name
+  - H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_BACKGROUND-1126257636-2048.dax
+  - --output-dir
+  - /home/rutuja.pilgar/gw152/output/results/5._background_triggers/5.01_loudest_background_followup
+  - --dax-file-directory
+  - .
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: FULL_DATA_backgroundforeground_minifollowup.ini
+    type: input
+  - lfn: H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_BACKGROUND-1126257636-2048.dax
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_BACKGROUND-1126257636-2048.dax.map
+    forPlanning: true
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: foreground_minifollowup
+    selector:
+      execution.site: condorpool_symlink
+- type: pegasusWorkflow
+  file: H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_BACKGROUND-1126257636-2048.dax
+  id: ID0000058
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_BACKGROUND-1126257636-2048.dax.map
+  - --basename
+  - H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_BACKGROUND-1126257636-2048
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COMBINE_STATMAP_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_BACKGROUND-1126257636-2048.dax
+    forPlanning: true
+    type: input
+  - lfn: H1L1-FOREGROUND_MINIFOLLOWUP_FULL_DATA_BACKGROUND-1126257636-2048.dax.map
+    forPlanning: true
+    type: input
+- type: job
+  name: plot_snrifar_ID52
+  id: ID0000059
+  arguments:
+  - --trigger-file
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_SNRIFAR_FULL_DATA_2DET-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_SNRIFAR_FULL_DATA_2DET-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_snrifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrifar_ID52
+  id: ID0000060
+  arguments:
+  - --trigger-file
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - --closed-box
+  - --output-file
+  - H1L1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_snrifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrratehist_ID54
+  id: ID0000061
+  arguments:
+  - --trigger-file
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_SNRRATEHIST_FULL_DATA_2DET-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_SNRRATEHIST_FULL_DATA_2DET-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_snrratehist
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrifar_ID52
+  id: ID0000062
+  arguments:
+  - --trigger-file
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - --not-cumulative
+  - --output-file
+  - H1L1-PLOT_SNRIFAR_FULL_DATA_2DET_IFAR-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_SNRIFAR_FULL_DATA_2DET_IFAR-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_snrifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_ifar_ID56
+  id: ID0000063
+  arguments:
+  - --decimation-factor
+  - '100'
+  - --open-box
+  - ''
+  - --trigger-file
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PAGE_IFAR_FULL_DATA_2DET_OPEN_BOX-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PAGE_IFAR_FULL_DATA_2DET_OPEN_BOX-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: page_ifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_ifar_ID56
+  id: ID0000064
+  arguments:
+  - --decimation-factor
+  - '100'
+  - --trigger-file
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: page_ifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_foreground_ID47
+  id: ID0000065
+  arguments:
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-file
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - --single-detector-triggers
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PAGE_FOREGROUND_FULL_DATA_2DET-1126257636-2048.html
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PAGE_FOREGROUND_FULL_DATA_2DET-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_foreground
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrifar_ID52
+  id: ID0000066
+  arguments:
+  - --trigger-file
+  - L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --output-file
+  - L1-PLOT_SNRIFAR_FULL_DATA_1DET-1126257636-2048.png
+  uses:
+  - lfn: L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: L1-PLOT_SNRIFAR_FULL_DATA_1DET-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_snrifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrifar_ID52
+  id: ID0000067
+  arguments:
+  - --trigger-file
+  - L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --closed-box
+  - --output-file
+  - L1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1126257636-2048.png
+  uses:
+  - lfn: L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: L1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_snrifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrratehist_ID54
+  id: ID0000068
+  arguments:
+  - --trigger-file
+  - L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --output-file
+  - L1-PLOT_SNRRATEHIST_FULL_DATA_1DET-1126257636-2048.png
+  uses:
+  - lfn: L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: L1-PLOT_SNRRATEHIST_FULL_DATA_1DET-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_snrratehist
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrifar_ID52
+  id: ID0000069
+  arguments:
+  - --trigger-file
+  - L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --not-cumulative
+  - --output-file
+  - L1-PLOT_SNRIFAR_FULL_DATA_1DET_IFAR-1126257636-2048.png
+  uses:
+  - lfn: L1-PLOT_SNRIFAR_FULL_DATA_1DET_IFAR-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_snrifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_ifar_ID56
+  id: ID0000070
+  arguments:
+  - --decimation-factor
+  - '100'
+  - --open-box
+  - ''
+  - --trigger-file
+  - L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --output-file
+  - L1-PAGE_IFAR_FULL_DATA_1DET_OPEN_BOX-1126257636-2048.png
+  uses:
+  - lfn: L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: L1-PAGE_IFAR_FULL_DATA_1DET_OPEN_BOX-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_ifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_foreground_ID47
+  id: ID0000071
+  arguments:
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-file
+  - L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --single-detector-triggers
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - L1-PAGE_FOREGROUND_FULL_DATA_1DET-1126257636-2048.html
+  uses:
+  - lfn: L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: L1-PAGE_FOREGROUND_FULL_DATA_1DET-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_foreground
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrifar_ID52
+  id: ID0000072
+  arguments:
+  - --trigger-file
+  - H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --output-file
+  - H1-PLOT_SNRIFAR_FULL_DATA_1DET-1126257636-2048.png
+  uses:
+  - lfn: H1-PLOT_SNRIFAR_FULL_DATA_1DET-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_snrifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrifar_ID52
+  id: ID0000073
+  arguments:
+  - --trigger-file
+  - H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --closed-box
+  - --output-file
+  - H1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1126257636-2048.png
+  uses:
+  - lfn: H1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_snrifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrratehist_ID54
+  id: ID0000074
+  arguments:
+  - --trigger-file
+  - H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --output-file
+  - H1-PLOT_SNRRATEHIST_FULL_DATA_1DET-1126257636-2048.png
+  uses:
+  - lfn: H1-PLOT_SNRRATEHIST_FULL_DATA_1DET-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_snrratehist
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_snrifar_ID52
+  id: ID0000075
+  arguments:
+  - --trigger-file
+  - H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --not-cumulative
+  - --output-file
+  - H1-PLOT_SNRIFAR_FULL_DATA_1DET_IFAR-1126257636-2048.png
+  uses:
+  - lfn: H1-PLOT_SNRIFAR_FULL_DATA_1DET_IFAR-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_snrifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_ifar_ID56
+  id: ID0000076
+  arguments:
+  - --decimation-factor
+  - '100'
+  - --open-box
+  - ''
+  - --trigger-file
+  - H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --output-file
+  - H1-PAGE_IFAR_FULL_DATA_1DET_OPEN_BOX-1126257636-2048.png
+  uses:
+  - lfn: H1-PAGE_IFAR_FULL_DATA_1DET_OPEN_BOX-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: page_ifar
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_foreground_ID47
+  id: ID0000077
+  arguments:
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-file
+  - H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --single-detector-triggers
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1-PAGE_FOREGROUND_FULL_DATA_1DET-1126257636-2048.html
+  uses:
+  - lfn: H1-PAGE_FOREGROUND_FULL_DATA_1DET-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: page_foreground
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: splitbank_ID1
+  id: ID0000078
+  arguments:
+  - --random-sort
+  - ''
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --output-filenames
+  - H1L1-BANK2HDF_SPLITBANK_BANK0_INJECTIONS-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-BANK2HDF_SPLITBANK_BANK0_INJECTIONS-1126257636-2048.hdf
+    type: output
+    stageOut: false
+    registerReplica: true
+  profiles:
+    dagman:
+      category: splitbank
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: injections_ID72
+  id: ID0000079
+  arguments:
+  - --i-distr
+  - uniform
+  - --l-distr
+  - random
+  - --time-interval
+  - '25'
+  - --time-step
+  - '50'
+  - --dchirp-distr
+  - uniform
+  - --min-distance
+  - '1000'
+  - --max-distance
+  - '100000'
+  - --m-distr
+  - log
+  - --min-mass1
+  - '15'
+  - --max-mass1
+  - '40'
+  - --min-mass2
+  - '15'
+  - --max-mass2
+  - '40'
+  - --min-mtotal
+  - '30'
+  - --max-mtotal
+  - '80'
+  - --waveform
+  - IMRPhenomD
+  - --taper-injection
+  - start
+  - --seed
+  - '123407'
+  - --f-lower
+  - '25'
+  - --disable-spin
+  - ''
+  - --output
+  - HL-INJECTIONS_BBH-1126257636-2048.xml
+  - --gps-start-time
+  - '1126257636'
+  - --gps-end-time
+  - '1126259684'
+  uses:
+  - lfn: HL-INJECTIONS_BBH-1126257636-2048.xml
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: injections
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: inj2hdf_ID73
+  id: ID0000080
+  arguments:
+  - --injection-file
+  - HL-INJECTIONS_BBH-1126257636-2048.xml
+  - --output-file
+  - H1L1-INJ2HDF_BBH-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-INJ2HDF_BBH-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: HL-INJECTIONS_BBH-1126257636-2048.xml
+    type: input
+  profiles:
+    dagman:
+      category: inj2hdf
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: optimal_snr_ID74
+  id: ID0000081
+  arguments:
+  - --snr-columns
+  - H1:optimal_snr_H1 L1:optimal_snr_L1
+  - --f-low
+  - '20'
+  - --seg-length
+  - '512'
+  - --sample-rate
+  - '2048'
+  - --cores
+  - '1'
+  - --input-file
+  - H1L1-INJ2HDF_BBH-1126257636-2048.hdf
+  - --injection-fraction-range
+  - 0/2
+  - --time-varying-psds
+  - --output-file
+  - H1L1-OPTIMAL_SNR_BBH_INJECTIONS_0-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-INJ2HDF_BBH-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-OPTIMAL_SNR_BBH_INJECTIONS_0-1126257636-2048.hdf
+    type: output
+    stageOut: false
+    registerReplica: true
+  profiles:
+    dagman:
+      category: optimal_snr
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: optimal_snr_ID74
+  id: ID0000082
+  arguments:
+  - --snr-columns
+  - H1:optimal_snr_H1 L1:optimal_snr_L1
+  - --f-low
+  - '20'
+  - --seg-length
+  - '512'
+  - --sample-rate
+  - '2048'
+  - --cores
+  - '1'
+  - --input-file
+  - H1L1-INJ2HDF_BBH-1126257636-2048.hdf
+  - --injection-fraction-range
+  - 1/2
+  - --time-varying-psds
+  - --output-file
+  - H1L1-OPTIMAL_SNR_BBH_INJECTIONS_1-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-INJ2HDF_BBH-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-OPTIMAL_SNR_BBH_INJECTIONS_1-1126257636-2048.hdf
+    type: output
+    stageOut: false
+    registerReplica: true
+  profiles:
+    dagman:
+      category: optimal_snr
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: optimal_snr_merge_ID76
+  id: ID0000083
+  arguments:
+  - --injection-files
+  - H1L1-OPTIMAL_SNR_BBH_INJECTIONS_0-1126257636-2048.hdf
+  - H1L1-OPTIMAL_SNR_BBH_INJECTIONS_1-1126257636-2048.hdf
+  - --output-file
+  - H1L1-OPTIMAL_SNR_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-OPTIMAL_SNR_BBH_INJECTIONS_0-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-OPTIMAL_SNR_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-OPTIMAL_SNR_BBH_INJECTIONS_1-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: optimal_snr_merge
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: hdf_trigger_merge_ID5
+  id: ID0000084
+  arguments:
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-files
+  - --output-file
+  - H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: hdf_trigger_merge
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: hdf_trigger_merge_ID5
+  id: ID0000085
+  arguments:
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-files
+  - --output-file
+  - L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: hdf_trigger_merge
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: coinc_ID11
+  id: ID0000086
+  arguments:
+  - '--statistic-files statHL.hdf '
+  - --ranking-statistic
+  - phasetd_exp_fit_fgbg_norm
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --randomize-template-order
+  - ''
+  - --template-bank
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-files
+  - L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  - H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --veto-files
+  - H1L1-VETOES-1126257636-2048.xml
+  - --segment-name
+  - vetoes
+  - --pivot-ifo
+  - H1
+  - --fixed-ifo
+  - L1
+  - --template-fraction-range
+  - 0/1
+  - --output-file
+  - H1L1-COINC_BBH_INJECTIONS_2DET_INJINJ_JOB0-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: statHL.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COINC_BBH_INJECTIONS_2DET_INJINJ_JOB0-1126257636-2048.hdf
+    type: output
+    stageOut: false
+    registerReplica: true
+  - lfn: L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: coinc
+    selector:
+      execution.site: condorpool_copy
+- type: job
+  name: statmap_inj_ID82
+  id: ID0000087
+  arguments:
+  - --veto-window
+  - '0.100'
+  - --cluster-window
+  - '10.0'
+  - --zero-lag-coincs
+  - H1L1-COINC_BBH_INJECTIONS_2DET_INJINJ_JOB0-1126257636-2048.hdf
+  - --full-data-background
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - --ifos
+  - L1 H1
+  - --output-file
+  - H1L1-STATMAP_INJ_BBH_INJECTIONS_2DET_VETOES-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-STATMAP_INJ_BBH_INJECTIONS_2DET_VETOES-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COINC_BBH_INJECTIONS_2DET_INJINJ_JOB0-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: statmap_inj
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: sngls_ID13
+  id: ID0000088
+  arguments:
+  - '--statistic-files statHL.hdf '
+  - --trigger-cuts
+  - newsnr:5.5:lower traditional_chisq:12:upper sigma_multiple:10:upper
+  - --ranking-statistic
+  - phasetd_exp_fit_fgbg_norm
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --randomize-template-order
+  - ''
+  - --template-bank
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-files
+  - L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --veto-files
+  - H1L1-VETOES-1126257636-2048.xml
+  - --segment-name
+  - vetoes
+  - --template-fraction-range
+  - 0/1
+  - --output-file
+  - L1-SNGLS_BBH_INJECTIONS_1DET_JOB0-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: statHL.hdf
+    type: input
+  - lfn: L1-SNGLS_BBH_INJECTIONS_1DET_JOB0-1126257636-2048.hdf
+    type: output
+    stageOut: false
+    registerReplica: true
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    type: input
+  profiles:
+    dagman:
+      category: sngls
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: sngls_statmap_inj_ID84
+  id: ID0000089
+  arguments:
+  - --veto-window
+  - '0.100'
+  - --cluster-window
+  - '10.0'
+  - --far-calculation-method
+  - H1:trigger_fit L1:trigger_fit
+  - --fit-function
+  - H1:exponential L1:exponential
+  - --fit-threshold
+  - H1:-10 L1:-8
+  - --sngls-files
+  - L1-SNGLS_BBH_INJECTIONS_1DET_JOB0-1126257636-2048.hdf
+  - --full-data-background
+  - L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --ifos
+  - L1
+  - --output-file
+  - L1-SNGLS_STATMAP_INJ_BBH_INJECTIONS_1DET-1126257636-2048.hdf
+  uses:
+  - lfn: L1-SNGLS_BBH_INJECTIONS_1DET_JOB0-1126257636-2048.hdf
+    type: input
+  - lfn: L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: L1-SNGLS_STATMAP_INJ_BBH_INJECTIONS_1DET-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: sngls_statmap_inj
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: sngls_ID13
+  id: ID0000090
+  arguments:
+  - '--statistic-files statHL.hdf '
+  - --trigger-cuts
+  - newsnr:5.5:lower traditional_chisq:12:upper sigma_multiple:10:upper
+  - --ranking-statistic
+  - phasetd_exp_fit_fgbg_norm
+  - --sngl-ranking
+  - newsnr_sgveto_psdvar
+  - --randomize-template-order
+  - ''
+  - --template-bank
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --trigger-files
+  - H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  - --statistic-files
+  - H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+  - --veto-files
+  - H1L1-VETOES-1126257636-2048.xml
+  - --segment-name
+  - vetoes
+  - --template-fraction-range
+  - 0/1
+  - --output-file
+  - H1-SNGLS_BBH_INJECTIONS_1DET_JOB0-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: statHL.hdf
+    type: input
+  - lfn: L1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-FIT_OVER_PARAM_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SNGLS_BBH_INJECTIONS_1DET_JOB0-1126257636-2048.hdf
+    type: output
+    stageOut: false
+    registerReplica: true
+  - lfn: H1L1-VETOES-1126257636-2048.xml
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: sngls
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: sngls_statmap_inj_ID84
+  id: ID0000091
+  arguments:
+  - --veto-window
+  - '0.100'
+  - --cluster-window
+  - '10.0'
+  - --far-calculation-method
+  - H1:trigger_fit L1:trigger_fit
+  - --fit-function
+  - H1:exponential L1:exponential
+  - --fit-threshold
+  - H1:-10 L1:-8
+  - --sngls-files
+  - H1-SNGLS_BBH_INJECTIONS_1DET_JOB0-1126257636-2048.hdf
+  - --full-data-background
+  - H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - --ifos
+  - H1
+  - --output-file
+  - H1-SNGLS_STATMAP_INJ_BBH_INJECTIONS_1DET-1126257636-2048.hdf
+  uses:
+  - lfn: H1-SNGLS_BBH_INJECTIONS_1DET_JOB0-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SNGLS_STATMAP_INJ_BBH_INJECTIONS_1DET-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: sngls_statmap_inj
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: combine_statmap_ID20
+  id: ID0000092
+  arguments:
+  - --cluster-window
+  - '10.0'
+  - --statmap-files
+  - H1L1-STATMAP_INJ_BBH_INJECTIONS_2DET_VETOES-1126257636-2048.hdf
+  - L1-SNGLS_STATMAP_INJ_BBH_INJECTIONS_1DET-1126257636-2048.hdf
+  - H1-SNGLS_STATMAP_INJ_BBH_INJECTIONS_1DET-1126257636-2048.hdf
+  - --output-file
+  - H1L1-COMBINE_STATMAP_BBH_INJECTIONS-1126257636-2048.hdf
+  - --background-files
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  - H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+  uses:
+  - lfn: L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1-SNGLS_STATMAP_INJ_BBH_INJECTIONS_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-STATMAP_INJ_BBH_INJECTIONS_2DET_VETOES-1126257636-2048.hdf
+    type: input
+  - lfn: H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: L1-SNGLS_STATMAP_INJ_BBH_INJECTIONS_1DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COMBINE_STATMAP_BBH_INJECTIONS-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: combine_statmap
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: hdfinjfind_ID88
+  id: ID0000093
+  arguments:
+  - --injection-window
+  - '2.0'
+  - --optimal-snr-column
+  - H1:optimal_snr_H1 L1:optimal_snr_L1
+  - --trigger-file
+  - H1L1-COMBINE_STATMAP_BBH_INJECTIONS-1126257636-2048.hdf
+  - --injection-file
+  - H1L1-OPTIMAL_SNR_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --segment-name
+  - closed_box
+  - --output-file
+  - H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-OPTIMAL_SNR_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COMBINE_STATMAP_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: hdfinjfind
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: hdfinjfind_ID88
+  id: ID0000094
+  arguments:
+  - --injection-window
+  - '2.0'
+  - --optimal-snr-column
+  - H1:optimal_snr_H1 L1:optimal_snr_L1
+  - --trigger-file
+  - H1L1-COMBINE_STATMAP_BBH_INJECTIONS-1126257636-2048.hdf
+  - --injection-file
+  - H1L1-OPTIMAL_SNR_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  - --veto-file
+  - H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+  - --segment-name
+  - closed_box
+  - --output-file
+  - H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+  uses:
+  - lfn: H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-FOREGROUND_CENSOR-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-OPTIMAL_SNR_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-COMBINE_STATMAP_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: hdfinjfind
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_foundmissed_ID90
+  id: ID0000095
+  arguments:
+  - --far-type
+  - exclusive
+  - --distance-type
+  - comb_optimal_snr
+  - --axis-type
+  - mchirp
+  - --log-x
+  - ''
+  - --log-distance
+  - ''
+  - --gradient-far
+  - ''
+  - --injection-file
+  - H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_FOUNDMISSED_SUB_MCHIRP_GRAD_BBH-1126257636-2048.png
+  uses:
+  - lfn: H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PLOT_FOUNDMISSED_SUB_MCHIRP_GRAD_BBH-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_foundmissed
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_foundmissed_ID90
+  id: ID0000096
+  arguments:
+  - --far-type
+  - exclusive
+  - --axis-type
+  - mchirp
+  - --log-x
+  - ''
+  - --log-distance
+  - ''
+  - --gradient-far
+  - ''
+  - --missed-on-top
+  - ''
+  - --injection-file
+  - H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_FOUNDMISSED_SUB_MCHIRP_GRADM_BBH-1126257636-2048.png
+  uses:
+  - lfn: H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PLOT_FOUNDMISSED_SUB_MCHIRP_GRADM_BBH-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_foundmissed
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_injections_ID92
+  id: ID0000097
+  arguments:
+  - '--single-trigger-files H1:H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    L1:L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf '
+  - --injection-file
+  - H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PAGE_INJECTIONS_BBH_FOUND-1126257636-2048.html
+  uses:
+  - lfn: H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PAGE_INJECTIONS_BBH_FOUND-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: page_injections
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_injections_ID92
+  id: ID0000098
+  arguments:
+  - --injection-file
+  - H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+  - --show-missed
+  - --output-file
+  - H1L1-PAGE_INJECTIONS_BBH_MISSED-1126257636-2048.html
+  uses:
+  - lfn: H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PAGE_INJECTIONS_BBH_MISSED-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_injections
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_coinc_snrchi_ID94
+  id: ID0000099
+  arguments:
+  - --newsnr-contours
+  - 5 7 9 11 13
+  - --found-injection-file
+  - H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+  - --single-injection-file
+  - L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  - --coinc-statistic-file
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - --single-trigger-file
+  - L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - L1-PLOT_COINC_SNRCHI_INJ_BBH_H1L1-1126257636-2048.png
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: L1-PLOT_COINC_SNRCHI_INJ_BBH_H1L1-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_coinc_snrchi
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_coinc_snrchi_ID94
+  id: ID0000100
+  arguments:
+  - --newsnr-contours
+  - 5 7 9 11 13
+  - --found-injection-file
+  - H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+  - --single-injection-file
+  - H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  - --coinc-statistic-file
+  - H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+  - --single-trigger-file
+  - H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+  - --output-file
+  - H1-PLOT_COINC_SNRCHI_INJ_BBH_H1L1-1126257636-2048.png
+  uses:
+  - lfn: H1-PLOT_COINC_SNRCHI_INJ_BBH_H1L1-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-HDF_TRIGGER_MERGE_FULL_DATA-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1126257636-2048.hdf
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_coinc_snrchi
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: injection_minifollowup_ID96
+  id: ID0000101
+  arguments:
+  - '--single-detector-triggers H1:H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    L1:L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf '
+  - --ifar-threshold
+  - '1'
+  - --distance-type
+  - comb_optimal_snr
+  - --config-files
+  - BBHinjection_minifollowup.ini
+  - --bank-file
+  - H1L1-BANK2HDF-1126257636-2048.hdf
+  - --injection-file
+  - H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+  - --injection-xml-file
+  - H1L1-INJ2HDF_BBH-1126257636-2048.hdf
+  - --inspiral-segments
+  - -INSP_SEGMENTS-1126257636-2048.xml
+  - --inspiral-data-read-name
+  - DATA_ANALYSED
+  - --inspiral-data-analyzed-name
+  - TRIGGERS_GENERATED
+  - --tags
+  - BBH
+  - --dax-file
+  - H1L1-INJECTION_MINIFOLLOWUP_BBH-1126257636-2048.dax
+  - --output-map
+  - H1L1-INJECTION_MINIFOLLOWUP_BBH-1126257636-2048.dax.map
+  - --workflow-name
+  - H1L1-INJECTION_MINIFOLLOWUP_BBH-1126257636-2048.dax
+  - --output-dir
+  - /home/rutuja.pilgar/gw152/output/results/6._injections/6.02_followup_of_BBH_with_ifar_lt_1_year
+  - --dax-file-directory
+  - .
+  uses:
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-INJECTION_MINIFOLLOWUP_BBH-1126257636-2048.dax
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-INJECTION_MINIFOLLOWUP_BBH-1126257636-2048.dax.map
+    forPlanning: true
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-INJ2HDF_BBH-1126257636-2048.hdf
+    type: input
+  - lfn: BBHinjection_minifollowup.ini
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: injection_minifollowup
+    selector:
+      execution.site: condorpool_symlink
+- type: pegasusWorkflow
+  file: H1L1-INJECTION_MINIFOLLOWUP_BBH-1126257636-2048.dax
+  id: ID0000102
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=H1L1-INJECTION_MINIFOLLOWUP_BBH-1126257636-2048.dax.map
+  - --basename
+  - H1L1-INJECTION_MINIFOLLOWUP_BBH-1126257636-2048
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: -INSP_SEGMENTS-1126257636-2048.xml
+    type: input
+  - lfn: H1L1-INJECTION_MINIFOLLOWUP_BBH-1126257636-2048.dax
+    forPlanning: true
+    type: input
+  - lfn: H1L1-BANK2HDF-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-HDFINJFIND_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-INJ2HDF_BBH-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-INJECTION_MINIFOLLOWUP_BBH-1126257636-2048.dax.map
+    forPlanning: true
+    type: input
+  - lfn: H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+- type: job
+  name: plot_throughput_ID39
+  id: ID0000103
+  arguments:
+  - --input-file
+  - H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  - L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_THROUGHPUT_BBH-1126257636-2048.png
+  uses:
+  - lfn: L1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PLOT_THROUGHPUT_BBH-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1-HDF_TRIGGER_MERGE_BBH_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_throughput
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_sensitivity_ID98
+  id: ID0000104
+  arguments:
+  - --dist-bins
+  - '50'
+  - --exclusive-sig
+  - ''
+  - --integration-method
+  - pylal
+  - --bin-type
+  - mchirp
+  - --bins
+  - 10 20 100
+  - --sig-type
+  - ifar
+  - --injection-file
+  - H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_SENSITIVITY_ALL_MCHIRP-1126257636-2048.png
+  uses:
+  - lfn: H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+    type: input
+  - lfn: H1L1-PLOT_SENSITIVITY_ALL_MCHIRP-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: plot_sensitivity
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_sensitivity_ID98
+  id: ID0000105
+  arguments:
+  - --dist-bins
+  - '50'
+  - --exclusive-sig
+  - ''
+  - --integration-method
+  - pylal
+  - --bin-type
+  - mchirp
+  - --bins
+  - 10 20 100
+  - --dist-type
+  - vt
+  - --sig-type
+  - ifar
+  - --log-dist
+  - ''
+  - --injection-file
+  - H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_SENSITIVITY_ALL_MCHIRPVT-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_SENSITIVITY_ALL_MCHIRPVT-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_sensitivity
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_foundmissed_ID90
+  id: ID0000106
+  arguments:
+  - --far-type
+  - exclusive
+  - --distance-type
+  - comb_optimal_snr
+  - --axis-type
+  - mchirp
+  - --log-x
+  - ''
+  - --log-distance
+  - ''
+  - --gradient-far
+  - ''
+  - --injection-file
+  - H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_FOUNDMISSED_ALL_MCHIRP_GRAD-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_FOUNDMISSED_ALL_MCHIRP_GRAD-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_foundmissed
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_foundmissed_ID90
+  id: ID0000107
+  arguments:
+  - --far-type
+  - exclusive
+  - --axis-type
+  - mchirp
+  - --log-x
+  - ''
+  - --log-distance
+  - ''
+  - --gradient-far
+  - ''
+  - --missed-on-top
+  - ''
+  - --injection-file
+  - H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_FOUNDMISSED_ALL_MCHIRP_GRADM-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_FOUNDMISSED_ALL_MCHIRP_GRADM-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_foundmissed
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_sensitivity_ID98
+  id: ID0000108
+  arguments:
+  - --dist-bins
+  - '50'
+  - --exclusive-sig
+  - ''
+  - --integration-method
+  - pylal
+  - --bin-type
+  - mchirp
+  - --bins
+  - 10 20 100
+  - --sig-type
+  - ifar
+  - --injection-file
+  - H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_SENSITIVITY_SUMMARY_MCHIRP-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_SENSITIVITY_SUMMARY_MCHIRP-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_sensitivity
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_sensitivity_ID98
+  id: ID0000109
+  arguments:
+  - --dist-bins
+  - '50'
+  - --exclusive-sig
+  - ''
+  - --integration-method
+  - pylal
+  - --bin-type
+  - mchirp
+  - --bins
+  - 10 20 100
+  - --dist-type
+  - vt
+  - --sig-type
+  - ifar
+  - --log-dist
+  - ''
+  - --injection-file
+  - H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_SENSITIVITY_SUMMARY_MCHIRPVT-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_SENSITIVITY_SUMMARY_MCHIRPVT-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_sensitivity
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_foundmissed_ID90
+  id: ID0000110
+  arguments:
+  - --far-type
+  - exclusive
+  - --distance-type
+  - comb_optimal_snr
+  - --axis-type
+  - mchirp
+  - --log-x
+  - ''
+  - --log-distance
+  - ''
+  - --gradient-far
+  - ''
+  - --injection-file
+  - H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_FOUNDMISSED_SUMMARY-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_FOUNDMISSED_SUMMARY-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_foundmissed
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: plot_foundmissed_ID90
+  id: ID0000111
+  arguments:
+  - --far-type
+  - exclusive
+  - --axis-type
+  - mchirp
+  - --log-x
+  - ''
+  - --log-distance
+  - ''
+  - --gradient-far
+  - ''
+  - --missed-on-top
+  - ''
+  - --injection-file
+  - H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+  - --output-file
+  - H1L1-PLOT_FOUNDMISSED_SUMMARYM-1126257636-2048.png
+  uses:
+  - lfn: H1L1-PLOT_FOUNDMISSED_SUMMARYM-1126257636-2048.png
+    type: output
+    stageOut: true
+    registerReplica: true
+  - lfn: H1L1-HDFINJFIND_ALL_INJECTIONS-1126257636-2048.hdf
+    type: input
+  profiles:
+    dagman:
+      category: plot_foundmissed
+      priority: 1000
+    selector:
+      execution.site: condorpool_symlink
+- type: job
+  name: page_versioning_ID106
+  id: ID0000112
+  arguments:
+  - --executables
+  - pycbc_average_psd
+  - pycbc_coinc_bank2hdf
+  - pycbc_calculate_psd
+  - pycbc_coinc_findtrigs
+  - pycbc_add_statmap
+  - pycbc_exclude_zerolag
+  - pycbc_fit_sngls_by_template
+  - pycbc_fit_sngls_over_multiparam
+  - pycbc_foreground_censor
+  - pycbc_coinc_hdfinjfind
+  - pycbc_coinc_mergetrigs
+  - pycbc_convertinjfiletohdf
+  - pycbc_inj_cut
+  - lalapps_inspinj
+  - pycbc_inspiral
+  - pycbc_merge_psds
+  - pycbc_optimal_snr
+  - pycbc_merge_inj_hdf
+  - pycbc_page_foreground
+  - pycbc_page_ifar
+  - pycbc_ifar_catalog
+  - pycbc_page_injtable
+  - pycbc_page_segplot
+  - pycbc_page_segtable
+  - pycbc_page_versioning
+  - pycbc_page_vetotable
+  - pycbc_plot_bank_bins
+  - pycbc_fit_sngls_split_binned
+  - pycbc_page_coinc_snrchi
+  - pycbc_page_foundmissed
+  - pycbc_plot_gating
+  - pycbc_plot_hist
+  - pycbc_plot_qscan
+  - pycbc_plot_range
+  - pycbc_page_segments
+  - pycbc_page_sensitivity
+  - pycbc_plot_singles_vs_params
+  - pycbc_page_snrchi
+  - pycbc_page_snrifar
+  - pycbc_plot_psd_file
+  - pycbc_plot_throughput
+  - pycbc_make_html_page
+  - pycbc_sngls_findtrigs
+  - pycbc_sngls_statmap
+  - pycbc_sngls_statmap_inj
+  - pycbc_hdf5_splitbank
+  - pycbc_coinc_statmap
+  - pycbc_coinc_statmap_inj
+  - pycbc_strip_injections
+  - pycbc_geom_nonspinbank
+  - pycbc_create_html_snippet
+  - pycbc_foreground_minifollowup
+  - pycbc_injection_minifollowup
+  - pycbc_sngl_minifollowup
+  - pycbc_page_injinfo
+  - pycbc_page_coincinfo
+  - pycbc_page_snglinfo
+  - pycbc_plot_trigger_timeseries
+  - pycbc_single_template_plot
+  - pycbc_single_template
+  - pycbc_plot_singles_timefreq
+  - pycbc_page_snrratehist
+  - pycbc_plot_waveform
+  - --executables-names
+  - average_psd
+  - bank2hdf
+  - calculate_psd
+  - coinc
+  - combine_statmap
+  - exclude_zerolag
+  - fit_by_template
+  - fit_over_param
+  - foreground_censor
+  - hdfinjfind
+  - hdf_trigger_merge
+  - inj2hdf
+  - inj_cut
+  - injections
+  - inspiral
+  - merge_psds
+  - optimal_snr
+  - optimal_snr_merge
+  - page_foreground
+  - page_ifar
+  - page_ifar_catalog
+  - page_injections
+  - page_segplot
+  - page_segtable
+  - page_versioning
+  - page_vetotable
+  - plot_bank
+  - plot_binnedhist
+  - plot_coinc_snrchi
+  - plot_foundmissed
+  - plot_gating
+  - plot_hist
+  - plot_qscan
+  - plot_range
+  - plot_segments
+  - plot_sensitivity
+  - plot_singles
+  - plot_snrchi
+  - plot_snrifar
+  - plot_spectrum
+  - plot_throughput
+  - results_page
+  - sngls
+  - sngls_statmap
+  - sngls_statmap_inj
+  - splitbank
+  - statmap
+  - statmap_inj
+  - strip_injections
+  - tmpltbank
+  - html_snippet
+  - foreground_minifollowup
+  - injection_minifollowup
+  - singles_minifollowup
+  - page_injinfo
+  - page_coincinfo
+  - page_snglinfo
+  - plot_trigger_timeseries
+  - single_template_plot
+  - single_template
+  - plot_singles_timefreq
+  - plot_snrratehist
+  - plot_waveform
+  - --output-file
+  - H1L1-PAGE_VERSIONING-1126257636-2048.html
+  uses:
+  - lfn: H1L1-PAGE_VERSIONING-1126257636-2048.html
+    type: output
+    stageOut: true
+    registerReplica: true
+  profiles:
+    dagman:
+      category: page_versioning
+    selector:
+      execution.site: condorpool_symlink
+jobDependencies:
+- id: ID0000001
+  children:
+  - ID0000009
+  - ID0000057
+  - ID0000040
+  - ID0000039
+  - ID0000084
+  - ID0000101
+  - ID0000042
+  - ID0000078
+  - ID0000090
+  - ID0000037
+  - ID0000014
+  - ID0000056
+  - ID0000077
+  - ID0000065
+  - ID0000088
+  - ID0000041
+  - ID0000046
+  - ID0000002
+  - ID0000034
+  - ID0000044
+  - ID0000058
+  - ID0000033
+  - ID0000050
+  - ID0000052
+  - ID0000030
+  - ID0000005
+  - ID0000012
+  - ID0000055
+  - ID0000071
+  - ID0000004
+  - ID0000003
+  - ID0000053
+  - ID0000047
+  - ID0000102
+  - ID0000086
+  - ID0000010
+  - ID0000006
+  - ID0000085
+  - ID0000054
+  - ID0000007
+  - ID0000008
+  - ID0000049
+  - ID0000048
+  - ID0000045
+  - ID0000043
+- id: ID0000004
+  children:
+  - ID0000057
+  - ID0000040
+  - ID0000039
+  - ID0000042
+  - ID0000100
+  - ID0000032
+  - ID0000014
+  - ID0000077
+  - ID0000056
+  - ID0000043
+  - ID0000065
+  - ID0000041
+  - ID0000044
+  - ID0000058
+  - ID0000033
+  - ID0000038
+  - ID0000052
+  - ID0000030
+  - ID0000028
+  - ID0000055
+  - ID0000071
+  - ID0000053
+  - ID0000010
+  - ID0000024
+  - ID0000006
+  - ID0000054
+  - ID0000031
+- id: ID0000005
+  children:
+  - ID0000057
+  - ID0000037
+  - ID0000077
+  - ID0000056
+  - ID0000065
+  - ID0000046
+  - ID0000034
+  - ID0000058
+  - ID0000050
+  - ID0000045
+  - ID0000038
+  - ID0000052
+  - ID0000012
+  - ID0000055
+  - ID0000035
+  - ID0000071
+  - ID0000053
+  - ID0000036
+  - ID0000047
+  - ID0000010
+  - ID0000024
+  - ID0000054
+  - ID0000029
+  - ID0000008
+  - ID0000049
+  - ID0000048
+  - ID0000099
+- id: ID0000006
+  children:
+  - ID0000007
+- id: ID0000007
+  children:
+  - ID0000040
+  - ID0000047
+  - ID0000039
+  - ID0000050
+  - ID0000086
+  - ID0000010
+  - ID0000045
+  - ID0000041
+  - ID0000042
+  - ID0000046
+  - ID0000012
+  - ID0000090
+  - ID0000014
+  - ID0000049
+  - ID0000044
+  - ID0000048
+  - ID0000088
+  - ID0000043
+- id: ID0000008
+  children:
+  - ID0000009
+- id: ID0000009
+  children:
+  - ID0000040
+  - ID0000047
+  - ID0000039
+  - ID0000050
+  - ID0000086
+  - ID0000010
+  - ID0000045
+  - ID0000041
+  - ID0000042
+  - ID0000046
+  - ID0000012
+  - ID0000090
+  - ID0000014
+  - ID0000049
+  - ID0000044
+  - ID0000048
+  - ID0000088
+  - ID0000043
+- id: ID0000010
+  children:
+  - ID0000011
+- id: ID0000011
+  children:
+  - ID0000018
+  - ID0000017
+  - ID0000016
+- id: ID0000012
+  children:
+  - ID0000013
+- id: ID0000013
+  children:
+  - ID0000018
+  - ID0000017
+  - ID0000016
+- id: ID0000014
+  children:
+  - ID0000015
+- id: ID0000015
+  children:
+  - ID0000018
+  - ID0000017
+  - ID0000016
+- id: ID0000016
+  children:
+  - ID0000064
+  - ID0000019
+  - ID0000087
+  - ID0000062
+  - ID0000059
+  - ID0000100
+  - ID0000061
+  - ID0000060
+  - ID0000063
+  - ID0000092
+  - ID0000065
+  - ID0000099
+- id: ID0000017
+  children:
+  - ID0000066
+  - ID0000067
+  - ID0000089
+  - ID0000068
+  - ID0000069
+  - ID0000019
+  - ID0000092
+  - ID0000070
+  - ID0000071
+- id: ID0000018
+  children:
+  - ID0000072
+  - ID0000019
+  - ID0000091
+  - ID0000073
+  - ID0000076
+  - ID0000092
+  - ID0000077
+  - ID0000075
+  - ID0000074
+- id: ID0000019
+  children:
+  - ID0000057
+  - ID0000054
+  - ID0000052
+  - ID0000020
+  - ID0000056
+  - ID0000055
+  - ID0000051
+  - ID0000058
+  - ID0000053
+- id: ID0000020
+  children:
+  - ID0000036
+  - ID0000039
+  - ID0000047
+  - ID0000033
+  - ID0000041
+  - ID0000094
+  - ID0000032
+  - ID0000029
+  - ID0000030
+  - ID0000093
+  - ID0000035
+  - ID0000031
+  - ID0000028
+  - ID0000049
+  - ID0000037
+  - ID0000034
+  - ID0000045
+  - ID0000043
+- id: ID0000039
+  children:
+  - ID0000040
+- id: ID0000041
+  children:
+  - ID0000042
+- id: ID0000043
+  children:
+  - ID0000044
+- id: ID0000045
+  children:
+  - ID0000046
+- id: ID0000047
+  children:
+  - ID0000048
+- id: ID0000049
+  children:
+  - ID0000050
+- id: ID0000055
+  children:
+  - ID0000056
+- id: ID0000057
+  children:
+  - ID0000058
+- id: ID0000079
+  children:
+  - ID0000080
+- id: ID0000080
+  children:
+  - ID0000101
+  - ID0000081
+  - ID0000102
+  - ID0000082
+- id: ID0000081
+  children:
+  - ID0000083
+- id: ID0000082
+  children:
+  - ID0000083
+- id: ID0000083
+  children:
+  - ID0000093
+  - ID0000094
+- id: ID0000084
+  children:
+  - ID0000102
+  - ID0000103
+  - ID0000086
+  - ID0000101
+  - ID0000100
+  - ID0000097
+  - ID0000090
+- id: ID0000085
+  children:
+  - ID0000102
+  - ID0000103
+  - ID0000086
+  - ID0000101
+  - ID0000097
+  - ID0000099
+  - ID0000088
+- id: ID0000086
+  children:
+  - ID0000087
+- id: ID0000087
+  children:
+  - ID0000092
+- id: ID0000088
+  children:
+  - ID0000089
+- id: ID0000089
+  children:
+  - ID0000092
+- id: ID0000090
+  children:
+  - ID0000091
+- id: ID0000091
+  children:
+  - ID0000092
+- id: ID0000092
+  children:
+  - ID0000093
+  - ID0000094
+- id: ID0000093
+  children:
+  - ID0000102
+  - ID0000101
+  - ID0000096
+  - ID0000100
+  - ID0000097
+  - ID0000098
+  - ID0000095
+  - ID0000099
+- id: ID0000094
+  children:
+  - ID0000111
+  - ID0000105
+  - ID0000107
+  - ID0000110
+  - ID0000104
+  - ID0000106
+  - ID0000109
+  - ID0000108
+- id: ID0000101
+  children:
+  - ID0000102

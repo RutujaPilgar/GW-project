@@ -1,0 +1,532 @@
+<html lang="en">
+
+<head>
+
+    <!-- set initial view -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- add jquery -->
+    <script src="../static/js/jquery/1.10.2/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+    <!-- add mousewheel scrolling -->
+    <script type="text/javascript" src="../static/js/jquery/1.10.2/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <!-- add bootstrap -->
+    <link media="all" href="../static/css/bootstrap/3.3.2/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="../static/js/bootstrap/3.3.2/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- add fancybox -->
+    <script type="text/javascript" src="../static/js/fancybox/2.1.5/jquery.fancybox.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/fancybox/2.1.5/jquery.fancybox.css" media="screen" />
+
+    <!-- add mathjax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- add orange stylization -->
+    <script type="text/javascript" src="../static/js/fancybox/2.1.5/fancybox-orange.js"></script> 
+    <link media="all" href="../static/css/pycbc/orange.css" type="text/css" rel="stylesheet">
+
+    <!-- add popover js -->
+    <script> $(function () {$('[data-toggle="popover"]').popover()})</script>
+    <style type="text/css">
+        .popover{
+            max-width:600px;
+        }
+    </style>
+
+    <!-- add expand all js -->
+    <script>
+        $(function () {
+
+            var active = true;
+
+            $('#collapse-init').click(function () {
+                if (active) {
+                    active = false;
+                    $('.panel-collapse').collapse('show');
+                    $('.panel-title').attr('data-toggle', '');
+                    $(this).text('Collapse All');
+                } else {
+                    active = true;
+                    $('.panel-collapse').collapse('hide');
+                    $('.panel-title').attr('data-toggle', 'collapse');
+                    $(this).text('Expand All');
+                }
+            });
+    
+            $('#accordion').on('show.bs.collapse', function () {
+                if (active) $('#accordion .in').collapse('hide');
+            });
+
+        });
+    </script>
+
+    <!-- title -->
+    <title>PyCBC search</title>
+
+    <!-- add fonts -->
+    <style>
+    @font-face {
+        font-family : 'Lato';
+        src : url('../static/fonts/Lato-Light.eot');
+        src : url('../static/fonts/Lato-Light.eot') format('embedded-opentype'),url('../static/fonts/Lato-Light.woff') format('woff'),url('../static/fonts/Lato-Light.ttf') format('truetype');
+        text-rendering : optimizeLegibility;
+    }
+    @font-face{
+        font-family : 'Lato';
+        src : url('../static/fonts/Lato-Semibold.eot');
+        src : url('../static/fonts/Lato-Semibold.eot') format('embedded-opentype'),url('../static/fonts/Lato-Semibold.woff') format('woff'),url('../static/fonts/Lato-Semibold.ttf') format('truetype');
+        font-weight : bold;
+       text-rendering : optimizeLegibility;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<div id="wrap">
+
+<!-- set dir0 counter integer -->
+
+
+<!-- navbar -->
+<div class="navbar navbar-custom navbar-static-top">
+  <div class="container-fluid">
+
+        <!-- title and subtitle -->
+        <div class="row" style="padding-top:10px">
+            <div class="col-md-4">
+                <p class="text-left">
+                    <img src=https://raw.githubusercontent.com/gwastro/pycbc-logo/master/pycbc_logo_name.png alt="PyCBC logo" style="height:3em;">
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-center" style="font-size:150%;"><b>PyCBC search</b></p>
+                <p class="text-center">Small Test Search</p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+    <!-- button for collapsed navbar -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- buttons on navbar -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+
+        <!-- always have a button to the top-level directory -->
+        <li class="active"><a href="../">Summary</a></li>
+
+        <!-- display top-level directories -->
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">1. Analysis Time<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../1._analysis_time" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href=".././1._analysis_time/1.01_segment_data" role="menuitem">1.01 Segment Data</a></li>
+                
+                    <li role="presentation"><a href=".././1._analysis_time/1.02_segments" role="menuitem">1.02 Segments</a></li>
+                
+                    <li role="presentation"><a href=".././1._analysis_time/1.03_gating" role="menuitem">1.03 Gating</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">2. Detector Sensitivity<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../2._detector_sensitivity" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">4. Single Triggers<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../4._single_triggers" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.01_H1_binned_triggers" role="menuitem">4.01 H1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.02_H1_trigger_histograms" role="menuitem">4.02 H1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.03_H1_binned_histograms" role="menuitem">4.03 H1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.04_L1_binned_triggers" role="menuitem">4.04 L1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.05_L1_trigger_histograms" role="menuitem">4.05 L1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.06_L1_binned_histograms" role="menuitem">4.06 L1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.07_V1_binned_triggers" role="menuitem">4.07 V1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.08_V1_trigger_histograms" role="menuitem">4.08 V1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.09_V1_binned_histograms" role="menuitem">4.09 V1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.10_H1_loudest_noncoinc_time" role="menuitem">4.10 H1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.11_H1_all" role="menuitem">4.11 H1 All</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.12_H1_loudest_within_vetoes" role="menuitem">4.12 H1 Loudest Within Vetoes</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.13_L1_loudest_noncoinc_time" role="menuitem">4.13 L1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.14_L1_all" role="menuitem">4.14 L1 All</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.15_L1_loudest_within_vetoes" role="menuitem">4.15 L1 Loudest Within Vetoes</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.16_V1_loudest_noncoinc_time" role="menuitem">4.16 V1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.17_V1_all" role="menuitem">4.17 V1 All</a></li>
+                
+                    <li role="presentation"><a href=".././4._single_triggers/4.18_V1_loudest_within_vetoes" role="menuitem">4.18 V1 Loudest Within Vetoes</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">5. Background Triggers<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../5._background_triggers" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href=".././5._background_triggers/5.01_loudest_background_followup" role="menuitem">5.01 Loudest Background Followup</a></li>
+                
+                    <li role="presentation"><a href=".././5._background_triggers/5.02_L1V1_background" role="menuitem">5.02 L1V1 Background</a></li>
+                
+                    <li role="presentation"><a href=".././5._background_triggers/5.03_H1V1_background" role="menuitem">5.03 H1V1 Background</a></li>
+                
+                    <li role="presentation"><a href=".././5._background_triggers/5.04_H1L1_background" role="menuitem">5.04 H1L1 Background</a></li>
+                
+                    <li role="presentation"><a href=".././5._background_triggers/5.05_H1L1V1_background" role="menuitem">5.05 H1L1V1 Background</a></li>
+                
+                    <li role="presentation"><a href=".././5._background_triggers/5.06_V1_background" role="menuitem">5.06 V1 Background</a></li>
+                
+                    <li role="presentation"><a href=".././5._background_triggers/5.07_L1_background" role="menuitem">5.07 L1 Background</a></li>
+                
+                    <li role="presentation"><a href=".././5._background_triggers/5.08_H1_background" role="menuitem">5.08 H1 Background</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">6. Injections<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../6._injections" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href=".././6._injections/6.01_BBH" role="menuitem">6.01 Bbh</a></li>
+                
+                    <li role="presentation"><a href=".././6._injections/6.02_followup_of_BBH_with_ifar_lt_1_year" role="menuitem">6.02 Followup Of Bbh With Ifar Lt 1 Year</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">7. Search Sensitivity<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../7._search_sensitivity" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href=".././7._search_sensitivity/7.01_BBH" role="menuitem">7.01 Bbh</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">8. Open Box Result<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../8._open_box_result" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href=".././8._open_box_result/8.02_loudest_events_followup" role="menuitem">8.02 Loudest Events Followup</a></li>
+                
+                    <li role="presentation"><a href=".././8._open_box_result/8.03_L1V1_candidates" role="menuitem">8.03 L1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href=".././8._open_box_result/8.04_H1V1_candidates" role="menuitem">8.04 H1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href=".././8._open_box_result/8.05_H1L1_candidates" role="menuitem">8.05 H1L1 Candidates</a></li>
+                
+                    <li role="presentation"><a href=".././8._open_box_result/8.06_H1L1V1_candidates" role="menuitem">8.06 H1L1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href=".././8._open_box_result/8.07_V1_candidates" role="menuitem">8.07 V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href=".././8._open_box_result/8.08_L1_candidates" role="menuitem">8.08 L1 Candidates</a></li>
+                
+                    <li role="presentation"><a href=".././8._open_box_result/8.09_H1_candidates" role="menuitem">8.09 H1 Candidates</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">9. Workflow<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../9._workflow" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href=".././9._workflow/9.01_throughput" role="menuitem">9.01 Throughput</a></li>
+                
+                    <li role="presentation"><a href=".././9._workflow/9.02_configuration" role="menuitem">9.02 Configuration</a></li>
+                
+                    <li role="presentation"><a href=".././9._workflow/9.03_version" role="menuitem">9.03 Version</a></li>
+                
+                    <li role="presentation"><a href=".././9._workflow/9.04_dax" role="menuitem">9.04 Dax</a></li>
+                
+                    <li role="presentation"><a href=".././9._workflow/9.05_input_map" role="menuitem">9.05 Input Map</a></li>
+                
+                    <li role="presentation"><a href=".././9._workflow/9.06_output_map" role="menuitem">9.06 Output Map</a></li>
+                
+                    <li role="presentation"><a href=".././9._workflow/9.07_planning" role="menuitem">9.07 Planning</a></li>
+                
+
+            </ul>
+        </li>
+        
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div id="main">
+        <div class="container">
+            <div id="content">
+
+                <!-- page name -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Sitemap</h1>
+                     </div>
+                </div>
+
+                <!-- set list of files which are handled in wells -->
+                
+                
+                
+                
+                    
+                        
+                    
+                
+                
+                <!-- include well if it exists and check meta-data if well renders any files inside it -->
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                        
+                        
+                        
+                            <div class=pycbc-meta key="render-function" value="render_tmplt"></div><div class=pycbc-meta key="filenames" value=""></div><!-- hold images inside a well -->
+<div class="scaffold well">
+
+    <div class="list-group">
+        
+            <a href="../" class="list-group-item">/</a>
+        
+            <a href="..//1._analysis_time" class="list-group-item">/1._analysis_time</a>
+        
+            <a href="..//1._analysis_time/1.01_segment_data" class="list-group-item">/1._analysis_time/1.01_segment_data</a>
+        
+            <a href="..//1._analysis_time/1.01_segment_data/logs" class="list-group-item">/1._analysis_time/1.01_segment_data/logs</a>
+        
+            <a href="..//1._analysis_time/1.02_segments" class="list-group-item">/1._analysis_time/1.02_segments</a>
+        
+            <a href="..//1._analysis_time/1.03_gating" class="list-group-item">/1._analysis_time/1.03_gating</a>
+        
+            <a href="..//2._detector_sensitivity" class="list-group-item">/2._detector_sensitivity</a>
+        
+            <a href="..//4._single_triggers" class="list-group-item">/4._single_triggers</a>
+        
+            <a href="..//4._single_triggers/4.01_H1_binned_triggers" class="list-group-item">/4._single_triggers/4.01_H1_binned_triggers</a>
+        
+            <a href="..//4._single_triggers/4.02_H1_trigger_histograms" class="list-group-item">/4._single_triggers/4.02_H1_trigger_histograms</a>
+        
+            <a href="..//4._single_triggers/4.03_H1_binned_histograms" class="list-group-item">/4._single_triggers/4.03_H1_binned_histograms</a>
+        
+            <a href="..//4._single_triggers/4.04_L1_binned_triggers" class="list-group-item">/4._single_triggers/4.04_L1_binned_triggers</a>
+        
+            <a href="..//4._single_triggers/4.05_L1_trigger_histograms" class="list-group-item">/4._single_triggers/4.05_L1_trigger_histograms</a>
+        
+            <a href="..//4._single_triggers/4.06_L1_binned_histograms" class="list-group-item">/4._single_triggers/4.06_L1_binned_histograms</a>
+        
+            <a href="..//4._single_triggers/4.07_V1_binned_triggers" class="list-group-item">/4._single_triggers/4.07_V1_binned_triggers</a>
+        
+            <a href="..//4._single_triggers/4.08_V1_trigger_histograms" class="list-group-item">/4._single_triggers/4.08_V1_trigger_histograms</a>
+        
+            <a href="..//4._single_triggers/4.09_V1_binned_histograms" class="list-group-item">/4._single_triggers/4.09_V1_binned_histograms</a>
+        
+            <a href="..//4._single_triggers/4.10_H1_loudest_noncoinc_time" class="list-group-item">/4._single_triggers/4.10_H1_loudest_noncoinc_time</a>
+        
+            <a href="..//4._single_triggers/4.11_H1_all" class="list-group-item">/4._single_triggers/4.11_H1_all</a>
+        
+            <a href="..//4._single_triggers/4.12_H1_loudest_within_vetoes" class="list-group-item">/4._single_triggers/4.12_H1_loudest_within_vetoes</a>
+        
+            <a href="..//4._single_triggers/4.13_L1_loudest_noncoinc_time" class="list-group-item">/4._single_triggers/4.13_L1_loudest_noncoinc_time</a>
+        
+            <a href="..//4._single_triggers/4.14_L1_all" class="list-group-item">/4._single_triggers/4.14_L1_all</a>
+        
+            <a href="..//4._single_triggers/4.15_L1_loudest_within_vetoes" class="list-group-item">/4._single_triggers/4.15_L1_loudest_within_vetoes</a>
+        
+            <a href="..//4._single_triggers/4.16_V1_loudest_noncoinc_time" class="list-group-item">/4._single_triggers/4.16_V1_loudest_noncoinc_time</a>
+        
+            <a href="..//4._single_triggers/4.17_V1_all" class="list-group-item">/4._single_triggers/4.17_V1_all</a>
+        
+            <a href="..//4._single_triggers/4.18_V1_loudest_within_vetoes" class="list-group-item">/4._single_triggers/4.18_V1_loudest_within_vetoes</a>
+        
+            <a href="..//5._background_triggers" class="list-group-item">/5._background_triggers</a>
+        
+            <a href="..//5._background_triggers/5.01_loudest_background_followup" class="list-group-item">/5._background_triggers/5.01_loudest_background_followup</a>
+        
+            <a href="..//5._background_triggers/5.02_L1V1_background" class="list-group-item">/5._background_triggers/5.02_L1V1_background</a>
+        
+            <a href="..//5._background_triggers/5.03_H1V1_background" class="list-group-item">/5._background_triggers/5.03_H1V1_background</a>
+        
+            <a href="..//5._background_triggers/5.04_H1L1_background" class="list-group-item">/5._background_triggers/5.04_H1L1_background</a>
+        
+            <a href="..//5._background_triggers/5.05_H1L1V1_background" class="list-group-item">/5._background_triggers/5.05_H1L1V1_background</a>
+        
+            <a href="..//5._background_triggers/5.06_V1_background" class="list-group-item">/5._background_triggers/5.06_V1_background</a>
+        
+            <a href="..//5._background_triggers/5.07_L1_background" class="list-group-item">/5._background_triggers/5.07_L1_background</a>
+        
+            <a href="..//5._background_triggers/5.08_H1_background" class="list-group-item">/5._background_triggers/5.08_H1_background</a>
+        
+            <a href="..//6._injections" class="list-group-item">/6._injections</a>
+        
+            <a href="..//6._injections/6.01_BBH" class="list-group-item">/6._injections/6.01_BBH</a>
+        
+            <a href="..//6._injections/6.02_followup_of_BBH_with_ifar_lt_1_year" class="list-group-item">/6._injections/6.02_followup_of_BBH_with_ifar_lt_1_year</a>
+        
+            <a href="..//7._search_sensitivity" class="list-group-item">/7._search_sensitivity</a>
+        
+            <a href="..//7._search_sensitivity/7.01_BBH" class="list-group-item">/7._search_sensitivity/7.01_BBH</a>
+        
+            <a href="..//8._open_box_result" class="list-group-item">/8._open_box_result</a>
+        
+            <a href="..//8._open_box_result/8.02_loudest_events_followup" class="list-group-item">/8._open_box_result/8.02_loudest_events_followup</a>
+        
+            <a href="..//8._open_box_result/8.03_L1V1_candidates" class="list-group-item">/8._open_box_result/8.03_L1V1_candidates</a>
+        
+            <a href="..//8._open_box_result/8.04_H1V1_candidates" class="list-group-item">/8._open_box_result/8.04_H1V1_candidates</a>
+        
+            <a href="..//8._open_box_result/8.05_H1L1_candidates" class="list-group-item">/8._open_box_result/8.05_H1L1_candidates</a>
+        
+            <a href="..//8._open_box_result/8.06_H1L1V1_candidates" class="list-group-item">/8._open_box_result/8.06_H1L1V1_candidates</a>
+        
+            <a href="..//8._open_box_result/8.07_V1_candidates" class="list-group-item">/8._open_box_result/8.07_V1_candidates</a>
+        
+            <a href="..//8._open_box_result/8.08_L1_candidates" class="list-group-item">/8._open_box_result/8.08_L1_candidates</a>
+        
+            <a href="..//8._open_box_result/8.09_H1_candidates" class="list-group-item">/8._open_box_result/8.09_H1_candidates</a>
+        
+            <a href="..//9._workflow" class="list-group-item">/9._workflow</a>
+        
+            <a href="..//9._workflow/9.01_throughput" class="list-group-item">/9._workflow/9.01_throughput</a>
+        
+            <a href="..//9._workflow/9.02_configuration" class="list-group-item">/9._workflow/9.02_configuration</a>
+        
+            <a href="..//9._workflow/9.03_version" class="list-group-item">/9._workflow/9.03_version</a>
+        
+            <a href="..//9._workflow/9.03_version/logs" class="list-group-item">/9._workflow/9.03_version/logs</a>
+        
+            <a href="..//9._workflow/9.04_dax" class="list-group-item">/9._workflow/9.04_dax</a>
+        
+            <a href="..//9._workflow/9.05_input_map" class="list-group-item">/9._workflow/9.05_input_map</a>
+        
+            <a href="..//9._workflow/9.06_output_map" class="list-group-item">/9._workflow/9.06_output_map</a>
+        
+            <a href="..//9._workflow/9.07_planning" class="list-group-item">/9._workflow/9.07_planning</a>
+        
+    </div>
+
+</div>     
+                                                       
+                    
+                
+
+                <hr class="row-divider">
+
+                <!-- display other files in directory -->
+                
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- loop over files in directory -->
+                        <h1>Additional Files</h1>
+                            The following files were also found in this directory:
+                            <div class="row" style="padding:15px">
+                                <button id="collapse-init" class="btn btn-xs btn-primary">Expand All</button>
+                            </div>
+                            
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                    </div>
+                </div>
+                
+
+            </div>
+         </div>
+     </div>
+</div>
+
+<footer>
+    <div class="container-fluid">
+        <div class="footer-custom">
+            <a href="../sitemap/index.html">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

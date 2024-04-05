@@ -1,0 +1,783 @@
+<html lang="en">
+
+<head>
+
+    <!-- set initial view -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- add jquery -->
+    <script src="../../static/js/jquery/1.10.2/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+    <!-- add mousewheel scrolling -->
+    <script type="text/javascript" src="../../static/js/jquery/1.10.2/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <!-- add bootstrap -->
+    <link media="all" href="../../static/css/bootstrap/3.3.2/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="../../static/js/bootstrap/3.3.2/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- add fancybox -->
+    <script type="text/javascript" src="../../static/js/fancybox/2.1.5/jquery.fancybox.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/fancybox/2.1.5/jquery.fancybox.css" media="screen" />
+
+    <!-- add mathjax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- add orange stylization -->
+    <script type="text/javascript" src="../../static/js/fancybox/2.1.5/fancybox-orange.js"></script> 
+    <link media="all" href="../../static/css/pycbc/orange.css" type="text/css" rel="stylesheet">
+
+    <!-- add popover js -->
+    <script> $(function () {$('[data-toggle="popover"]').popover()})</script>
+    <style type="text/css">
+        .popover{
+            max-width:600px;
+        }
+    </style>
+
+    <!-- add expand all js -->
+    <script>
+        $(function () {
+
+            var active = true;
+
+            $('#collapse-init').click(function () {
+                if (active) {
+                    active = false;
+                    $('.panel-collapse').collapse('show');
+                    $('.panel-title').attr('data-toggle', '');
+                    $(this).text('Collapse All');
+                } else {
+                    active = true;
+                    $('.panel-collapse').collapse('hide');
+                    $('.panel-title').attr('data-toggle', 'collapse');
+                    $(this).text('Expand All');
+                }
+            });
+    
+            $('#accordion').on('show.bs.collapse', function () {
+                if (active) $('#accordion .in').collapse('hide');
+            });
+
+        });
+    </script>
+
+    <!-- title -->
+    <title>PyCBC search</title>
+
+    <!-- add fonts -->
+    <style>
+    @font-face {
+        font-family : 'Lato';
+        src : url('../../static/fonts/Lato-Light.eot');
+        src : url('../../static/fonts/Lato-Light.eot') format('embedded-opentype'),url('../../static/fonts/Lato-Light.woff') format('woff'),url('../../static/fonts/Lato-Light.ttf') format('truetype');
+        text-rendering : optimizeLegibility;
+    }
+    @font-face{
+        font-family : 'Lato';
+        src : url('../../static/fonts/Lato-Semibold.eot');
+        src : url('../../static/fonts/Lato-Semibold.eot') format('embedded-opentype'),url('../../static/fonts/Lato-Semibold.woff') format('woff'),url('../../static/fonts/Lato-Semibold.ttf') format('truetype');
+        font-weight : bold;
+       text-rendering : optimizeLegibility;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<div id="wrap">
+
+<!-- set dir0 counter integer -->
+
+
+<!-- navbar -->
+<div class="navbar navbar-custom navbar-static-top">
+  <div class="container-fluid">
+
+        <!-- title and subtitle -->
+        <div class="row" style="padding-top:10px">
+            <div class="col-md-4">
+                <p class="text-left">
+                    <img src=https://raw.githubusercontent.com/gwastro/pycbc-logo/master/pycbc_logo_name.png alt="PyCBC logo" style="height:3em;">
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-center" style="font-size:150%;"><b>PyCBC search</b></p>
+                <p class="text-center">Small Test Search</p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+    <!-- button for collapsed navbar -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- buttons on navbar -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+
+        <!-- always have a button to the top-level directory -->
+        <li class="active"><a href="../../">Summary</a></li>
+
+        <!-- display top-level directories -->
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">1. Analysis Time<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../1._analysis_time" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././1._analysis_time/1.01_segment_data" role="menuitem">1.01 Segment Data</a></li>
+                
+                    <li role="presentation"><a href="../.././1._analysis_time/1.02_segments" role="menuitem">1.02 Segments</a></li>
+                
+                    <li role="presentation"><a href="../.././1._analysis_time/1.03_gating" role="menuitem">1.03 Gating</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">2. Detector Sensitivity<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../2._detector_sensitivity" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">4. Single Triggers<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../4._single_triggers" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.01_H1_binned_triggers" role="menuitem">4.01 H1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.02_H1_trigger_histograms" role="menuitem">4.02 H1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.03_H1_binned_histograms" role="menuitem">4.03 H1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.04_L1_binned_triggers" role="menuitem">4.04 L1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.05_L1_trigger_histograms" role="menuitem">4.05 L1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.06_L1_binned_histograms" role="menuitem">4.06 L1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.07_V1_binned_triggers" role="menuitem">4.07 V1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.08_V1_trigger_histograms" role="menuitem">4.08 V1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.09_V1_binned_histograms" role="menuitem">4.09 V1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.10_H1_loudest_noncoinc_time" role="menuitem">4.10 H1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.11_H1_all" role="menuitem">4.11 H1 All</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.12_H1_loudest_within_vetoes" role="menuitem">4.12 H1 Loudest Within Vetoes</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.13_L1_loudest_noncoinc_time" role="menuitem">4.13 L1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.14_L1_all" role="menuitem">4.14 L1 All</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.15_L1_loudest_within_vetoes" role="menuitem">4.15 L1 Loudest Within Vetoes</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.16_V1_loudest_noncoinc_time" role="menuitem">4.16 V1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.17_V1_all" role="menuitem">4.17 V1 All</a></li>
+                
+                    <li role="presentation"><a href="../.././4._single_triggers/4.18_V1_loudest_within_vetoes" role="menuitem">4.18 V1 Loudest Within Vetoes</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">5. Background Triggers<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../5._background_triggers" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.01_loudest_background_followup" role="menuitem">5.01 Loudest Background Followup</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.02_L1V1_background" role="menuitem">5.02 L1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.03_H1V1_background" role="menuitem">5.03 H1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.04_H1L1_background" role="menuitem">5.04 H1L1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.05_H1L1V1_background" role="menuitem">5.05 H1L1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.06_V1_background" role="menuitem">5.06 V1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.07_L1_background" role="menuitem">5.07 L1 Background</a></li>
+                
+                    <li role="presentation"><a href="../.././5._background_triggers/5.08_H1_background" role="menuitem">5.08 H1 Background</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">6. Injections<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../6._injections" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././6._injections/6.01_BBH" role="menuitem">6.01 Bbh</a></li>
+                
+                    <li role="presentation"><a href="../.././6._injections/6.02_followup_of_BBH_with_ifar_lt_1_year" role="menuitem">6.02 Followup Of Bbh With Ifar Lt 1 Year</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">7. Search Sensitivity<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../7._search_sensitivity" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././7._search_sensitivity/7.01_BBH" role="menuitem">7.01 Bbh</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">8. Open Box Result<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../8._open_box_result" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.02_loudest_events_followup" role="menuitem">8.02 Loudest Events Followup</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.03_L1V1_candidates" role="menuitem">8.03 L1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.04_H1V1_candidates" role="menuitem">8.04 H1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.05_H1L1_candidates" role="menuitem">8.05 H1L1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.06_H1L1V1_candidates" role="menuitem">8.06 H1L1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.07_V1_candidates" role="menuitem">8.07 V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.08_L1_candidates" role="menuitem">8.08 L1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="../.././8._open_box_result/8.09_H1_candidates" role="menuitem">8.09 H1 Candidates</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">9. Workflow<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="../../9._workflow" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.01_throughput" role="menuitem">9.01 Throughput</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.02_configuration" role="menuitem">9.02 Configuration</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.03_version" role="menuitem">9.03 Version</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.04_dax" role="menuitem">9.04 Dax</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.05_input_map" role="menuitem">9.05 Input Map</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.06_output_map" role="menuitem">9.06 Output Map</a></li>
+                
+                    <li role="presentation"><a href="../.././9._workflow/9.07_planning" role="menuitem">9.07 Planning</a></li>
+                
+
+            </ul>
+        </li>
+        
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div id="main">
+        <div class="container">
+            <div id="content">
+
+                <!-- page name -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>8.08 L1 Candidates</h1>
+                     </div>
+                </div>
+
+                <!-- set list of files which are handled in wells -->
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                
+                <!-- include well if it exists and check meta-data if well renders any files inside it -->
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                        
+                        
+                        
+                            <div class=pycbc-meta key="render-function" value="render_tmplt"></div><div class=pycbc-meta key="filenames" value="L1-PLOT_SNRIFAR_FULL_DATA_1DET-1186740100-3400.png,L1-PLOT_SNRRATEHIST_FULL_DATA_1DET-1186740100-3400.png,L1-PLOT_SNRIFAR_FULL_DATA_1DET_IFAR-1186740100-3400.png,L1-PAGE_IFAR_FULL_DATA_1DET_OPEN_BOX-1186740100-3400.png,L1-PAGE_FOREGROUND_FULL_DATA_1DET-1186740100-3400.html"></div><!-- add a subtitle -->
+
+
+<!-- hold images inside a well -->
+<div class="scaffold well">
+
+    <!-- set file counter integer -->
+    
+
+    <!-- display formatted files -->
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A1"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A1">
+                                    <b>A1. L1: FAR vs Rank</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-PLOT_SNRIFAR_FULL_DATA_1DET-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-PLOT_SNRIFAR_FULL_DATA_1DET-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PLOT_SNRIFAR_FULL_DATA_1DET-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="('Cumulative histogram of foreground and background triggers.Orange triangle (if present) represent triggers from the zero-lag (foreground) analysis. Solid crosses show the background inclusive of zerolag events, and grey crosses show the background constructed without triggers that are coincident in the zero-lag data.',)">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrifar --trigger-file L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1186740100-3400.hdf --output-file L1-PLOT_SNRIFAR_FULL_DATA_1DET-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A2"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A2">
+                                    <b>A2. L1 coincidences, Count vs Rank</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-PLOT_SNRRATEHIST_FULL_DATA_1DET-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-PLOT_SNRRATEHIST_FULL_DATA_1DET-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PLOT_SNRRATEHIST_FULL_DATA_1DET-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Histogram of the FAR vs the ranking statistic for L1 coincidences only">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrratehist --trigger-file L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1186740100-3400.hdf --output-file L1-PLOT_SNRRATEHIST_FULL_DATA_1DET-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A3"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A3">
+                                    <b>A3. L1: FAR vs Rank</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-PLOT_SNRIFAR_FULL_DATA_1DET_IFAR-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-PLOT_SNRIFAR_FULL_DATA_1DET_IFAR-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PLOT_SNRIFAR_FULL_DATA_1DET_IFAR-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="('Mapping between the ranking statistic and false alarm rate.Orange triangle (if present) represent triggers from the zero-lag (foreground) analysis. Solid crosses show the background inclusive of zerolag events, and grey crosses show the background constructed without triggers that are coincident in the zero-lag data.',)">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrifar --trigger-file L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1186740100-3400.hdf --not-cumulative --output-file L1-PLOT_SNRIFAR_FULL_DATA_1DET_IFAR-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A4"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A4">
+                                    <b>A4. Cumulative Number vs. IFAR</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-PAGE_IFAR_FULL_DATA_1DET_OPEN_BOX-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-PAGE_IFAR_FULL_DATA_1DET_OPEN_BOX-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PAGE_IFAR_FULL_DATA_1DET_OPEN_BOX-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This is a cumulative histogram of triggers. The blue triangles represent coincident foreground triggers. The dashed line represents the expected background given the analysis time. The shaded regions represent counting errors. The gray lines are time slides treated as zero lag, here there are 0 time slides plotted. Gray dots are time slides with only one event. 0 of the plotted slides have zero events. The green line represents all decimated time slides rescaled to the analysis time.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_ifar --decimation-factor 100 --open-box --trigger-file L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1186740100-3400.hdf --output-file L1-PAGE_IFAR_FULL_DATA_1DET_OPEN_BOX-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A5"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A5">
+                                    <b>A5. Loudest Event Table</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <div class=pycbc-meta key="title" value="Loudest Event Table"></div><div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_foreground --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --trigger-file L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1186740100-3400.hdf --single-detector-triggers H1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf L1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf V1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf --output-file L1-PAGE_FOREGROUND_FULL_DATA_1DET-1186740100-3400.html"></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Exc. IFAR (YR)');
+            data.addColumn('number', 'Inc. IFAR (YR)');
+            data.addColumn('number', 'Exc. FAP');
+            data.addColumn('number', 'Inc. FAP');
+            data.addColumn('number', 'Ranking Statistic');
+            data.addColumn('number', 'End Time');
+            data.addColumn('number', 'mchirp');
+            data.addColumn('number', 'm1');
+            data.addColumn('number', 'm2');
+            data.addColumn('number', 's1z');
+            data.addColumn('number', 's2z');
+            data.addColumn('string', 'L1 SNR');
+            data.addColumn('string', 'L1 Red. Chisq');
+        data.addRows([[5465901000000.0, 1707.3037, 0.0, 5.9604645e-08, 11.3311205, 1186741861.5268555, 27.202743722683167, 26.16450202010071, 37.562003069008185, 0.0857237657327573, 0.1669708095263597, '14.01', '1.39'], [0.0001865672, 0.00018657271, 0.0, 0.43715394, -6.0868073, 1186743340.5639648, 10.924387731300454, 10.212023605467149, 15.55655913119891, 0.07123218228656517, 0.022621597564821367, '6.46', '0.84'], [5.165226e-05, 5.1653788e-05, 5.9604645e-08, 0.87456715, -6.676768, 1186741966.6791992, 12.61608740916373, 17.04128566284835, 12.386811191286526, 0.02889397887679861, 0.1911343412388497, '6.62', '1.07'], [5.009749e-05, 5.009897e-05, 5.9604645e-08, 0.8823937, -6.690808, 1186742502.9018555, 16.977528859967865, 11.171643496986471, 36.36495953235532, 0.1509722962780935, 0.1497856750491673, '6.08', '0.91'], [2.6619042e-05, 2.6619831e-05, 1.1920929e-07, 0.9821953, -6.981293, 1186741136.7124023, 12.244604042037416, 19.551422265350972, 10.323630383739072, 0.17952888649511145, 0.1076302059994454, '6.28', '1.06'], [2.1283382e-05, 2.1284013e-05, 1.1920929e-07, 0.9935144, -7.0840564, 1186743458.8955078, 8.96755122603651, 10.508829063439437, 10.098105763450036, 0.05954289373563796, 0.10659675564391884, '5.80', '0.99'], [1.6388092e-05, 1.6388578e-05, 1.7881393e-07, 0.99856, -7.204125, 1186742823.4296875, 9.011321525496793, 10.02390575759901, 10.691589470063875, 0.19127729855512282, 0.12135854091624851, '5.77', '0.69'], [1.3884616e-05, 1.3885027e-05, 2.9802322e-07, 0.99955744, -7.2802777, 1186740319.0820312, 9.254519177458459, 10.66639853405943, 10.595047046615472, 0.09551390272957366, 0.07130198124107189, '5.65', '0.81'], [1.2413183e-05, 1.241355e-05, 2.9802322e-07, 0.9998228, -7.3317385, 1186741915.9394531, 8.853547152247103, 10.131474926712595, 10.208811600191996, 0.19433683177952624, 0.15836003464936604, '5.93', '0.69'], [1.1901503e-05, 1.1901855e-05, 2.9802322e-07, 0.9998778, -7.3510756, 1186742746.5170898, 15.615065309280881, 19.851839946561714, 16.239526030810072, 0.16003183711321659, 0.1636006679055177, '6.16', '0.78'], [1.1070454e-05, 1.1070782e-05, 3.5762787e-07, 0.99993783, -7.384328, 1186740123.125, 27.829996173009988, 26.76069485337255, 38.43910633653043, 0.08575375499988852, 0.04052042504393252, '5.78', '0.85'], [1.0851961e-05, 1.085228e-05, 3.5762787e-07, 0.99994886, -7.393485, 1186742796.4926758, 12.813492994620171, 10.05681054152012, 22.211487505768805, 0.0038466764486676077, 0.15035031862461656, '5.97', '0.99'], [1.0063312e-05, 1.006361e-05, 3.5762787e-07, 0.99997646, -7.428145, 1186743090.5654297, 9.427453110591237, 10.181235655650132, 11.527495414583116, 0.12154412280345261, 0.1541453597820515, '6.07', '1.00'], [8.904541e-06, 8.904804e-06, 4.172325e-07, 0.9999941, -7.484343, 1186741386.456543, 15.880692593685648, 10.567060339141442, 33.550470039933174, 0.07457682282748257, 0.055780202129880295, '6.13', '0.61'], [8.385033e-06, 8.385281e-06, 4.172325e-07, 0.9999972, -7.5119576, 1186741284.9916992, 11.823781801388959, 14.59168696624708, 12.654916955630759, 0.08611578579294138, 0.19835751733200155, '5.72', '0.79'], [7.937004e-06, 7.937239e-06, 4.172325e-07, 0.9999986, -7.5371833, 1186740144.4614258, 10.48181771867225, 14.412248864864598, 10.121653425921512, 0.19953854925763168, 0.07455148919768377, '6.39', '0.61'], [7.2742396e-06, 7.2744538e-06, 4.7683716e-07, 0.9999996, -7.5772395, 1186740599.8964844, 19.073958537971254, 25.994958549190514, 18.571565552024428, 0.09480078531243881, 0.08511227805230939, '5.54', '0.80'], [6.4086507e-06, 6.4088404e-06, 4.7683716e-07, 0.99999994, -7.6354384, 1186742219.0039062, 10.779407044513524, 11.896358102379256, 12.892229152002137, 0.16453649917253613, 0.16237693659606045, '5.59', '0.92'], [5.7149014e-06, 5.71507e-06, 5.364418e-07, 1.0, -7.6880703, 1186742330.130371, 13.387872063153727, 16.595828456654303, 14.266983139353478, 0.13864865933990111, 0.05412238262202183, '5.76', '0.72'], [5.5567616e-06, 5.556926e-06, 5.364418e-07, 1.0, -7.700961, 1186741506.8891602, 12.720833365662244, 12.305262754538441, 17.45803688434859, 0.18025667022588882, 0.17674298889447365, '5.67', '0.76'], [5.416054e-06, 5.4162138e-06, 5.9604645e-07, 1.0, -7.7127433, 1186740850.1669922, 10.517973605856927, 11.103883160530264, 13.165282889888063, 0.07304008369526423, 0.04495493121406884, '6.13', '0.80'], [5.3051554e-06, 5.3053122e-06, 5.9604645e-07, 1.0, -7.722247, 1186742126.2104492, 14.387703426632436, 26.17695060119908, 10.835511028922381, 0.14732878681555966, 0.06366122764136278, '5.80', '1.03'], [4.9045543e-06, 4.9046994e-06, 7.1525574e-07, 1.0, -7.758315, 1186741231.0664062, 9.852625166897576, 10.744348229376525, 11.928146429564281, 0.18036130940685616, 0.16155528564362553, '5.85', '0.90'], [4.8143984e-06, 4.814541e-06, 7.748604e-07, 1.0, -7.766838, 1186742137.8833008, 16.688290558058984, 39.19133662507205, 10.20285310941819, 0.04724267869011958, 0.08650160884670988, '6.18', '1.21'], [4.6266764e-06, 4.6268133e-06, 7.748604e-07, 1.0, -7.7851086, 1186742957.3769531, 13.972638761255396, 20.950502171369234, 12.461504152079755, 0.005349770962447465, 0.00909177071099585, '5.96', '1.11'], [4.333129e-06, 4.3332575e-06, 8.34465e-07, 1.0, -7.8152204, 1186742018.7324219, 32.657191922825284, 36.83819990511542, 38.20322447000102, 0.022668384553518096, 0.04214647841666415, '5.90', '1.08'], [4.291198e-06, 4.2913252e-06, 8.34465e-07, 1.0, -7.8196874, 1186741526.6210938, 13.364051738052215, 14.49638489617375, 16.267353557805595, 0.15054988429598865, 0.1917303802797743, '5.79', '1.13'], [4.101384e-06, 4.1015055e-06, 8.34465e-07, 1.0, -7.8404703, 1186741809.2436523, 19.575885931059062, 39.46199447984758, 13.534392453158182, 0.06055566545831104, 0.043663105847282245, '5.92', '1.00'], [4.0366203e-06, 4.0367395e-06, 8.34465e-07, 1.0, -7.847782, 1186742280.1401367, 13.652346185727593, 23.989330700208125, 10.591002763686665, 0.002304229858666622, 0.004442721178687291, '5.90', '1.08'], [3.983587e-06, 3.9837046e-06, 8.34465e-07, 1.0, -7.8538575, 1186741265.137207, 9.271887405215844, 10.576492896480843, 10.725334729523961, 0.06304436196690098, 0.09560581598076229, '5.81', '0.71'], [3.9743973e-06, 3.9745146e-06, 8.34465e-07, 1.0, -7.8549185, 1186740860.9487305, 10.472654498808303, 11.18185180976203, 12.956344946978206, 0.1999005236543467, 0.1952685323312978, '6.07', '0.89'], [3.9058564e-06, 3.9059723e-06, 8.940697e-07, 1.0, -7.86291, 1186743115.0229492, 10.561524511380068, 10.293359832536474, 14.378811400892559, 0.0011377644346836219, 0.022408890691122733, '5.50', '0.92'], [3.85019e-06, 3.8503035e-06, 8.940697e-07, 1.0, -7.869504, 1186742863.0649414, 8.739457249416924, 10.063837468525543, 10.014236384530989, 0.12178380577927021, 0.18078982713868696, '5.65', '1.00'], [3.8093713e-06, 3.8094845e-06, 8.940697e-07, 1.0, -7.8744, 1186741780.915039, 11.38545820166602, 12.093472054851617, 14.161279228913674, 0.1873902311669135, 0.17775506635891894, '5.80', '0.81'], [3.7645325e-06, 3.764644e-06, 8.940697e-07, 1.0, -7.8798394, 1186741580.9604492, 9.304753316463646, 10.099015847702733, 11.319445166083753, 0.10064431673319418, 0.06342940477774503, '5.74', '0.76'], [3.587614e-06, 3.5877197e-06, 9.536743e-07, 1.0, -7.9019523, 1186743012.0292969, 15.269685239004675, 11.108007851575028, 28.94957653831459, 0.011514142723598166, 0.024747510802376874, '5.77', '0.89'], [3.5790367e-06, 3.5791427e-06, 9.536743e-07, 1.0, -7.903052, 1186741824.364746, 14.564205741681043, 10.159052254124523, 29.044741304919544, 0.06900923076303449, 0.1036417251606273, '5.91', '0.90'], [3.5558485e-06, 3.5559535e-06, 9.536743e-07, 1.0, -7.906038, 1186742608.7006836, 12.142982345029944, 17.258865589645815, 11.37113488545625, 0.18813956838461388, 0.14020264133778892, '5.51', '0.84'], [2.8218242e-06, 2.8219074e-06, 1.2516975e-06, 1.0, -8.045464, 1186743404.2822266, 17.99741153087878, 36.259981790636175, 12.448719481452043, 0.03751397852344791, 0.07636847935115224, '5.94', '1.09'], [2.7494696e-06, 2.7495512e-06, 1.2516975e-06, 1.0, -8.057618, 1186741186.3730469, 9.753590902402463, 10.221890710922791, 12.301367683625775, 0.15899039321352443, 0.0338762530096916, '5.89', '0.62'], [2.680733e-06, 2.6808123e-06, 1.2516975e-06, 1.0, -8.085056, 1186740878.1679688, 10.55270345311556, 10.611956532380681, 13.89692018934332, 0.028123357157833387, 0.029737248796158536, '5.90', '0.69'], [2.615349e-06, 2.6154266e-06, 1.3113022e-06, 1.0, -8.086028, 1186740610.8432617, 15.719219445390873, 10.411404640155581, 33.399129924961166, 0.16763003935283044, 0.030507380703799505, '5.51', '0.56'], [2.553079e-06, 2.5531544e-06, 1.3113022e-06, 1.0, -8.092601, 1186740181.8901367, 14.313555523653617, 12.51429725888448, 21.941106538262254, 0.028220099143452693, 0.18289424899708984, '5.60', '1.07'], [2.493705e-06, 2.4937788e-06, 1.3709068e-06, 1.0, -8.094066, 1186741103.543457, 32.657191922825284, 36.83819990511542, 38.20322447000102, 0.022668384553518096, 0.04214647841666415, '5.59', '0.64'], [2.43703e-06, 2.437102e-06, 1.3709068e-06, 1.0, -8.094184, 1186741220.6674805, 19.575885931059062, 39.46199447984758, 13.534392453158182, 0.06055566545831104, 0.043663105847282245, '6.50', '1.39'], [2.3828738e-06, 2.382944e-06, 1.3709068e-06, 1.0, -8.107941, 1186740544.7416992, 19.657360534571055, 27.679166107098528, 18.56728845087082, 0.04997013604500736, 0.15742325793116685, '5.65', '1.05'], [2.3310722e-06, 2.331141e-06, 1.4305115e-06, 1.0, -8.116319, 1186742524.8740234, 11.374506020221045, 11.431461162679312, 14.988714890969213, 0.09605529007481627, 0.15852393081070035, '5.57', '0.82'], [2.281475e-06, 2.2815423e-06, 1.4305115e-06, 1.0, -8.12355, 1186742381.3999023, 15.405390803143447, 11.157385689467981, 29.36147143510877, 0.14958862294573122, 0.08021176181352671, '5.60', '0.98'], [2.233944e-06, 2.2340103e-06, 1.4901161e-06, 1.0, -8.129368, 1186741122.4594727, 12.971572977663836, 10.632512033737912, 21.387436458986897, 0.05707303055536622, 0.05043522950318807, '5.60', '0.93'], [2.1883534e-06, 2.1884182e-06, 1.6093254e-06, 1.0, -8.151248, 1186742166.474121, 8.959765555166408, 10.185273586711165, 10.400208848882619, 0.08560404403284903, 0.16062256385678933, '5.71', '1.00'], [2.1445865e-06, 2.14465e-06, 1.6093254e-06, 1.0, -8.180044, 1186742536.965332, 14.12355538249006, 15.952370710527536, 16.500595949548522, 0.1934613402740507, 0.16803543897740783, '5.91', '1.23'], [2.1025355e-06, 2.1025978e-06, 1.66893e-06, 1.0, -8.209049, 1186742594.6230469, 11.28785427597814, 14.214231346869505, 11.847606565473052, 0.16545636014965912, 0.1671746659074704, '5.58', '0.82'], [2.062102e-06, 2.062163e-06, 1.66893e-06, 1.0, -8.231165, 1186741749.9638672, 13.900877214080536, 26.08938550769876, 10.198260314347332, 0.04396486818629302, 0.07868821665999683, '6.08', '0.60'], [2.0231946e-06, 2.0232546e-06, 1.66893e-06, 1.0, -8.237198, 1186740650.4609375, 9.226391971074168, 10.08853509735989, 11.139374421329233, 0.19601551364864345, 0.19447442537844245, '5.64', '0.85'], [1.9857282e-06, 1.9857869e-06, 1.7285347e-06, 1.0, -8.287301, 1186741450.4331055, 13.4630676811116, 24.642652407606313, 10.087618622631476, 0.040162863978799965, 0.08370047846023554, '5.69', '0.78'], [1.949624e-06, 1.9496815e-06, 1.7285347e-06, 1.0, -8.301276, 1186741161.6455078, 16.359770535157033, 33.392328864478, 11.195797799063577, 0.02468377196294598, 0.03557294959026971, '5.80', '0.64'], [1.9148094e-06, 1.9148658e-06, 1.7881393e-06, 1.0, -8.306159, 1186742110.4511719, 12.052370118707344, 11.102043028489533, 17.439986490967296, 0.017873817354121347, 0.0096659336574086, '5.67', '0.82'], [1.8812161e-06, 1.8812718e-06, 1.7881393e-06, 1.0, -8.30621, 1186741414.9370117, 11.887821133128847, 10.479755186821796, 18.055694936126475, 0.03834681605927071, 0.04332779354542097, '5.93', '0.98'], [1.8487815e-06, 1.8488361e-06, 1.7881393e-06, 1.0, -8.407305, 1186741433.2543945, 10.517973605856927, 11.103883160530264, 13.165282889888063, 0.07304008369526423, 0.04495493121406884, '5.62', '0.79'], [1.8174461e-06, 1.8174998e-06, 1.847744e-06, 1.0, -8.432789, 1186740304.6132812, 14.313555523653617, 12.51429725888448, 21.941106538262254, 0.028220099143452693, 0.18289424899708984, '5.72', '1.08'], [1.7871554e-06, 1.7872081e-06, 1.847744e-06, 1.0, -8.493226, 1186740469.605957, 19.54560017535148, 34.022337060266096, 15.285887667251657, 0.028684609734048985, 0.029350296152858824, '6.14', '1.03'], [1.7578576e-06, 1.7579096e-06, 1.9073486e-06, 1.0, -8.508725, 1186740223.3632812, 12.971400004562895, 16.307804737407608, 13.635922961130845, 0.12946161662393807, 0.18456344749112877, '5.71', '1.00'], [1.7295052e-06, 1.7295563e-06, 2.026558e-06, 1.0, -8.539307, 1186741486.9179688, 13.14674619022353, 10.806791624380235, 21.605880226639677, 0.11153925581740602, 0.17724218860675042, '5.69', '1.13'], [1.7020526e-06, 1.7021031e-06, 2.026558e-06, 1.0, -8.5641775, 1186743058.0581055, 17.19763750255028, 39.13120187753184, 10.781035510712943, 0.0007985763323085787, 0.07486965497524972, '5.55', '1.01'], [1.6754581e-06, 1.6755076e-06, 2.0861626e-06, 1.0, -8.611411, 1186742059.9243164, 9.852625166897576, 10.744348229376525, 11.928146429564281, 0.18036130940685616, 0.16155528564362553, '5.57', '0.41'], [1.6496817e-06, 1.6497306e-06, 2.0861626e-06, 1.0, -8.634366, 1186740249.2519531, 9.95058812544027, 10.352793485078745, 12.645009121170878, 0.06134790929925543, 0.01025411569603216, '5.77', '1.04'], [1.6246867e-06, 1.6247346e-06, 2.0861626e-06, 1.0, -8.646511, 1186743285.2836914, 14.52946364032137, 17.801623072877682, 15.66058159800354, 0.19837660330583728, 0.17903452603789172, '5.56', '0.89'], [1.6004375e-06, 1.600485e-06, 2.1457672e-06, 1.0, -8.677613, 1186741402.1640625, 9.581635484166352, 10.283815669158411, 11.790785757847324, 0.0143158544405275, 0.033803976820934216, '6.10', '1.31'], [1.5769018e-06, 1.5769483e-06, 2.1457672e-06, 1.0, -8.728869, 1186743326.5566406, 14.899776818509839, 10.27787053855198, 30.11947572613941, 0.11313054372099762, 0.01655402067624468, '5.65', '1.04'], [1.554048e-06, 1.5540941e-06, 2.2053719e-06, 1.0, -8.7331705, 1186740669.206543, 9.581635484166352, 10.283815669158411, 11.790785757847324, 0.0143158544405275, 0.033803976820934216, '5.59', '1.00'], [1.5318474e-06, 1.5318927e-06, 2.2053719e-06, 1.0, -8.734091, 1186741708.1542969, 14.377966223518696, 11.503661815104447, 24.37454873150958, 0.08045545259038805, 0.024029141621024964, '5.72', '0.81'], [1.510272e-06, 1.5103167e-06, 2.2053719e-06, 1.0, -8.735061, 1186741252.0175781, 15.615723747369785, 10.24656519689757, 33.56515493789908, 0.12369119467212264, 0.10230476188026233, '5.73', '0.85'], [1.4892961e-06, 1.4893401e-06, 2.2649765e-06, 1.0, -8.75121, 1186742904.496582, 16.620943073037207, 36.31103167811056, 10.76428707336461, 0.014693330872024669, 0.12382696628398145, '5.51', '0.79'], [1.4688948e-06, 1.4689383e-06, 2.2649765e-06, 1.0, -8.797144, 1186741049.0771484, 9.580521205296602, 10.730653714719894, 11.288072114042414, 0.15705113099382978, 0.1662107820123004, '5.63', '0.48'], [1.4490448e-06, 1.4490877e-06, 2.3245811e-06, 1.0, -8.798928, 1186742490.1538086, 11.042458130491164, 10.515465678911868, 15.412388613646609, 0.1372469423973308, 0.0542676429791775, '5.57', '0.68'], [1.4297242e-06, 1.4297665e-06, 2.3245811e-06, 1.0, -8.815593, 1186741172.234375, 14.460163920381316, 28.910976364629043, 10.065282921615358, 0.08955610012674572, 0.16615053408790856, '5.67', '0.83'], [1.4109121e-06, 1.4109537e-06, 2.4437904e-06, 1.0, -8.820871, 1186743415.9736328, 15.924135331160183, 18.00741035571427, 18.58206108789264, 0.16141230168228685, 0.15631816630059656, '5.50', '0.50'], [1.3925885e-06, 1.3926298e-06, 2.503395e-06, 1.0, -8.851518, 1186741622.6142578, 9.589629108048223, 11.959080730687715, 10.160014822949387, 0.11838035267869343, 0.014712073698682038, '5.53', '1.02'], [1.3747348e-06, 1.3747756e-06, 2.503395e-06, 1.0, -8.8644, 1186742976.3642578, 8.853547152247103, 10.131474926712595, 10.208811600191996, 0.19433683177952624, 0.15836003464936604, '5.96', '1.19'], [1.3573331e-06, 1.3573732e-06, 2.503395e-06, 1.0, -8.881966, 1186743362.380371, 14.195460506440948, 25.3232800178728, 10.871176279709267, 0.15426685106211901, 0.027559803614547795, '6.25', '1.21'], [1.3403665e-06, 1.3404061e-06, 2.5629997e-06, 1.0, -8.882339, 1186741004.1953125, 14.942932676160517, 17.10153129134735, 17.228595253664633, 0.16002136324316865, 0.1692429384453469, '6.02', '0.86'], [1.3238188e-06, 1.3238578e-06, 2.5629997e-06, 1.0, -8.894993, 1186740163.7763672, 8.871210550718718, 10.12327773271348, 10.257946095282561, 0.014840825085196603, 0.13225068595187803, '5.51', '0.73'], [1.3076746e-06, 1.3077133e-06, 2.6226044e-06, 1.0, -8.900328, 1186740747.7944336, 10.997435559440952, 15.461417419296254, 10.402410980931677, 0.022913420010337925, 0.024282300491596596, '5.72', '0.79'], [1.2919195e-06, 1.2919577e-06, 2.6226044e-06, 1.0, -8.921313, 1186743152.1582031, 10.905907977402244, 10.905368858568606, 14.448007413690844, 0.0847687907005962, 0.008411548657141213, '5.86', '1.06'], [1.2765395e-06, 1.2765772e-06, 2.6226044e-06, 1.0, -8.957433, 1186743043.7763672, 14.942932676160517, 17.10153129134735, 17.228595253664633, 0.16002136324316865, 0.1692429384453469, '5.81', '0.58'], [1.2615213e-06, 1.2615586e-06, 2.682209e-06, 1.0, -8.98324, 1186743387.9848633, 14.5731373571134, 17.347674686548853, 16.157956251074463, 0.052092098092309636, 0.018869338774959932, '5.77', '0.99'], [1.2468525e-06, 1.2468894e-06, 2.682209e-06, 1.0, -9.117556, 1186741609.1967773, 8.88448997593982, 10.294566919244375, 10.117552182754622, 0.16395111807779128, 0.17151831982029186, '5.57', '0.96'], [1.2325208e-06, 1.2325573e-06, 2.7418137e-06, 1.0, -9.147261, 1186742677.665039, 29.969423739611496, 30.556585011902786, 38.89787585322135, 0.12675735212238357, 0.18469124302375506, '5.53', '0.90'], [1.218515e-06, 1.218551e-06, 2.7418137e-06, 1.0, -9.263696, 1186740360.0683594, 8.79321316648933, 10.083837119615104, 10.117695928837398, 0.05135057710947131, 0.0446353477655602, '5.67', '0.86'], [1.2048238e-06, 1.2048595e-06, 2.7418137e-06, 1.0, -9.301659, 1186740930.8339844, 10.777348808757505, 15.354235298318937, 10.070308172832465, 0.1821703849542845, 0.11285979599881868, '5.61', '0.63'], [1.1914369e-06, 1.191472e-06, 2.9206276e-06, 1.0, -9.320226, 1186740697.3310547, 12.568446247766476, 20.10663825126857, 10.578916305563176, 0.029223919545814804, 0.11476396009728668, '5.61', '0.88'], [1.1783441e-06, 1.178379e-06, 2.9206276e-06, 1.0, -9.321686, 1186741848.5551758, 32.657191922825284, 36.83819990511542, 38.20322447000102, 0.022668384553518096, 0.04214647841666415, '5.63', '0.74'], [1.1655361e-06, 1.1655706e-06, 2.9206276e-06, 1.0, -9.417545, 1186740991.678711, 20.353699862291474, 15.170215250359856, 37.489166604050524, 0.11484381776817194, 0.04429641114670575, '5.65', '0.99'], [1.1530034e-06, 1.1530375e-06, 2.9802322e-06, 1.0, -9.425538, 1186740776.34375, 11.197705387704525, 12.038565513123181, 13.75564918284937, 0.10469607280915456, 0.17165054024510945, '5.67', '1.04'], [1.1407375e-06, 1.1407711e-06, 2.9802322e-06, 1.0, -9.548719, 1186740964.3823242, 11.015070849396857, 10.628225655884107, 15.15823505938296, 0.14401082011317876, 0.18241152626593937, '5.70', '0.70'], [1.1287297e-06, 1.128763e-06, 3.0398369e-06, 1.0, -9.763494, 1186741995.4995117, 10.064383008683766, 10.02440023202596, 13.388754323551112, 0.06294466406142163, 0.0327244537228973, '5.50', '0.98'], [1.1287297e-06, 1.128763e-06, 3.0398369e-06, 1.0, -9.61161, 1186740832.322754, 9.90084833882771, 10.96359161301835, 11.801075803409928, 0.1760828353109822, 0.19798668220719173, '5.55', '0.77']]);
+
+                    var formatter = new google.visualization.NumberFormat({pattern:'#.###E0'});
+                    formatter.format(data, 0);
+                    var formatter = new google.visualization.NumberFormat({pattern:'#.###E0'});
+                    formatter.format(data, 1);
+                    var formatter = new google.visualization.NumberFormat({pattern:'#.##E0'});
+                    formatter.format(data, 2);
+                    var formatter = new google.visualization.NumberFormat({pattern:'#.##E0'});
+                    formatter.format(data, 3);
+                    var formatter = new google.visualization.NumberFormat({pattern:'##.###'});
+                    formatter.format(data, 4);
+                    var formatter = new google.visualization.NumberFormat({pattern:'##.##'});
+                    formatter.format(data, 6);
+                    var formatter = new google.visualization.NumberFormat({pattern:'##.##'});
+                    formatter.format(data, 7);
+                    var formatter = new google.visualization.NumberFormat({pattern:'##.##'});
+                    formatter.format(data, 8);
+                    var formatter = new google.visualization.NumberFormat({pattern:'##.##'});
+                    formatter.format(data, 9);
+                    var formatter = new google.visualization.NumberFormat({pattern:'##.##'});
+                    formatter.format(data, 10);
+                    var formatter = new google.visualization.NumberFormat({pattern:'##.##'});
+                    formatter.format(data, 11);
+                    var formatter = new google.visualization.NumberFormat({pattern:'##.##'});
+                    formatter.format(data, 12);
+        var table = new google.visualization.Table(document.getElementById('81d57c79-c9a6-4150-9e4e-fd00941dcee3'));
+        table.draw(data, {showRowNumber: 'true',
+                          page: 'enable',
+                          allowHtml: 'true',
+                          pageSize: 10});
+      }
+    </script>
+    <div id='81d57c79-c9a6-4150-9e4e-fd00941dcee3'></div>
+
+
+<!--segment XML file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PAGE_FOREGROUND_FULL_DATA_1DET-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_foreground --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --trigger-file L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1186740100-3400.hdf --single-detector-triggers H1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf L1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf V1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf --output-file L1-PAGE_FOREGROUND_FULL_DATA_1DET-1186740100-3400.html">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+
+</div>     
+                                                       
+                    
+                
+
+                <hr class="row-divider">
+
+                <!-- display other files in directory -->
+                
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- loop over files in directory -->
+                        <h1>Additional Files</h1>
+                            The following files were also found in this directory:
+                            <div class="row" style="padding:15px">
+                                <button id="collapse-init" class="btn btn-xs btn-primary">Expand All</button>
+                            </div>
+                            
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                    </div>
+                </div>
+                
+
+            </div>
+         </div>
+     </div>
+</div>
+
+<footer>
+    <div class="container-fluid">
+        <div class="footer-custom">
+            <a href="../../sitemap/index.html">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+x-pegasus:
+  apiLang: python
+  createdBy: rutuja.pilgar
+  createdOn: 04-05-24T16:07:13Z
+pegasus: 5.0.4
+name: gw15.dax
+replicaCatalog:
+  replicas:
+  - lfn: gw15-main.map
+    pfns:
+    - site: local
+      pfn: /home/rutuja.pilgar/gw152/output/gw15-main.map
+  - lfn: gw15-main.dax
+    pfns:
+    - site: local
+      pfn: /home/rutuja.pilgar/gw152/output/gw15-main.dax
+  - lfn: gw15-finalization.map
+    pfns:
+    - site: local
+      pfn: /home/rutuja.pilgar/gw152/output/gw15-finalization.map
+  - lfn: gw15-finalization.dax
+    pfns:
+    - site: local
+      pfn: /home/rutuja.pilgar/gw152/output/gw15-finalization.dax
+transformationCatalog:
+  transformations: []
+jobs:
+- type: pegasusWorkflow
+  file: gw15-main.dax
+  id: gw15-main
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=gw15-main.map
+  - --basename
+  - gw15-main
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: gw15-main.dax
+    forPlanning: true
+    type: input
+  - lfn: gw15-main.map
+    forPlanning: true
+    type: input
+- type: pegasusWorkflow
+  file: gw15-finalization.dax
+  id: gw15-finalization
+  arguments:
+  - -Dpegasus.dir.storage.mapper.replica.file=gw15-finalization.map
+  - --basename
+  - gw15-finalization
+  - --cluster
+  - label,horizontal
+  - --output-sites
+  - local
+  - --staging-site
+  - condorpool_symlink=local,condorpool_copy=local,local=local,condorpool_shared=condorpool_shared
+  - --cleanup
+  - inplace
+  - -vvv
+  uses:
+  - lfn: gw15-finalization.dax
+    forPlanning: true
+    type: input
+  - lfn: gw15-finalization.map
+    forPlanning: true
+    type: input
+jobDependencies:
+- id: gw15-main
+  children:
+  - gw15-finalization

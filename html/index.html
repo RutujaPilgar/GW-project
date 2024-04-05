@@ -1,0 +1,2830 @@
+<html lang="en">
+
+<head>
+
+    <!-- set initial view -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- add jquery -->
+    <script src="static/js/jquery/1.10.2/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+    <!-- add mousewheel scrolling -->
+    <script type="text/javascript" src="static/js/jquery/1.10.2/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <!-- add bootstrap -->
+    <link media="all" href="static/css/bootstrap/3.3.2/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="static/js/bootstrap/3.3.2/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- add fancybox -->
+    <script type="text/javascript" src="static/js/fancybox/2.1.5/jquery.fancybox.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/fancybox/2.1.5/jquery.fancybox.css" media="screen" />
+
+    <!-- add mathjax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- add orange stylization -->
+    <script type="text/javascript" src="static/js/fancybox/2.1.5/fancybox-orange.js"></script> 
+    <link media="all" href="static/css/pycbc/orange.css" type="text/css" rel="stylesheet">
+
+    <!-- add popover js -->
+    <script> $(function () {$('[data-toggle="popover"]').popover()})</script>
+    <style type="text/css">
+        .popover{
+            max-width:600px;
+        }
+    </style>
+
+    <!-- add expand all js -->
+    <script>
+        $(function () {
+
+            var active = true;
+
+            $('#collapse-init').click(function () {
+                if (active) {
+                    active = false;
+                    $('.panel-collapse').collapse('show');
+                    $('.panel-title').attr('data-toggle', '');
+                    $(this).text('Collapse All');
+                } else {
+                    active = true;
+                    $('.panel-collapse').collapse('hide');
+                    $('.panel-title').attr('data-toggle', 'collapse');
+                    $(this).text('Expand All');
+                }
+            });
+    
+            $('#accordion').on('show.bs.collapse', function () {
+                if (active) $('#accordion .in').collapse('hide');
+            });
+
+        });
+    </script>
+
+    <!-- title -->
+    <title>PyCBC search</title>
+
+    <!-- add fonts -->
+    <style>
+    @font-face {
+        font-family : 'Lato';
+        src : url('static/fonts/Lato-Light.eot');
+        src : url('static/fonts/Lato-Light.eot') format('embedded-opentype'),url('static/fonts/Lato-Light.woff') format('woff'),url('static/fonts/Lato-Light.ttf') format('truetype');
+        text-rendering : optimizeLegibility;
+    }
+    @font-face{
+        font-family : 'Lato';
+        src : url('static/fonts/Lato-Semibold.eot');
+        src : url('static/fonts/Lato-Semibold.eot') format('embedded-opentype'),url('static/fonts/Lato-Semibold.woff') format('woff'),url('static/fonts/Lato-Semibold.ttf') format('truetype');
+        font-weight : bold;
+       text-rendering : optimizeLegibility;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<div id="wrap">
+
+<!-- set dir0 counter integer -->
+
+
+<!-- navbar -->
+<div class="navbar navbar-custom navbar-static-top">
+  <div class="container-fluid">
+
+        <!-- title and subtitle -->
+        <div class="row" style="padding-top:10px">
+            <div class="col-md-4">
+                <p class="text-left">
+                    <img src=https://raw.githubusercontent.com/gwastro/pycbc-logo/master/pycbc_logo_name.png alt="PyCBC logo" style="height:3em;">
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-center" style="font-size:150%;"><b>PyCBC search</b></p>
+                <p class="text-center">Small Test Search</p>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+    <!-- button for collapsed navbar -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- buttons on navbar -->
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+
+        <!-- always have a button to the top-level directory -->
+        <li class="active"><a href="">Summary</a></li>
+
+        <!-- display top-level directories -->
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">1. Analysis Time<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="1._analysis_time" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="./1._analysis_time/1.01_segment_data" role="menuitem">1.01 Segment Data</a></li>
+                
+                    <li role="presentation"><a href="./1._analysis_time/1.02_segments" role="menuitem">1.02 Segments</a></li>
+                
+                    <li role="presentation"><a href="./1._analysis_time/1.03_gating" role="menuitem">1.03 Gating</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">2. Detector Sensitivity<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="2._detector_sensitivity" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">4. Single Triggers<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="4._single_triggers" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.01_H1_binned_triggers" role="menuitem">4.01 H1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.02_H1_trigger_histograms" role="menuitem">4.02 H1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.03_H1_binned_histograms" role="menuitem">4.03 H1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.04_L1_binned_triggers" role="menuitem">4.04 L1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.05_L1_trigger_histograms" role="menuitem">4.05 L1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.06_L1_binned_histograms" role="menuitem">4.06 L1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.07_V1_binned_triggers" role="menuitem">4.07 V1 Binned Triggers</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.08_V1_trigger_histograms" role="menuitem">4.08 V1 Trigger Histograms</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.09_V1_binned_histograms" role="menuitem">4.09 V1 Binned Histograms</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.10_H1_loudest_noncoinc_time" role="menuitem">4.10 H1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.11_H1_all" role="menuitem">4.11 H1 All</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.12_H1_loudest_within_vetoes" role="menuitem">4.12 H1 Loudest Within Vetoes</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.13_L1_loudest_noncoinc_time" role="menuitem">4.13 L1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.14_L1_all" role="menuitem">4.14 L1 All</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.15_L1_loudest_within_vetoes" role="menuitem">4.15 L1 Loudest Within Vetoes</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.16_V1_loudest_noncoinc_time" role="menuitem">4.16 V1 Loudest Noncoinc Time</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.17_V1_all" role="menuitem">4.17 V1 All</a></li>
+                
+                    <li role="presentation"><a href="./4._single_triggers/4.18_V1_loudest_within_vetoes" role="menuitem">4.18 V1 Loudest Within Vetoes</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">5. Background Triggers<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="5._background_triggers" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="./5._background_triggers/5.01_loudest_background_followup" role="menuitem">5.01 Loudest Background Followup</a></li>
+                
+                    <li role="presentation"><a href="./5._background_triggers/5.02_L1V1_background" role="menuitem">5.02 L1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="./5._background_triggers/5.03_H1V1_background" role="menuitem">5.03 H1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="./5._background_triggers/5.04_H1L1_background" role="menuitem">5.04 H1L1 Background</a></li>
+                
+                    <li role="presentation"><a href="./5._background_triggers/5.05_H1L1V1_background" role="menuitem">5.05 H1L1V1 Background</a></li>
+                
+                    <li role="presentation"><a href="./5._background_triggers/5.06_V1_background" role="menuitem">5.06 V1 Background</a></li>
+                
+                    <li role="presentation"><a href="./5._background_triggers/5.07_L1_background" role="menuitem">5.07 L1 Background</a></li>
+                
+                    <li role="presentation"><a href="./5._background_triggers/5.08_H1_background" role="menuitem">5.08 H1 Background</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">6. Injections<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="6._injections" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="./6._injections/6.01_BBH" role="menuitem">6.01 Bbh</a></li>
+                
+                    <li role="presentation"><a href="./6._injections/6.02_followup_of_BBH_with_ifar_lt_1_year" role="menuitem">6.02 Followup Of Bbh With Ifar Lt 1 Year</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">7. Search Sensitivity<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="7._search_sensitivity" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="./7._search_sensitivity/7.01_BBH" role="menuitem">7.01 Bbh</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">8. Open Box Result<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="8._open_box_result" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="./8._open_box_result/8.02_loudest_events_followup" role="menuitem">8.02 Loudest Events Followup</a></li>
+                
+                    <li role="presentation"><a href="./8._open_box_result/8.03_L1V1_candidates" role="menuitem">8.03 L1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="./8._open_box_result/8.04_H1V1_candidates" role="menuitem">8.04 H1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="./8._open_box_result/8.05_H1L1_candidates" role="menuitem">8.05 H1L1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="./8._open_box_result/8.06_H1L1V1_candidates" role="menuitem">8.06 H1L1V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="./8._open_box_result/8.07_V1_candidates" role="menuitem">8.07 V1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="./8._open_box_result/8.08_L1_candidates" role="menuitem">8.08 L1 Candidates</a></li>
+                
+                    <li role="presentation"><a href="./8._open_box_result/8.09_H1_candidates" role="menuitem">8.09 H1 Candidates</a></li>
+                
+
+            </ul>
+        </li>
+        
+        <li class="dropdown ">
+            <a href="#" id="drop1" data-toggle="dropdown" class="dropdown-toggle" role="button">9. Workflow<b class="caret"></b></a>
+            <ul role="menu" class="dropdown-menu" aria-labelledby="drop1">
+                <li role="presentation"><a href="9._workflow" role="menuitem">Summary</a></li>
+                <li class="divider"></li>
+
+                <!-- set subsection counter integer -->
+                
+                    <li role="presentation"><a href="./9._workflow/9.01_throughput" role="menuitem">9.01 Throughput</a></li>
+                
+                    <li role="presentation"><a href="./9._workflow/9.02_configuration" role="menuitem">9.02 Configuration</a></li>
+                
+                    <li role="presentation"><a href="./9._workflow/9.03_version" role="menuitem">9.03 Version</a></li>
+                
+                    <li role="presentation"><a href="./9._workflow/9.04_dax" role="menuitem">9.04 Dax</a></li>
+                
+                    <li role="presentation"><a href="./9._workflow/9.05_input_map" role="menuitem">9.05 Input Map</a></li>
+                
+                    <li role="presentation"><a href="./9._workflow/9.06_output_map" role="menuitem">9.06 Output Map</a></li>
+                
+                    <li role="presentation"><a href="./9._workflow/9.07_planning" role="menuitem">9.07 Planning</a></li>
+                
+
+            </ul>
+        </li>
+        
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+    <div id="main">
+        <div class="container">
+            <div id="content">
+
+                <!-- page name -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1></h1>
+                     </div>
+                </div>
+
+                <!-- set list of files which are handled in wells -->
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                        
+                    
+                
+                
+                <!-- include well if it exists and check meta-data if well renders any files inside it -->
+                
+                    
+                    
+                    
+                    
+                        
+                        
+                        
+                            
+                        
+                        
+                        
+                            <div class=pycbc-meta key="render-function" value="render_tmplt"></div><div class=pycbc-meta key="filenames" value="H1L1V1-TIME-1186740100-3400.html,H1L1V1-PAGE_SEGPLOT_SUMMARY-1186740100-3400.html,H1L1V1-PAGE_SEGTABLE_SUMMARY-1186740100-3400.html,H1L1V1-PAGE_SEGTABLE_VETO_SUMMARY-1186740100-3400.html,H1L1V1-PLOT_SPECTRUM-1186740100-3400.png,H1L1V1-PLOT_RANGE_SUMM-1186740100-3400.png,H1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png,H1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png,L1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png,L1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png,V1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png,V1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png,H1L1V1-PLOT_BANK-1186740100-3400.png,H1L1V1-PLOT_FOUNDMISSED_SUMMARY-1186740100-3400.png,H1L1V1-PLOT_FOUNDMISSED_SUMMARYM-1186740100-3400.png,H1L1V1-PLOT_SENSITIVITY_SUMMARY_MCHIRP-1186740100-3400.png,H1L1V1-PLOT_SENSITIVITY_SUMMARY_MCHIRPVT-1186740100-3400.png,L1V1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png,L1V1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png,H1V1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png,H1V1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png,H1L1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png,H1L1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png,H1L1V1-PLOT_SNRIFAR_FULL_DATA_3DET_CLOSED-1186740100-3400.png,H1L1V1-PAGE_IFAR_FULL_DATA_3DET_CLOSED_BOX-1186740100-3400.png,V1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png,L1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png,H1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png"></div><!-- add a subtitle -->
+
+
+<!-- hold images inside a well -->
+<div class="scaffold well">
+
+    <!-- set file counter integer -->
+    
+
+    <!-- display formatted files -->
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A1"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A1">
+                                    <b>A1. Search Workflow Duration (Wall Clock Time)</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <div class=pycbc-meta key="title" value="Search Workflow Duration (Wall Clock Time)"></div><div class=pycbc-meta key="caption" value="Wall clock start and end times for this invocation of the workflow. The command line button shows the arguments used to invoke the workflow creation script."></div><div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_make_offline_search_workflow --workflow-name gw --output-dir output --config-files analysis.ini plotting.ini executables.ini injections_minimal.ini --config-overrides results_page:output-path:/home/rutuja.pilgar/sr_test/search/html"></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div><center><p><b>GPS Interval [1186740100,1186743500). UTC Interval 2017-08-14 10:01:22 - 2017-08-14 10:58:02. Interval duration = 0.039 days.</b></p></center>
+
+<!--segment XML file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-TIME-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Wall clock start and end times for this invocation of the workflow. The command line button shows the arguments used to invoke the workflow creation script.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_make_offline_search_workflow --workflow-name gw --output-dir output --config-files analysis.ini plotting.ini executables.ini injections_minimal.ini --config-overrides results_page:output-path:/home/rutuja.pilgar/sr_test/search/html">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A2"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A2">
+                                    <b>A2. Data Input and Search Output Segments</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <div class=pycbc-meta key="title" value="Data Input and Search Output Segments"></div><div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_segplot --segment-files H1L1V1-SCIENCE-1186740100-3400.xml H1L1V1-SCIENCE_AVAILABLE-1186740100-3400.xml H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --segment-names science SCIENCE_AVAILABLE TRIGGERS_GENERATED --ifos H1 L1 V1 --output-file H1L1V1-PAGE_SEGPLOT_SUMMARY-1186740100-3400.html"></div><div class=pycbc-meta key="caption" value="Visualization of the input and output segments for the search. Shown are: H1:science L1:science V1:science H1:SCIENCE_AVAILABLE L1:SCIENCE_AVAILABLE V1:SCIENCE_AVAILABLE H1:TRIGGERS_GENERATED L1:TRIGGERS_GENERATED V1:TRIGGERS_GENERATED "></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div>
+
+<style>
+
+    .legend-box {
+      cursor: pointer;
+    }
+    
+</style>
+
+<div id="fig_el16427479472181568961747921636"></div>
+<script>
+function mpld3_load_lib(url, callback){
+  var s = document.createElement('script');
+  s.src = url;
+  s.async = true;
+  s.onreadystatechange = s.onload = callback;
+  s.onerror = function(){console.warn("failed to load library " + url);};
+  document.getElementsByTagName("head")[0].appendChild(s);
+}
+
+if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
+   // already loaded: just create the figure
+   !function(mpld3){
+       
+    mpld3.register_plugin("linehtmltooltip", LineHTMLTooltip);
+    LineHTMLTooltip.prototype = Object.create(mpld3.Plugin.prototype);
+    LineHTMLTooltip.prototype.constructor = LineHTMLTooltip;
+    LineHTMLTooltip.prototype.requiredProps = ["id"];
+    LineHTMLTooltip.prototype.defaultProps = {label:null,
+                                              hoffset:0,
+                                              voffset:10};
+    function LineHTMLTooltip(fig, props){
+        mpld3.Plugin.call(this, fig, props);
+    };
+
+    LineHTMLTooltip.prototype.draw = function(){
+        var obj = mpld3.get_element(this.props.id, this.fig);
+        var label = this.props.label
+        var tooltip = d3.select("body").append("div")
+                    .attr("class", "mpld3-tooltip")
+                    .style("position", "absolute")
+                    .style("z-index", "10")
+                    .style("visibility", "hidden");
+
+        obj.elements()
+           .on("mouseover", function(d, i){
+                               tooltip.html(label)
+                                      .style("visibility", "visible");
+                                     })
+            .on("mousemove", function(d, i){
+                  tooltip
+                    .style("top", d3.event.pageY + this.props.voffset + "px")
+                    .style("left",d3.event.pageX + this.props.hoffset + "px");
+                 }.bind(this))
+           .on("mouseout",  function(d, i){
+                           tooltip.style("visibility", "hidden");})
+    };
+    
+    mpld3.register_plugin("interactive_legend", InteractiveLegend);
+    InteractiveLegend.prototype = Object.create(mpld3.Plugin.prototype);
+    InteractiveLegend.prototype.constructor = InteractiveLegend;
+    InteractiveLegend.prototype.requiredProps = ["element_ids", "labels"];
+    InteractiveLegend.prototype.defaultProps = {"ax":null,
+                                                "alpha_unsel":0.2,
+                                                "alpha_over":1.0,
+                                                "start_visible":true,
+                                                "font_size": 10,
+                                                "legend_offset": [0,0]}
+    function InteractiveLegend(fig, props){
+        mpld3.Plugin.call(this, fig, props);
+    };
+
+    InteractiveLegend.prototype.draw = function(){
+        var alpha_unsel = this.props.alpha_unsel;
+        var alpha_over = this.props.alpha_over;
+        var font_size = this.props.font_size;
+        var legend_offset = this.props.legend_offset;
+
+        var legendItems = new Array();
+        for(var i=0; i<this.props.labels.length; i++){
+            var obj = {};
+            obj.label = this.props.labels[i];
+
+            var element_id = this.props.element_ids[i];
+            mpld3_elements = [];
+            for(var j=0; j<element_id.length; j++){
+                var mpld3_element = mpld3.get_element(element_id[j], this.fig);
+
+                // mpld3_element might be null in case of Line2D instances
+                // for we pass the id for both the line and the markers. Either
+                // one might not exist on the D3 side
+                if(mpld3_element){
+                    mpld3_elements.push(mpld3_element);
+                }
+            }
+
+            obj.mpld3_elements = mpld3_elements;
+            obj.visible = this.props.start_visible[i]; // should become be setable from python side
+            legendItems.push(obj);
+            set_alphas(obj, false);
+        }
+
+        // determine the axes with which this legend is associated
+        var ax = this.props.ax
+        if(!ax){
+            ax = this.fig.axes[0];
+        } else{
+            ax = mpld3.get_element(ax, this.fig);
+        }
+
+        // add a legend group to the canvas of the figure
+        var legend = this.fig.canvas.append("svg:g")
+                               .attr("class", "legend");
+
+        // add the rectangles
+        legend.selectAll("rect")
+                .data(legendItems)
+                .enter().append("rect")
+                .attr("height", 0.7*font_size)
+                .attr("width", 1.6*font_size)
+                .attr("x", ax.width + ax.position[0] + 15 + legend_offset[0])
+                .attr("y",function(d,i) {
+                           return ax.position[1] + i * (font_size+5) + 10 + legend_offset[1];})
+                .attr("stroke", get_color)
+                .attr("class", "legend-box")
+                .style("fill", function(d, i) {
+                           return d.visible ? get_color(d) : "white";})
+                .on("click", click).on('mouseover', over).on('mouseout', out);
+
+        // add the labels
+        legend.selectAll("text")
+              .data(legendItems)
+              .enter().append("text")
+              .attr("font-size", font_size)
+              .attr("x", function (d) {
+                           return ax.width + ax.position[0] + (1.9*font_size+15) + legend_offset[0];})
+              .attr("y", function(d,i) {
+                           return ax.position[1] + i * (font_size+5) + 10 + (0.72*font_size-1) + legend_offset[1];})
+              .text(function(d) { return d.label })
+              .on('mouseover', over).on('mouseout', out);
+
+
+        // specify the action on click
+        function click(d,i){
+            d.visible = !d.visible;
+            d3.select(this)
+              .style("fill",function(d, i) {
+                return d.visible ? get_color(d) : "white";
+              })
+            set_alphas(d, false);
+
+        };
+
+        // specify the action on legend overlay 
+        function over(d,i){
+             set_alphas(d, true);
+        };
+
+        // specify the action on legend overlay 
+        function out(d,i){
+             set_alphas(d, false);
+        };
+
+        // helper function for setting alphas
+        function set_alphas(d, is_over){
+            for(var i=0; i<d.mpld3_elements.length; i++){
+                var type = d.mpld3_elements[i].constructor.name;
+
+                if(type =="mpld3_Line"){
+                    var current_alpha = d.mpld3_elements[i].props.alpha;
+                    var current_alpha_unsel = current_alpha * alpha_unsel;
+                    var current_alpha_over = current_alpha * alpha_over;
+                    d3.select(d.mpld3_elements[i].path.nodes()[0])
+                        .style("stroke-opacity", is_over ? current_alpha_over :
+                                                (d.visible ? current_alpha : current_alpha_unsel))
+                        .style("stroke-width", is_over ?
+                                alpha_over * d.mpld3_elements[i].props.edgewidth : d.mpld3_elements[i].props.edgewidth);
+                } else if((type=="mpld3_PathCollection")||
+                         (type=="mpld3_Markers")){
+                    var current_alpha = d.mpld3_elements[i].props.alphas[0];
+                    var current_alpha_unsel = current_alpha * alpha_unsel;
+                    var current_alpha_over = current_alpha * alpha_over;
+                    d.mpld3_elements[i].pathsobj
+                        .style("stroke-opacity", is_over ? current_alpha_over :
+                                                (d.visible ? current_alpha : current_alpha_unsel))
+                        .style("fill-opacity", is_over ? current_alpha_over :
+                                                (d.visible ? current_alpha : current_alpha_unsel));
+                } else{
+                    console.log(type + " not yet supported");
+                }
+            }
+        };
+
+
+        // helper function for determining the color of the rectangles
+        function get_color(d){
+            var type = d.mpld3_elements[0].constructor.name;
+            var color = "black";
+            if(type =="mpld3_Line"){
+                color = d.mpld3_elements[0].props.edgecolor;
+            } else if((type=="mpld3_PathCollection")||
+                      (type=="mpld3_Markers")){
+                color = d.mpld3_elements[0].props.facecolors[0];
+            } else{
+                console.log(type + " not yet supported");
+            }
+            return color;
+        };
+    };
+    
+       mpld3.draw_figure("fig_el16427479472181568961747921636", {"width": 1600.0, "height": 900.0, "axes": [{"bbox": [0.0, 0.09999999999999998, 0.6, 0.8], "xlim": [1186740100.0, 1186743500.0], "ylim": [0.0, 2.6999999999999997], "xdomain": [1186740100.0, 1186743500.0], "ydomain": [0.0, 2.6999999999999997], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 8, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 7, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el1642747947268527856", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el1642747947268914480", "color": "#EE0000", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el1642747947269133824", "color": "#4BA6FF", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 3, "coordinates": "data", "id": "el1642747947269134544", "color": "#9B59B6", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el1642747947269140400", "color": "#EE0000", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el1642747947269261104", "color": "#4BA6FF", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 3, "coordinates": "data", "id": "el1642747947269261776", "color": "#9B59B6", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 4, "yindex": 1, "coordinates": "data", "id": "el1642747947269143568", "color": "#EE0000", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 4, "yindex": 2, "coordinates": "data", "id": "el1642747947269264944", "color": "#4BA6FF", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 4, "yindex": 3, "coordinates": "data", "id": "el1642747947269266000", "color": "#9B59B6", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}], "paths": [], "markers": [], "texts": [{"text": "H1 Segments", "position": [1186740100.0, 0.66], "coordinates": "data", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 24.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947269142608"}, {"text": "L1 Segments", "position": [1186740100.0, 1.6600000000000001], "coordinates": "data", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 24.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947269262448"}, {"text": "V1 Segments", "position": [1186740100.0, 2.66], "coordinates": "data", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 24.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947269259328"}, {"text": "GPS Time (s)", "position": [0.5, -0.04066358024691359], "coordinates": "axes", "h_anchor": "middle", "v_baseline": "hanging", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947268530208"}], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[1186740100.0, 0.33, 1.33, 2.33, 1186740108.0], [1186743500.0, 0.33, 1.33, 2.33, 1186743492.0]]}, "id": "el1642747947218156896", "plugins": [{"type": "linehtmltooltip", "id": "el1642747947268914480", "label": "<table>\n                             <tr><th>Segment Name</th><td>science</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269133824", "label": "<table>\n                             <tr><th>Segment Name</th><td>science</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269134544", "label": "<table>\n                             <tr><th>Segment Name</th><td>science</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269140400", "label": "<table>\n                             <tr><th>Segment Name</th><td>SCIENCE_AVAILABLE</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269261104", "label": "<table>\n                             <tr><th>Segment Name</th><td>SCIENCE_AVAILABLE</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269261776", "label": "<table>\n                             <tr><th>Segment Name</th><td>SCIENCE_AVAILABLE</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269143568", "label": "<table>\n                             <tr><th>Segment Name</th><td>TRIGGERS_GENERATED</td></tr>\n                             <tr><th>Start</th><td>1186740108</td></tr>\n                             <tr><th>End</th><td>1186743492</td></tr>\n                             <tr><th>Duration</th><td>3384.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269264944", "label": "<table>\n                             <tr><th>Segment Name</th><td>TRIGGERS_GENERATED</td></tr>\n                             <tr><th>Start</th><td>1186740108</td></tr>\n                             <tr><th>End</th><td>1186743492</td></tr>\n                             <tr><th>Duration</th><td>3384.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269266000", "label": "<table>\n                             <tr><th>Segment Name</th><td>TRIGGERS_GENERATED</td></tr>\n                             <tr><th>Start</th><td>1186740108</td></tr>\n                             <tr><th>End</th><td>1186743492</td></tr>\n                             <tr><th>Duration</th><td>3384.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "interactive_legend", "element_ids": [["el1642747947268914480", "el1642747947268914480pts"], ["el1642747947269133824", "el1642747947269133824pts"], ["el1642747947269134544", "el1642747947269134544pts"], ["el1642747947269140400", "el1642747947269140400pts"], ["el1642747947269261104", "el1642747947269261104pts"], ["el1642747947269261776", "el1642747947269261776pts"], ["el1642747947269143568", "el1642747947269143568pts"], ["el1642747947269264944", "el1642747947269264944pts"], ["el1642747947269266000", "el1642747947269266000pts"]], "labels": ["H1:science", "L1:science", "V1:science", "H1:SCIENCE_AVAILABLE", "L1:SCIENCE_AVAILABLE", "V1:SCIENCE_AVAILABLE", "H1:TRIGGERS_GENERATED", "L1:TRIGGERS_GENERATED", "V1:TRIGGERS_GENERATED"], "ax": null, "alpha_unsel": 0.1, "alpha_over": 1.0, "start_visible": [true, true, true, true, true, true, true, true, true], "font_size": 10, "legend_offset": [0, 0]}, {"type": "mouseposition", "fontsize": 14, "fmt": "10f"}, {"type": "boxzoom", "button": true, "enabled": false}, {"type": "zoom", "button": true, "enabled": false}, {"type": "reset"}]});
+   }(mpld3);
+}else if(typeof define === "function" && define.amd){
+   // require.js is available: use it to load d3/mpld3
+   require.config({paths: {d3: "https://d3js.org/d3.v5"}});
+   require(["d3"], function(d3){
+      window.d3 = d3;
+      mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.5.10.js", function(){
+         
+    mpld3.register_plugin("linehtmltooltip", LineHTMLTooltip);
+    LineHTMLTooltip.prototype = Object.create(mpld3.Plugin.prototype);
+    LineHTMLTooltip.prototype.constructor = LineHTMLTooltip;
+    LineHTMLTooltip.prototype.requiredProps = ["id"];
+    LineHTMLTooltip.prototype.defaultProps = {label:null,
+                                              hoffset:0,
+                                              voffset:10};
+    function LineHTMLTooltip(fig, props){
+        mpld3.Plugin.call(this, fig, props);
+    };
+
+    LineHTMLTooltip.prototype.draw = function(){
+        var obj = mpld3.get_element(this.props.id, this.fig);
+        var label = this.props.label
+        var tooltip = d3.select("body").append("div")
+                    .attr("class", "mpld3-tooltip")
+                    .style("position", "absolute")
+                    .style("z-index", "10")
+                    .style("visibility", "hidden");
+
+        obj.elements()
+           .on("mouseover", function(d, i){
+                               tooltip.html(label)
+                                      .style("visibility", "visible");
+                                     })
+            .on("mousemove", function(d, i){
+                  tooltip
+                    .style("top", d3.event.pageY + this.props.voffset + "px")
+                    .style("left",d3.event.pageX + this.props.hoffset + "px");
+                 }.bind(this))
+           .on("mouseout",  function(d, i){
+                           tooltip.style("visibility", "hidden");})
+    };
+    
+    mpld3.register_plugin("interactive_legend", InteractiveLegend);
+    InteractiveLegend.prototype = Object.create(mpld3.Plugin.prototype);
+    InteractiveLegend.prototype.constructor = InteractiveLegend;
+    InteractiveLegend.prototype.requiredProps = ["element_ids", "labels"];
+    InteractiveLegend.prototype.defaultProps = {"ax":null,
+                                                "alpha_unsel":0.2,
+                                                "alpha_over":1.0,
+                                                "start_visible":true,
+                                                "font_size": 10,
+                                                "legend_offset": [0,0]}
+    function InteractiveLegend(fig, props){
+        mpld3.Plugin.call(this, fig, props);
+    };
+
+    InteractiveLegend.prototype.draw = function(){
+        var alpha_unsel = this.props.alpha_unsel;
+        var alpha_over = this.props.alpha_over;
+        var font_size = this.props.font_size;
+        var legend_offset = this.props.legend_offset;
+
+        var legendItems = new Array();
+        for(var i=0; i<this.props.labels.length; i++){
+            var obj = {};
+            obj.label = this.props.labels[i];
+
+            var element_id = this.props.element_ids[i];
+            mpld3_elements = [];
+            for(var j=0; j<element_id.length; j++){
+                var mpld3_element = mpld3.get_element(element_id[j], this.fig);
+
+                // mpld3_element might be null in case of Line2D instances
+                // for we pass the id for both the line and the markers. Either
+                // one might not exist on the D3 side
+                if(mpld3_element){
+                    mpld3_elements.push(mpld3_element);
+                }
+            }
+
+            obj.mpld3_elements = mpld3_elements;
+            obj.visible = this.props.start_visible[i]; // should become be setable from python side
+            legendItems.push(obj);
+            set_alphas(obj, false);
+        }
+
+        // determine the axes with which this legend is associated
+        var ax = this.props.ax
+        if(!ax){
+            ax = this.fig.axes[0];
+        } else{
+            ax = mpld3.get_element(ax, this.fig);
+        }
+
+        // add a legend group to the canvas of the figure
+        var legend = this.fig.canvas.append("svg:g")
+                               .attr("class", "legend");
+
+        // add the rectangles
+        legend.selectAll("rect")
+                .data(legendItems)
+                .enter().append("rect")
+                .attr("height", 0.7*font_size)
+                .attr("width", 1.6*font_size)
+                .attr("x", ax.width + ax.position[0] + 15 + legend_offset[0])
+                .attr("y",function(d,i) {
+                           return ax.position[1] + i * (font_size+5) + 10 + legend_offset[1];})
+                .attr("stroke", get_color)
+                .attr("class", "legend-box")
+                .style("fill", function(d, i) {
+                           return d.visible ? get_color(d) : "white";})
+                .on("click", click).on('mouseover', over).on('mouseout', out);
+
+        // add the labels
+        legend.selectAll("text")
+              .data(legendItems)
+              .enter().append("text")
+              .attr("font-size", font_size)
+              .attr("x", function (d) {
+                           return ax.width + ax.position[0] + (1.9*font_size+15) + legend_offset[0];})
+              .attr("y", function(d,i) {
+                           return ax.position[1] + i * (font_size+5) + 10 + (0.72*font_size-1) + legend_offset[1];})
+              .text(function(d) { return d.label })
+              .on('mouseover', over).on('mouseout', out);
+
+
+        // specify the action on click
+        function click(d,i){
+            d.visible = !d.visible;
+            d3.select(this)
+              .style("fill",function(d, i) {
+                return d.visible ? get_color(d) : "white";
+              })
+            set_alphas(d, false);
+
+        };
+
+        // specify the action on legend overlay 
+        function over(d,i){
+             set_alphas(d, true);
+        };
+
+        // specify the action on legend overlay 
+        function out(d,i){
+             set_alphas(d, false);
+        };
+
+        // helper function for setting alphas
+        function set_alphas(d, is_over){
+            for(var i=0; i<d.mpld3_elements.length; i++){
+                var type = d.mpld3_elements[i].constructor.name;
+
+                if(type =="mpld3_Line"){
+                    var current_alpha = d.mpld3_elements[i].props.alpha;
+                    var current_alpha_unsel = current_alpha * alpha_unsel;
+                    var current_alpha_over = current_alpha * alpha_over;
+                    d3.select(d.mpld3_elements[i].path.nodes()[0])
+                        .style("stroke-opacity", is_over ? current_alpha_over :
+                                                (d.visible ? current_alpha : current_alpha_unsel))
+                        .style("stroke-width", is_over ?
+                                alpha_over * d.mpld3_elements[i].props.edgewidth : d.mpld3_elements[i].props.edgewidth);
+                } else if((type=="mpld3_PathCollection")||
+                         (type=="mpld3_Markers")){
+                    var current_alpha = d.mpld3_elements[i].props.alphas[0];
+                    var current_alpha_unsel = current_alpha * alpha_unsel;
+                    var current_alpha_over = current_alpha * alpha_over;
+                    d.mpld3_elements[i].pathsobj
+                        .style("stroke-opacity", is_over ? current_alpha_over :
+                                                (d.visible ? current_alpha : current_alpha_unsel))
+                        .style("fill-opacity", is_over ? current_alpha_over :
+                                                (d.visible ? current_alpha : current_alpha_unsel));
+                } else{
+                    console.log(type + " not yet supported");
+                }
+            }
+        };
+
+
+        // helper function for determining the color of the rectangles
+        function get_color(d){
+            var type = d.mpld3_elements[0].constructor.name;
+            var color = "black";
+            if(type =="mpld3_Line"){
+                color = d.mpld3_elements[0].props.edgecolor;
+            } else if((type=="mpld3_PathCollection")||
+                      (type=="mpld3_Markers")){
+                color = d.mpld3_elements[0].props.facecolors[0];
+            } else{
+                console.log(type + " not yet supported");
+            }
+            return color;
+        };
+    };
+    
+         mpld3.draw_figure("fig_el16427479472181568961747921636", {"width": 1600.0, "height": 900.0, "axes": [{"bbox": [0.0, 0.09999999999999998, 0.6, 0.8], "xlim": [1186740100.0, 1186743500.0], "ylim": [0.0, 2.6999999999999997], "xdomain": [1186740100.0, 1186743500.0], "ydomain": [0.0, 2.6999999999999997], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 8, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 7, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el1642747947268527856", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el1642747947268914480", "color": "#EE0000", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el1642747947269133824", "color": "#4BA6FF", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 3, "coordinates": "data", "id": "el1642747947269134544", "color": "#9B59B6", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el1642747947269140400", "color": "#EE0000", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el1642747947269261104", "color": "#4BA6FF", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 3, "coordinates": "data", "id": "el1642747947269261776", "color": "#9B59B6", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 4, "yindex": 1, "coordinates": "data", "id": "el1642747947269143568", "color": "#EE0000", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 4, "yindex": 2, "coordinates": "data", "id": "el1642747947269264944", "color": "#4BA6FF", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 4, "yindex": 3, "coordinates": "data", "id": "el1642747947269266000", "color": "#9B59B6", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}], "paths": [], "markers": [], "texts": [{"text": "H1 Segments", "position": [1186740100.0, 0.66], "coordinates": "data", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 24.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947269142608"}, {"text": "L1 Segments", "position": [1186740100.0, 1.6600000000000001], "coordinates": "data", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 24.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947269262448"}, {"text": "V1 Segments", "position": [1186740100.0, 2.66], "coordinates": "data", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 24.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947269259328"}, {"text": "GPS Time (s)", "position": [0.5, -0.04066358024691359], "coordinates": "axes", "h_anchor": "middle", "v_baseline": "hanging", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947268530208"}], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[1186740100.0, 0.33, 1.33, 2.33, 1186740108.0], [1186743500.0, 0.33, 1.33, 2.33, 1186743492.0]]}, "id": "el1642747947218156896", "plugins": [{"type": "linehtmltooltip", "id": "el1642747947268914480", "label": "<table>\n                             <tr><th>Segment Name</th><td>science</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269133824", "label": "<table>\n                             <tr><th>Segment Name</th><td>science</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269134544", "label": "<table>\n                             <tr><th>Segment Name</th><td>science</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269140400", "label": "<table>\n                             <tr><th>Segment Name</th><td>SCIENCE_AVAILABLE</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269261104", "label": "<table>\n                             <tr><th>Segment Name</th><td>SCIENCE_AVAILABLE</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269261776", "label": "<table>\n                             <tr><th>Segment Name</th><td>SCIENCE_AVAILABLE</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269143568", "label": "<table>\n                             <tr><th>Segment Name</th><td>TRIGGERS_GENERATED</td></tr>\n                             <tr><th>Start</th><td>1186740108</td></tr>\n                             <tr><th>End</th><td>1186743492</td></tr>\n                             <tr><th>Duration</th><td>3384.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269264944", "label": "<table>\n                             <tr><th>Segment Name</th><td>TRIGGERS_GENERATED</td></tr>\n                             <tr><th>Start</th><td>1186740108</td></tr>\n                             <tr><th>End</th><td>1186743492</td></tr>\n                             <tr><th>Duration</th><td>3384.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269266000", "label": "<table>\n                             <tr><th>Segment Name</th><td>TRIGGERS_GENERATED</td></tr>\n                             <tr><th>Start</th><td>1186740108</td></tr>\n                             <tr><th>End</th><td>1186743492</td></tr>\n                             <tr><th>Duration</th><td>3384.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "interactive_legend", "element_ids": [["el1642747947268914480", "el1642747947268914480pts"], ["el1642747947269133824", "el1642747947269133824pts"], ["el1642747947269134544", "el1642747947269134544pts"], ["el1642747947269140400", "el1642747947269140400pts"], ["el1642747947269261104", "el1642747947269261104pts"], ["el1642747947269261776", "el1642747947269261776pts"], ["el1642747947269143568", "el1642747947269143568pts"], ["el1642747947269264944", "el1642747947269264944pts"], ["el1642747947269266000", "el1642747947269266000pts"]], "labels": ["H1:science", "L1:science", "V1:science", "H1:SCIENCE_AVAILABLE", "L1:SCIENCE_AVAILABLE", "V1:SCIENCE_AVAILABLE", "H1:TRIGGERS_GENERATED", "L1:TRIGGERS_GENERATED", "V1:TRIGGERS_GENERATED"], "ax": null, "alpha_unsel": 0.1, "alpha_over": 1.0, "start_visible": [true, true, true, true, true, true, true, true, true], "font_size": 10, "legend_offset": [0, 0]}, {"type": "mouseposition", "fontsize": 14, "fmt": "10f"}, {"type": "boxzoom", "button": true, "enabled": false}, {"type": "zoom", "button": true, "enabled": false}, {"type": "reset"}]});
+      });
+    });
+}else{
+    // require.js not available: dynamically load d3 & mpld3
+    mpld3_load_lib("https://d3js.org/d3.v5.js", function(){
+         mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.5.10.js", function(){
+                 
+    mpld3.register_plugin("linehtmltooltip", LineHTMLTooltip);
+    LineHTMLTooltip.prototype = Object.create(mpld3.Plugin.prototype);
+    LineHTMLTooltip.prototype.constructor = LineHTMLTooltip;
+    LineHTMLTooltip.prototype.requiredProps = ["id"];
+    LineHTMLTooltip.prototype.defaultProps = {label:null,
+                                              hoffset:0,
+                                              voffset:10};
+    function LineHTMLTooltip(fig, props){
+        mpld3.Plugin.call(this, fig, props);
+    };
+
+    LineHTMLTooltip.prototype.draw = function(){
+        var obj = mpld3.get_element(this.props.id, this.fig);
+        var label = this.props.label
+        var tooltip = d3.select("body").append("div")
+                    .attr("class", "mpld3-tooltip")
+                    .style("position", "absolute")
+                    .style("z-index", "10")
+                    .style("visibility", "hidden");
+
+        obj.elements()
+           .on("mouseover", function(d, i){
+                               tooltip.html(label)
+                                      .style("visibility", "visible");
+                                     })
+            .on("mousemove", function(d, i){
+                  tooltip
+                    .style("top", d3.event.pageY + this.props.voffset + "px")
+                    .style("left",d3.event.pageX + this.props.hoffset + "px");
+                 }.bind(this))
+           .on("mouseout",  function(d, i){
+                           tooltip.style("visibility", "hidden");})
+    };
+    
+    mpld3.register_plugin("interactive_legend", InteractiveLegend);
+    InteractiveLegend.prototype = Object.create(mpld3.Plugin.prototype);
+    InteractiveLegend.prototype.constructor = InteractiveLegend;
+    InteractiveLegend.prototype.requiredProps = ["element_ids", "labels"];
+    InteractiveLegend.prototype.defaultProps = {"ax":null,
+                                                "alpha_unsel":0.2,
+                                                "alpha_over":1.0,
+                                                "start_visible":true,
+                                                "font_size": 10,
+                                                "legend_offset": [0,0]}
+    function InteractiveLegend(fig, props){
+        mpld3.Plugin.call(this, fig, props);
+    };
+
+    InteractiveLegend.prototype.draw = function(){
+        var alpha_unsel = this.props.alpha_unsel;
+        var alpha_over = this.props.alpha_over;
+        var font_size = this.props.font_size;
+        var legend_offset = this.props.legend_offset;
+
+        var legendItems = new Array();
+        for(var i=0; i<this.props.labels.length; i++){
+            var obj = {};
+            obj.label = this.props.labels[i];
+
+            var element_id = this.props.element_ids[i];
+            mpld3_elements = [];
+            for(var j=0; j<element_id.length; j++){
+                var mpld3_element = mpld3.get_element(element_id[j], this.fig);
+
+                // mpld3_element might be null in case of Line2D instances
+                // for we pass the id for both the line and the markers. Either
+                // one might not exist on the D3 side
+                if(mpld3_element){
+                    mpld3_elements.push(mpld3_element);
+                }
+            }
+
+            obj.mpld3_elements = mpld3_elements;
+            obj.visible = this.props.start_visible[i]; // should become be setable from python side
+            legendItems.push(obj);
+            set_alphas(obj, false);
+        }
+
+        // determine the axes with which this legend is associated
+        var ax = this.props.ax
+        if(!ax){
+            ax = this.fig.axes[0];
+        } else{
+            ax = mpld3.get_element(ax, this.fig);
+        }
+
+        // add a legend group to the canvas of the figure
+        var legend = this.fig.canvas.append("svg:g")
+                               .attr("class", "legend");
+
+        // add the rectangles
+        legend.selectAll("rect")
+                .data(legendItems)
+                .enter().append("rect")
+                .attr("height", 0.7*font_size)
+                .attr("width", 1.6*font_size)
+                .attr("x", ax.width + ax.position[0] + 15 + legend_offset[0])
+                .attr("y",function(d,i) {
+                           return ax.position[1] + i * (font_size+5) + 10 + legend_offset[1];})
+                .attr("stroke", get_color)
+                .attr("class", "legend-box")
+                .style("fill", function(d, i) {
+                           return d.visible ? get_color(d) : "white";})
+                .on("click", click).on('mouseover', over).on('mouseout', out);
+
+        // add the labels
+        legend.selectAll("text")
+              .data(legendItems)
+              .enter().append("text")
+              .attr("font-size", font_size)
+              .attr("x", function (d) {
+                           return ax.width + ax.position[0] + (1.9*font_size+15) + legend_offset[0];})
+              .attr("y", function(d,i) {
+                           return ax.position[1] + i * (font_size+5) + 10 + (0.72*font_size-1) + legend_offset[1];})
+              .text(function(d) { return d.label })
+              .on('mouseover', over).on('mouseout', out);
+
+
+        // specify the action on click
+        function click(d,i){
+            d.visible = !d.visible;
+            d3.select(this)
+              .style("fill",function(d, i) {
+                return d.visible ? get_color(d) : "white";
+              })
+            set_alphas(d, false);
+
+        };
+
+        // specify the action on legend overlay 
+        function over(d,i){
+             set_alphas(d, true);
+        };
+
+        // specify the action on legend overlay 
+        function out(d,i){
+             set_alphas(d, false);
+        };
+
+        // helper function for setting alphas
+        function set_alphas(d, is_over){
+            for(var i=0; i<d.mpld3_elements.length; i++){
+                var type = d.mpld3_elements[i].constructor.name;
+
+                if(type =="mpld3_Line"){
+                    var current_alpha = d.mpld3_elements[i].props.alpha;
+                    var current_alpha_unsel = current_alpha * alpha_unsel;
+                    var current_alpha_over = current_alpha * alpha_over;
+                    d3.select(d.mpld3_elements[i].path.nodes()[0])
+                        .style("stroke-opacity", is_over ? current_alpha_over :
+                                                (d.visible ? current_alpha : current_alpha_unsel))
+                        .style("stroke-width", is_over ?
+                                alpha_over * d.mpld3_elements[i].props.edgewidth : d.mpld3_elements[i].props.edgewidth);
+                } else if((type=="mpld3_PathCollection")||
+                         (type=="mpld3_Markers")){
+                    var current_alpha = d.mpld3_elements[i].props.alphas[0];
+                    var current_alpha_unsel = current_alpha * alpha_unsel;
+                    var current_alpha_over = current_alpha * alpha_over;
+                    d.mpld3_elements[i].pathsobj
+                        .style("stroke-opacity", is_over ? current_alpha_over :
+                                                (d.visible ? current_alpha : current_alpha_unsel))
+                        .style("fill-opacity", is_over ? current_alpha_over :
+                                                (d.visible ? current_alpha : current_alpha_unsel));
+                } else{
+                    console.log(type + " not yet supported");
+                }
+            }
+        };
+
+
+        // helper function for determining the color of the rectangles
+        function get_color(d){
+            var type = d.mpld3_elements[0].constructor.name;
+            var color = "black";
+            if(type =="mpld3_Line"){
+                color = d.mpld3_elements[0].props.edgecolor;
+            } else if((type=="mpld3_PathCollection")||
+                      (type=="mpld3_Markers")){
+                color = d.mpld3_elements[0].props.facecolors[0];
+            } else{
+                console.log(type + " not yet supported");
+            }
+            return color;
+        };
+    };
+    
+                 mpld3.draw_figure("fig_el16427479472181568961747921636", {"width": 1600.0, "height": 900.0, "axes": [{"bbox": [0.0, 0.09999999999999998, 0.6, 0.8], "xlim": [1186740100.0, 1186743500.0], "ylim": [0.0, 2.6999999999999997], "xdomain": [1186740100.0, 1186743500.0], "ydomain": [0.0, 2.6999999999999997], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 8, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 7, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el1642747947268527856", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el1642747947268914480", "color": "#EE0000", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el1642747947269133824", "color": "#4BA6FF", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 3, "coordinates": "data", "id": "el1642747947269134544", "color": "#9B59B6", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el1642747947269140400", "color": "#EE0000", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 2, "coordinates": "data", "id": "el1642747947269261104", "color": "#4BA6FF", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 0, "yindex": 3, "coordinates": "data", "id": "el1642747947269261776", "color": "#9B59B6", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 4, "yindex": 1, "coordinates": "data", "id": "el1642747947269143568", "color": "#EE0000", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 4, "yindex": 2, "coordinates": "data", "id": "el1642747947269264944", "color": "#4BA6FF", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}, {"data": "data01", "xindex": 4, "yindex": 3, "coordinates": "data", "id": "el1642747947269266000", "color": "#9B59B6", "linewidth": 120.0, "dasharray": "none", "alpha": 0.3, "zorder": 2, "drawstyle": "default"}], "paths": [], "markers": [], "texts": [{"text": "H1 Segments", "position": [1186740100.0, 0.66], "coordinates": "data", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 24.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947269142608"}, {"text": "L1 Segments", "position": [1186740100.0, 1.6600000000000001], "coordinates": "data", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 24.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947269262448"}, {"text": "V1 Segments", "position": [1186740100.0, 2.66], "coordinates": "data", "h_anchor": "start", "v_baseline": "auto", "rotation": -0.0, "fontsize": 24.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947269259328"}, {"text": "GPS Time (s)", "position": [0.5, -0.04066358024691359], "coordinates": "axes", "h_anchor": "middle", "v_baseline": "hanging", "rotation": -0.0, "fontsize": 10.0, "color": "#000000", "alpha": 1, "zorder": 3, "id": "el1642747947268530208"}], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[1186740100.0, 0.33, 1.33, 2.33, 1186740108.0], [1186743500.0, 0.33, 1.33, 2.33, 1186743492.0]]}, "id": "el1642747947218156896", "plugins": [{"type": "linehtmltooltip", "id": "el1642747947268914480", "label": "<table>\n                             <tr><th>Segment Name</th><td>science</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269133824", "label": "<table>\n                             <tr><th>Segment Name</th><td>science</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269134544", "label": "<table>\n                             <tr><th>Segment Name</th><td>science</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269140400", "label": "<table>\n                             <tr><th>Segment Name</th><td>SCIENCE_AVAILABLE</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269261104", "label": "<table>\n                             <tr><th>Segment Name</th><td>SCIENCE_AVAILABLE</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269261776", "label": "<table>\n                             <tr><th>Segment Name</th><td>SCIENCE_AVAILABLE</td></tr>\n                             <tr><th>Start</th><td>1186740100</td></tr>\n                             <tr><th>End</th><td>1186743500</td></tr>\n                             <tr><th>Duration</th><td>3400.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269143568", "label": "<table>\n                             <tr><th>Segment Name</th><td>TRIGGERS_GENERATED</td></tr>\n                             <tr><th>Start</th><td>1186740108</td></tr>\n                             <tr><th>End</th><td>1186743492</td></tr>\n                             <tr><th>Duration</th><td>3384.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269264944", "label": "<table>\n                             <tr><th>Segment Name</th><td>TRIGGERS_GENERATED</td></tr>\n                             <tr><th>Start</th><td>1186740108</td></tr>\n                             <tr><th>End</th><td>1186743492</td></tr>\n                             <tr><th>Duration</th><td>3384.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "linehtmltooltip", "id": "el1642747947269266000", "label": "<table>\n                             <tr><th>Segment Name</th><td>TRIGGERS_GENERATED</td></tr>\n                             <tr><th>Start</th><td>1186740108</td></tr>\n                             <tr><th>End</th><td>1186743492</td></tr>\n                             <tr><th>Duration</th><td>3384.0</td></tr>\n                         </table>\n                    ", "hoffset": 0, "voffset": 10}, {"type": "interactive_legend", "element_ids": [["el1642747947268914480", "el1642747947268914480pts"], ["el1642747947269133824", "el1642747947269133824pts"], ["el1642747947269134544", "el1642747947269134544pts"], ["el1642747947269140400", "el1642747947269140400pts"], ["el1642747947269261104", "el1642747947269261104pts"], ["el1642747947269261776", "el1642747947269261776pts"], ["el1642747947269143568", "el1642747947269143568pts"], ["el1642747947269264944", "el1642747947269264944pts"], ["el1642747947269266000", "el1642747947269266000pts"]], "labels": ["H1:science", "L1:science", "V1:science", "H1:SCIENCE_AVAILABLE", "L1:SCIENCE_AVAILABLE", "V1:SCIENCE_AVAILABLE", "H1:TRIGGERS_GENERATED", "L1:TRIGGERS_GENERATED", "V1:TRIGGERS_GENERATED"], "ax": null, "alpha_unsel": 0.1, "alpha_over": 1.0, "start_visible": [true, true, true, true, true, true, true, true, true], "font_size": 10, "legend_offset": [0, 0]}, {"type": "mouseposition", "fontsize": 14, "fmt": "10f"}, {"type": "boxzoom", "button": true, "enabled": false}, {"type": "zoom", "button": true, "enabled": false}, {"type": "reset"}]});
+            })
+         });
+}
+</script>
+
+<!--segment XML file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PAGE_SEGPLOT_SUMMARY-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Visualization of the input and output segments for the search. Shown are: H1:science L1:science V1:science H1:SCIENCE_AVAILABLE L1:SCIENCE_AVAILABLE V1:SCIENCE_AVAILABLE H1:TRIGGERS_GENERATED L1:TRIGGERS_GENERATED V1:TRIGGERS_GENERATED ">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_segplot --segment-files H1L1V1-SCIENCE-1186740100-3400.xml H1L1V1-SCIENCE_AVAILABLE-1186740100-3400.xml H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --segment-names science SCIENCE_AVAILABLE TRIGGERS_GENERATED --ifos H1 L1 V1 --output-file H1L1V1-PAGE_SEGPLOT_SUMMARY-1186740100-3400.html">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A3"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A3">
+                                    <b>A3. Segment Summary: Input and output</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <div class=pycbc-meta key="title" value="Segment Summary: Input and output"></div><div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_segtable --segment-files H1L1V1-SCIENCE-1186740100-3400.xml H1L1V1-SCIENCE_AVAILABLE-1186740100-3400.xml H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --segment-names science SCIENCE_AVAILABLE TRIGGERS_GENERATED --ifos H1 L1 V1 --description This shows the total amount of input data, analyzable data, and the time for which triggers are produced. --title-text Input and output --output-file H1L1V1-PAGE_SEGTABLE_SUMMARY-1186740100-3400.html"></div><div class=pycbc-meta key="caption" value="This table shows the cumulative amount of time for each segment. Shown are: science SCIENCE_AVAILABLE TRIGGERS_GENERATED. This shows the total amount of input data, analyzable data, and the time for which triggers are produced."></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('number', 'H1 Time (s)');
+            data.addColumn('number', 'L1 Time (s)');
+            data.addColumn('number', 'V1 Time (s)');
+            data.addColumn('number', 'H1L1 Time (s)');
+            data.addColumn('number', 'H1V1 Time (s)');
+            data.addColumn('number', 'L1V1 Time (s)');
+            data.addColumn('number', 'H1L1V1 Time (s)');
+        data.addRows([['science', 3400.0, 3400.0, 3400.0, 3400.0, 3400.0, 3400.0, 3400.0], ['SCIENCE_AVAILABLE', 3400.0, 3400.0, 3400.0, 3400.0, 3400.0, 3400.0, 3400.0], ['TRIGGERS_GENERATED', 3384.0, 3384.0, 3384.0, 3384.0, 3384.0, 3384.0, 3384.0]]);
+
+        var table = new google.visualization.Table(document.getElementById('fccbac4a-e85b-40be-90e5-cdda733e12ae'));
+        table.draw(data, {showRowNumber: 'true',
+                          page: 'enable',
+                          allowHtml: 'true',
+                          pageSize: 10});
+      }
+    </script>
+    <div id='fccbac4a-e85b-40be-90e5-cdda733e12ae'></div>
+
+
+<!--segment XML file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PAGE_SEGTABLE_SUMMARY-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This table shows the cumulative amount of time for each segment. Shown are: science SCIENCE_AVAILABLE TRIGGERS_GENERATED. This shows the total amount of input data, analyzable data, and the time for which triggers are produced.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_segtable --segment-files H1L1V1-SCIENCE-1186740100-3400.xml H1L1V1-SCIENCE_AVAILABLE-1186740100-3400.xml H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --segment-names science SCIENCE_AVAILABLE TRIGGERS_GENERATED --ifos H1 L1 V1 --description This shows the total amount of input data, analyzable data, and the time for which triggers are produced. --title-text Input and output --output-file H1L1V1-PAGE_SEGTABLE_SUMMARY-1186740100-3400.html">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A4"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A4">
+                                    <b>A4. Segment Summary: Time removed by vetoes</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <div class=pycbc-meta key="title" value="Segment Summary: Time removed by vetoes"></div><div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_segtable --segment-files H1L1V1-INSP_SEGMENTS-1186740100-3400.xml H1L1V1-VETOES-1186740100-3400.xml H1L1V1-SCIENCE-1186740100-3400.xml --segment-names TRIGGERS_GENERATED&amp;vetoes science&amp;VETO_CAT1 --ifos H1 L1 V1 --description This shows the time removed from the output time by the vetoes applied to the triggers. --title-text Time removed by vetoes --output-file H1L1V1-PAGE_SEGTABLE_VETO_SUMMARY-1186740100-3400.html"></div><div class=pycbc-meta key="caption" value="This table shows the cumulative amount of time for each segment. Shown are: TRIGGERS_GENERATED&amp;vetoes science&amp;VETO_CAT1. This shows the time removed from the output time by the vetoes applied to the triggers."></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('number', 'H1 Time (s)');
+            data.addColumn('number', 'L1 Time (s)');
+            data.addColumn('number', 'V1 Time (s)');
+            data.addColumn('number', 'H1L1 Time (s)');
+            data.addColumn('number', 'H1V1 Time (s)');
+            data.addColumn('number', 'L1V1 Time (s)');
+            data.addColumn('number', 'H1L1V1 Time (s)');
+        data.addRows([['TRIGGERS_GENERATED&vetoes', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], ['science&VETO_CAT1', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]);
+
+        var table = new google.visualization.Table(document.getElementById('24e3d23c-ba5d-4309-8ed2-641df720c6f8'));
+        table.draw(data, {showRowNumber: 'true',
+                          page: 'enable',
+                          allowHtml: 'true',
+                          pageSize: 10});
+      }
+    </script>
+    <div id='24e3d23c-ba5d-4309-8ed2-641df720c6f8'></div>
+
+
+<!--segment XML file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PAGE_SEGTABLE_VETO_SUMMARY-1186740100-3400.html' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This table shows the cumulative amount of time for each segment. Shown are: TRIGGERS_GENERATED&vetoes science&VETO_CAT1. This shows the time removed from the output time by the vetoes applied to the triggers.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_segtable --segment-files H1L1V1-INSP_SEGMENTS-1186740100-3400.xml H1L1V1-VETOES-1186740100-3400.xml H1L1V1-SCIENCE-1186740100-3400.xml --segment-names TRIGGERS_GENERATED&vetoes science&VETO_CAT1 --ifos H1 L1 V1 --description This shows the time removed from the output time by the vetoes applied to the triggers. --title-text Time removed by vetoes --output-file H1L1V1-PAGE_SEGTABLE_VETO_SUMMARY-1186740100-3400.html">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A5"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A5">
+                                    <b>A5. Noise Amplitude Spectral Density</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PLOT_SPECTRUM-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PLOT_SPECTRUM-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PLOT_SPECTRUM-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Median amplitude spectral density plotted with a shaded region between the 5th and 95th perentiles. ">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_psd_file --psd-model aLIGOZeroDetHighPower --psd-files V1-MERGE_PSDS-1186740100-3400.hdf L1-MERGE_PSDS-1186740100-3400.hdf H1-MERGE_PSDS-1186740100-3400.hdf --output-file H1L1V1-PLOT_SPECTRUM-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A6"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A6">
+                                    <b>A6. Inspiral Range</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PLOT_RANGE_SUMM-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PLOT_RANGE_SUMM-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PLOT_RANGE_SUMM-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="The canonical sky- and orientation-averaged inspiral range for a single detector at SNR 8. This range is comparable to the SenseMon range and a factor of 2.26 smaller than the horizon distance.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_range --mass1 1.4 --mass2 1.4 --approximant SPAtmplt --psd-files V1-MERGE_PSDS-1186740100-3400.hdf L1-MERGE_PSDS-1186740100-3400.hdf H1-MERGE_PSDS-1186740100-3400.hdf --output-file H1L1V1-PLOT_RANGE_SUMM-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A7"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A7">
+                                    <b>A7. H1: snr histogram of single detector triggers</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Histogram of single detector triggers">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_hist --x-var snr --x-min 6 --x-max 100 --segment-name closed_box --veto-file H1L1V1-FOREGROUND_CENSOR-1186740100-3400.xml --trigger-file H1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf --output-file H1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A8"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A8">
+                                    <b>A8. H1: newsnr_sgveto histogram of single detector triggers split by eta and chi_eff</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Histogram of H1 single detector newsnr_sgveto values binned by mtotal, split by eta and chi_eff, with fitted exponential distribution parameterized by &alpha;">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_fit_sngls_split_binned --fit-function exponential --stat-fit-threshold 5.0 --plot-lower-stat-limit 4.5 --prune-number 1 --split-param-one eta --split-one-nbins 2 --split-one-spacing linear --split-param-two chi_eff --split-two-nbins 2 --split-two-spacing linear --bin-param mtotal --num-bins 2 --bin-spacing log --sngl-ranking newsnr_sgveto --ifo H1 --veto-segment-name closed_box --veto-file H1L1V1-FOREGROUND_CENSOR-1186740100-3400.xml --trigger-file H1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --output-file H1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A9"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A9">
+                                    <b>A9. L1: snr histogram of single detector triggers</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Histogram of single detector triggers">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_hist --x-var snr --x-min 6 --x-max 100 --segment-name closed_box --veto-file H1L1V1-FOREGROUND_CENSOR-1186740100-3400.xml --trigger-file L1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf --output-file L1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A10"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A10">
+                                    <b>A10. L1: newsnr_sgveto_psdvar_scaled_threshold histogram of single detector triggers split by eta and chi_eff</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Histogram of L1 single detector newsnr_sgveto_psdvar_scaled_threshold values binned by mtotal, split by eta and chi_eff, with fitted exponential distribution parameterized by &alpha;">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_fit_sngls_split_binned --fit-function exponential --stat-fit-threshold 5.0 --plot-lower-stat-limit 4.5 --prune-number 1 --split-param-one eta --split-one-nbins 2 --split-one-spacing linear --split-param-two chi_eff --split-two-nbins 2 --split-two-spacing linear --bin-param mtotal --num-bins 2 --bin-spacing log --sngl-ranking newsnr_sgveto_psdvar_scaled_threshold --ifo L1 --veto-segment-name closed_box --veto-file H1L1V1-FOREGROUND_CENSOR-1186740100-3400.xml --trigger-file L1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --output-file L1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A11"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A11">
+                                    <b>A11. V1: snr histogram of single detector triggers</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Histogram of single detector triggers">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_hist --x-var snr --x-min 6 --x-max 100 --segment-name closed_box --veto-file H1L1V1-FOREGROUND_CENSOR-1186740100-3400.xml --trigger-file V1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf --output-file V1-PLOT_HIST_SUMM_SNR_FULL_DATA-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A12"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A12">
+                                    <b>A12. V1: newsnr_sgveto_psdvar_scaled_threshold histogram of single detector triggers split by eta and chi_eff</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Histogram of V1 single detector newsnr_sgveto_psdvar_scaled_threshold values binned by mtotal, split by eta and chi_eff, with fitted exponential distribution parameterized by &alpha;">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_fit_sngls_split_binned --fit-function exponential --stat-fit-threshold 5.0 --plot-lower-stat-limit 4.5 --prune-number 1 --split-param-one eta --split-one-nbins 2 --split-one-spacing linear --split-param-two chi_eff --split-two-nbins 2 --split-two-spacing linear --bin-param mtotal --num-bins 2 --bin-spacing log --sngl-ranking newsnr_sgveto_psdvar_scaled_threshold --ifo V1 --veto-segment-name closed_box --veto-file H1L1V1-FOREGROUND_CENSOR-1186740100-3400.xml --trigger-file V1-HDF_TRIGGER_MERGE_FULL_DATA-1186740100-3400.hdf --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --output-file V1-PLOT_BINNEDHIST_MTOTAL_FULL_DATA-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A13"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A13">
+                                    <b>A13. Template Bank and Bins Used to Compute Background</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PLOT_BANK-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PLOT_BANK-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PLOT_BANK-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This plot shows the template bank in the mass1-mass2 plane.
+Each template is colored by the bin that it is placed in to
+compute the search background. Note that the bins may be chosen
+in a space higher than two dimensions for spinning templates,
+causing apparent overlap in the mass1-mass2 plane.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_plot_bank_bins --log-x --log-y --bank-file H1L1V1-BANK2HDF-1186740100-3400.hdf --output-file H1L1V1-PLOT_BANK-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A14"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A14">
+                                    <b>A14. Found and Missed Injections: mchirp vs comb_optimal_snr</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PLOT_FOUNDMISSED_SUMMARY-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PLOT_FOUNDMISSED_SUMMARY-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PLOT_FOUNDMISSED_SUMMARY-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Found and Missed Injections: Red x's are missed injections. Circles are found injections. The color indicates the value of the false alarm rate.Found injections are shown on top of missed injections.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_foundmissed --far-type exclusive --distance-type comb_optimal_snr --axis-type mchirp --log-x --log-distance --gradient-far --injection-file H1L1V1-HDFINJFIND_ALL_INJECTIONS-1186740100-3400.hdf --output-file H1L1V1-PLOT_FOUNDMISSED_SUMMARY-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A15"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A15">
+                                    <b>A15. Missed and Found Injections: mchirp vs decisive_optimal_snr</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PLOT_FOUNDMISSED_SUMMARYM-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PLOT_FOUNDMISSED_SUMMARYM-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PLOT_FOUNDMISSED_SUMMARYM-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Missed and Found Injections: Red x's are missed injections. Circles are found injections. The color indicates the value of the false alarm rate.Missed injections are shown on top of found injections.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_foundmissed --far-type exclusive --axis-type mchirp --log-x --log-distance --gradient-far --missed-on-top --injection-file H1L1V1-HDFINJFIND_ALL_INJECTIONS-1186740100-3400.hdf --output-file H1L1V1-PLOT_FOUNDMISSED_SUMMARYM-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A16"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A16">
+                                    <b>A16. Sensitive Distance vs IFAR: binned by mchirp using pylal method</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PLOT_SENSITIVITY_SUMMARY_MCHIRP-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PLOT_SENSITIVITY_SUMMARY_MCHIRP-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PLOT_SENSITIVITY_SUMMARY_MCHIRP-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Sensitive Distance as a function of Significance:Lighter lines represent the significance without including injections in their own background, while darker lines include each injection individually in the background. The integration method used is based on pylal.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_sensitivity --dist-bins 50 --exclusive-sig --integration-method pylal --bin-type mchirp --bins 10 20 100 --sig-type ifar --injection-file H1L1V1-HDFINJFIND_ALL_INJECTIONS-1186740100-3400.hdf --output-file H1L1V1-PLOT_SENSITIVITY_SUMMARY_MCHIRP-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A17"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A17">
+                                    <b>A17. Sensitive Vt vs IFAR: binned by mchirp using pylal method</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PLOT_SENSITIVITY_SUMMARY_MCHIRPVT-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PLOT_SENSITIVITY_SUMMARY_MCHIRPVT-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PLOT_SENSITIVITY_SUMMARY_MCHIRPVT-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="Sensitive Vt as a function of Significance:Lighter lines represent the significance without including injections in their own background, while darker lines include each injection individually in the background. The integration method used is based on pylal.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_sensitivity --dist-bins 50 --exclusive-sig --integration-method pylal --bin-type mchirp --bins 10 20 100 --dist-type vt --sig-type ifar --log-dist --injection-file H1L1V1-HDFINJFIND_ALL_INJECTIONS-1186740100-3400.hdf --output-file H1L1V1-PLOT_SENSITIVITY_SUMMARY_MCHIRPVT-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A18"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A18">
+                                    <b>A18. L1 V1: FAR vs Rank</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1V1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1V1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1V1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="('Cumulative histogram of foreground and background triggers.Orange triangle (if present) represent triggers from the zero-lag (foreground) analysis. Solid crosses show the background inclusive of zerolag events, and grey crosses show the background constructed without triggers that are coincident in the zero-lag data.',)">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrifar --trigger-file L1V1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1186740100-3400.hdf --closed-box --output-file L1V1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A19"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A19">
+                                    <b>A19. Cumulative Number vs. IFAR</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1V1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1V1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1V1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This is a cumulative histogram of triggers. The blue triangles represent coincident foreground triggers. The dashed line represents the expected background given the analysis time. The shaded regions represent counting errors. The gray lines are time slides treated as zero lag, here there are 675 time slides plotted. Gray dots are time slides with only one event. 1 of the plotted slides have zero events. The green line represents all decimated time slides rescaled to the analysis time.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_ifar --decimation-factor 100 --trigger-file L1V1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1186740100-3400.hdf --output-file L1V1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A20"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A20">
+                                    <b>A20. H1 V1: FAR vs Rank</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1V1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1V1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1V1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="('Cumulative histogram of foreground and background triggers.Orange triangle (if present) represent triggers from the zero-lag (foreground) analysis. Solid crosses show the background inclusive of zerolag events, and grey crosses show the background constructed without triggers that are coincident in the zero-lag data.',)">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrifar --trigger-file H1V1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1186740100-3400.hdf --closed-box --output-file H1V1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A21"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A21">
+                                    <b>A21. Cumulative Number vs. IFAR</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1V1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1V1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1V1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This is a cumulative histogram of triggers. The blue triangles represent coincident foreground triggers. The dashed line represents the expected background given the analysis time. The shaded regions represent counting errors. The gray lines are time slides treated as zero lag, here there are 675 time slides plotted. Gray dots are time slides with only one event. 0 of the plotted slides have zero events. The green line represents all decimated time slides rescaled to the analysis time.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_ifar --decimation-factor 100 --trigger-file H1V1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1186740100-3400.hdf --output-file H1V1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A22"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A22">
+                                    <b>A22. H1 L1: FAR vs Rank</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="('Cumulative histogram of foreground and background triggers.Orange triangle (if present) represent triggers from the zero-lag (foreground) analysis. Solid crosses show the background inclusive of zerolag events, and grey crosses show the background constructed without triggers that are coincident in the zero-lag data.',)">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrifar --trigger-file H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1186740100-3400.hdf --closed-box --output-file H1L1-PLOT_SNRIFAR_FULL_DATA_2DET_CLOSED-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A23"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A23">
+                                    <b>A23. Cumulative Number vs. IFAR</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This is a cumulative histogram of triggers. The blue triangles represent coincident foreground triggers. The dashed line represents the expected background given the analysis time. The shaded regions represent counting errors. The gray lines are time slides treated as zero lag, here there are 675 time slides plotted. Gray dots are time slides with only one event. 0 of the plotted slides have zero events. The green line represents all decimated time slides rescaled to the analysis time.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_ifar --decimation-factor 100 --trigger-file H1L1-EXCLUDE_ZEROLAG_FULL_DATA_2DET-1186740100-3400.hdf --output-file H1L1-PAGE_IFAR_FULL_DATA_2DET_CLOSED_BOX-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+                <div class="col-md-6" style="padding-top:20px;">
+                <a name="A24"></a>
+                
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A24">
+                                    <b>A24. H1 L1 V1: FAR vs Rank</b>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PLOT_SNRIFAR_FULL_DATA_3DET_CLOSED-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PLOT_SNRIFAR_FULL_DATA_3DET_CLOSED-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PLOT_SNRIFAR_FULL_DATA_3DET_CLOSED-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="('Cumulative histogram of foreground and background triggers.Orange triangle (if present) represent triggers from the zero-lag (foreground) analysis. Solid crosses show the background inclusive of zerolag events, and grey crosses show the background constructed without triggers that are coincident in the zero-lag data.',)">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrifar --trigger-file H1L1V1-EXCLUDE_ZEROLAG_FULL_DATA_3DET-1186740100-3400.hdf --closed-box --output-file H1L1V1-PLOT_SNRIFAR_FULL_DATA_3DET_CLOSED-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                
+                </div>
+                
+                <div class="col-md-6" style="padding-top:20px;">
+                
+                    <a name="A25"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A25">
+                                    <b>A25. Cumulative Number vs. IFAR</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1L1V1-PAGE_IFAR_FULL_DATA_3DET_CLOSED_BOX-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1L1V1-PAGE_IFAR_FULL_DATA_3DET_CLOSED_BOX-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1L1V1-PAGE_IFAR_FULL_DATA_3DET_CLOSED_BOX-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="This is a cumulative histogram of triggers. The blue triangles represent coincident foreground triggers. The dashed line represents the expected background given the analysis time. The shaded regions represent counting errors. The gray lines are time slides treated as zero lag, here there are 675 time slides plotted. Gray dots are time slides with only one event. 45 of the plotted slides have zero events. The green line represents all decimated time slides rescaled to the analysis time.">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_ifar --decimation-factor 100 --trigger-file H1L1V1-EXCLUDE_ZEROLAG_FULL_DATA_3DET-1186740100-3400.hdf --output-file H1L1V1-PAGE_IFAR_FULL_DATA_3DET_CLOSED_BOX-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                
+                </div>
+            
+
+            <!-- one file case -->
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A26"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A26">
+                                    <b>A26. V1: FAR vs Rank</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="V1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="V1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='V1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="('Cumulative histogram of foreground and background triggers.Orange triangle (if present) represent triggers from the zero-lag (foreground) analysis. Solid crosses show the background inclusive of zerolag events, and grey crosses show the background constructed without triggers that are coincident in the zero-lag data.',)">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrifar --trigger-file V1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1186740100-3400.hdf --closed-box --output-file V1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A27"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A27">
+                                    <b>A27. L1: FAR vs Rank</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="L1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="L1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='L1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="('Cumulative histogram of foreground and background triggers.Orange triangle (if present) represent triggers from the zero-lag (foreground) analysis. Solid crosses show the background inclusive of zerolag events, and grey crosses show the background constructed without triggers that are coincident in the zero-lag data.',)">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrifar --trigger-file L1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1186740100-3400.hdf --closed-box --output-file L1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+        <div class="row">
+
+            <!-- two file case -->
+            
+
+            <!-- one file case -->
+            
+                <div class="col-md-12" style="padding-top:20px;">
+                <a name="A28"></a>
+                    
+                    
+                        
+                            
+                                <p class="text-center" style="font-size:18px;">
+                                    <a href="#A28">
+                                    <b>A28. H1: FAR vs Rank</b></p>
+                                    </a>
+                                </p>
+                            
+                            <!--image file condition-->
+
+    <a class="fancybox" href="H1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png" data-fancybox-group="gallery" title=""><img src="H1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png" class="img-responsive center-block" alt="" /></a>
+
+<!--html file condition-->
+
+
+<!--always link to file-->
+<a class="btn btn-xs btn-primary" href='H1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png' target="_blank">Link to File</a>
+
+<!--make a caption to the content -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Caption" data-placement="bottom"
+            data-content="('Cumulative histogram of foreground and background triggers.Orange triangle (if present) represent triggers from the zero-lag (foreground) analysis. Solid crosses show the background inclusive of zerolag events, and grey crosses show the background constructed without triggers that are coincident in the zero-lag data.',)">
+            Caption
+    </button>
+
+
+<!--show cmd line if there is one -->
+
+    <button type="button" class="btn btn-xs btn-primary"
+            data-toggle="popover" title="Command Line" data-placement="right"
+            data-content="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_snrifar --trigger-file H1-EXCLUDE_ZEROLAG_FULL_DATA_1DET-1186740100-3400.hdf --closed-box --output-file H1-PLOT_SNRIFAR_FULL_DATA_1DET_CLOSED-1186740100-3400.png">
+            Command Line
+    </button>
+
+                    
+                    
+                </div>
+            
+
+            <!-- increment -->
+            
+
+    </div>
+    
+
+</div>     
+                                                       
+                    
+                
+
+                <hr class="row-divider">
+
+                <!-- display other files in directory -->
+                
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- loop over files in directory -->
+                        <h1>Additional Files</h1>
+                            The following files were also found in this directory:
+                            <div class="row" style="padding:15px">
+                                <button id="collapse-init" class="btn btn-xs btn-primary">Expand All</button>
+                            </div>
+                            
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                                
+
+                                    <!-- get config file -->
+                                    
+                                    <!-- do not show well.html -->
+                                    
+                                
+                            
+                    </div>
+                </div>
+                
+
+            </div>
+         </div>
+     </div>
+</div>
+
+<footer>
+    <div class="container-fluid">
+        <div class="footer-custom">
+            <a href="sitemap/index.html">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

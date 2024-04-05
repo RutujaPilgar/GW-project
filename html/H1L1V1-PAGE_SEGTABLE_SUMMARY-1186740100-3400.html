@@ -1,0 +1,31 @@
+<div class=pycbc-meta key="title" value="Segment Summary: Input and output"></div><div class=pycbc-meta key="cmd" value="/home/rutuja.pilgar/libs/anaconda3/envs/gwpycbc/bin/pycbc_page_segtable --segment-files H1L1V1-SCIENCE-1186740100-3400.xml H1L1V1-SCIENCE_AVAILABLE-1186740100-3400.xml H1L1V1-INSP_SEGMENTS-1186740100-3400.xml --segment-names science SCIENCE_AVAILABLE TRIGGERS_GENERATED --ifos H1 L1 V1 --description This shows the total amount of input data, analyzable data, and the time for which triggers are produced. --title-text Input and output --output-file H1L1V1-PAGE_SEGTABLE_SUMMARY-1186740100-3400.html"></div><div class=pycbc-meta key="caption" value="This table shows the cumulative amount of time for each segment. Shown are: science SCIENCE_AVAILABLE TRIGGERS_GENERATED. This shows the total amount of input data, analyzable data, and the time for which triggers are produced."></div><div class=pycbc-meta key="version" value="Version: 0.0a8809
+Branch: master
+Tag: None
+Id: 56b544fdb462899a569a96ac4018761652987a1d
+Builder: Unknown User &lt;&gt;
+Build date: 2024-03-01 13:48:22 +0000
+Repository status is CLEAN: All modifications committed"></div>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('number', 'H1 Time (s)');
+            data.addColumn('number', 'L1 Time (s)');
+            data.addColumn('number', 'V1 Time (s)');
+            data.addColumn('number', 'H1L1 Time (s)');
+            data.addColumn('number', 'H1V1 Time (s)');
+            data.addColumn('number', 'L1V1 Time (s)');
+            data.addColumn('number', 'H1L1V1 Time (s)');
+        data.addRows([['science', 3400.0, 3400.0, 3400.0, 3400.0, 3400.0, 3400.0, 3400.0], ['SCIENCE_AVAILABLE', 3400.0, 3400.0, 3400.0, 3400.0, 3400.0, 3400.0, 3400.0], ['TRIGGERS_GENERATED', 3384.0, 3384.0, 3384.0, 3384.0, 3384.0, 3384.0, 3384.0]]);
+
+        var table = new google.visualization.Table(document.getElementById('fccbac4a-e85b-40be-90e5-cdda733e12ae'));
+        table.draw(data, {showRowNumber: 'true',
+                          page: 'enable',
+                          allowHtml: 'true',
+                          pageSize: 10});
+      }
+    </script>
+    <div id='fccbac4a-e85b-40be-90e5-cdda733e12ae'></div>
